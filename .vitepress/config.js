@@ -37,5 +37,10 @@ export default {
         items: []
       }
     ]
+
+    editLink: {
+      pattern: 'https://github.com',
+      text: 'Редактировать эту страницу на GitHub'
+    }
   }
 }
