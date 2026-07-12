@@ -36,7 +36,7 @@ export default {
         text: '🏢 Корпуса и аудитории',
         items: []
       }
-    ]
+    ],
 
     editLink: {
       pattern: 'https://github.com',
