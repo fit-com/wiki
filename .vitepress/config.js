@@ -5,11 +5,11 @@ export default {
   
   // Жестко прописываем иконку для вкладки браузера
   head: [
-    ['link', { rel: 'icon', type: 'image/png', href: '/favicon.png' }]
+    ['link', { rel: 'icon', type: 'image/png', href: 'favicon.png' }]
   ],
 
   themeConfig: {
-    logo: '/favicon.png', // Иконка появится еще и в шапке сайта
+    logo: 'favicon.png', // Иконка появится еще и в шапке сайта
     
     // Включаем встроенный поиск по всем статьям
     search: {
