@@ -39,7 +39,7 @@ export default {
     ],
 
     editLink: {
-      pattern: 'https://github.com',
+      pattern: 'https://github.com/fit-com/wiki/edit/main/:path',
       text: 'Редактировать эту страницу на GitHub'
     }
   }
