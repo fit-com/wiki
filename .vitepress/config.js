@@ -19,6 +19,15 @@ export default {
     // Настраиваем левое меню (Sidebar)
     sidebar: [
       {
+        {
+        text: '➕ Добавить контент',
+        items: [
+          { 
+            text: '✨ Написать новую статью', 
+            link: 'https://github.com/fit-com/wiki/new/main' 
+          }
+        ]
+      },
         text: '👨‍🏫 Преподаватели',
         items: [
           { text: 'Епишин И.С.', link: '/epishin' }
