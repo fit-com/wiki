@@ -19,7 +19,6 @@ export default {
     // Настраиваем левое меню (Sidebar)
     sidebar: [
       {
-        {
         text: '➕ Добавить контент',
         items: [
           { 
@@ -28,6 +27,7 @@ export default {
           }
         ]
       },
+      {
         text: '👨‍🏫 Преподаватели',
         items: [
           { text: 'Епишин И.С.', link: '/epishin' }
