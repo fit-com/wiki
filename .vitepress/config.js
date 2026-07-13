@@ -3,9 +3,9 @@ export default {
   title: "Википедия ФИТ НГУ",
   description: "Самый большой архив информации, личностей, баек и мемов",
   
-  // Жестко прописываем иконку для вкладки браузера
   head: [
-    ['link', { rel: 'icon', type: 'image/png', href: './favicon.png' }]
+    ['link', { rel: 'icon', type: 'image/png', href: './favicon.png' }],
+    ['link', { rel: 'stylesheet', href: './custom.css' }]
   ],
 
   themeConfig: {
