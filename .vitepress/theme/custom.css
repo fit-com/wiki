@@ -1,0 +1,29 @@
+/* Настройки для СВЕТЛОЙ темы */
+:root {
+  --vp-c-page-bg: #f6f6f7 url('/wiki/bg.png') no-repeat center center fixed;
+  background-size: cover;
+
+  --vp-c-bg: #ffffff;
+  --vp-c-bg-alt: #f6f6f7;
+}
+
+/* Настройки для ТЁМНОЙ темы */
+.dark {
+  --vp-c-page-bg: #111113 url('/wiki/bg.png') no-repeat center center fixed;
+  background-size: cover;
+  
+  --vp-c-bg: #1e1e20;
+  --vp-c-bg-alt: #161618;
+}
+
+.VPContent, .VPSidebar {
+  background-color: var(--vp-c-bg) !important;
+}
+
+/* Добавляем аккуратную тень или границы, чтобы текст красиво отделялся от фона */
+.VPContent {
+  box-shadow: 0 0 20px rgba(0,0,0,0.05);
+}
+.dark .VPContent {
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
