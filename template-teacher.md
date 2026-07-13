@@ -3,7 +3,7 @@
 <table style="float: right; margin-left: 20px; width: 40%;">
   <tr>
     <td colspan="2" align="center">
-      <img src="/image/Markdown-mark.svg" alt="Image"><br>
+      <img src="/empty-teacher.png" alt="Image"><br>
     <b>Фамилия И.О.</b>
     </td>
   </tr>
