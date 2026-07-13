@@ -7,31 +7,42 @@ export default {
     // 1. Иконка вкладки
     ['link', { rel: 'icon', type: 'image/png', href: '/wiki/favicon.png' }],
     
-    // 2. Агрессивная инъекция стилей фона
+    // Агрессивная инъекция стилей фона через псевдоэлемент
     [
       'style', 
       {}, 
       `
-      /* Насильно обнуляем фон у ВСЕХ оберток VitePress, включая Layout и внутренние слои темы */
-      html, body, #app, .VPApp, .VPLayout, .Layout, #VitePress-app {
-        background-color: transparent !important;
+      /* Создаем независимую подложку для картинки ПОД всем сайтом */
+      html::before {
+        content: "" !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        z-index: -1000 !important; /* Уносим в самый низ под все слои */
         background-image: url('/wiki/bg.png') !important;
         background-size: cover !important;
         background-position: center center !important;
-        background-attachment: fixed !important;
         background-repeat: no-repeat !important;
       }
 
-      /* Возвращаем сплошной НЕПРОЗРАЧНЫЙ белый фон для текста статьи и левого меню (СВЕТЛАЯ ТЕМА) */
-      .VPContent, .VPSidebar, .VPDoc, .vp-doc { 
+      /* Стираем дефолтные фоны у ВСЕХ корневых контейнеров VitePress, чтобы они стали прозрачными стеклами */
+      html, body, #app, .VPApp, .VPLayout, .Layout, #VitePress-app {
+        background: transparent !important;
+        background-color: transparent !important;
+      }
+
+      /* Задаем жесткий НЕПРОЗРАЧНЫЙ белый фон для контента и сайдбара (СВЕТЛАЯ ТЕМА) */
+      .VPContent, .VPSidebar, .VPDoc, .vp-doc, main, .container { 
         background-color: #ffffff !important; 
       }
       .VPContent { 
         box-shadow: 0 0 30px rgba(0,0,0,0.08) !important; 
       }
 
-      /* Возвращаем сплошной НЕПРОЗРАЧНЫЙ темно-серый фон для текста и меню (ТЁМНАЯ ТЕМА) */
-      .dark .VPContent, .dark .VPSidebar, .dark .VPDoc, .dark .vp-doc { 
+      /* Задаем жесткий НЕПРОЗРАЧНЫЙ темно-серый фон для контента и сайдбара (ТЁМНАЯ ТЕМА) */
+      .dark .VPContent, .dark .VPSidebar, .dark .VPDoc, .dark .vp-doc, .dark main, .dark .container { 
         background-color: #1e1e20 !important; 
       }
       .dark .VPContent { 
