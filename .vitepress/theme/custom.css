@@ -1,13 +1,13 @@
 /* Настройки ПЕРЕМЕННЫХ для СВЕТЛОЙ темы */
 :root {
-  --vp-c-page-bg: #f6f6f7 url('/wiki/bg.png') no-repeat center center fixed;
+  --vp-c-page-bg: #f6f6f7 url('../bg.png') no-repeat center center fixed;
   --vp-c-bg: #ffffff;
   --vp-c-bg-alt: #f6f6f7;
 }
 
 /* Настройки ПЕРЕМЕННЫХ для ТЁМНОЙ темы */
 .dark {
-  --vp-c-page-bg: #111113 url('/wiki/bg.png') no-repeat center center fixed;
+  --vp-c-page-bg: #111113 url('../bg.png') no-repeat center center fixed;
   --vp-c-bg: #1e1e20;
   --vp-c-bg-alt: #161618;
 }
@@ -19,17 +19,17 @@ html, body, #app {
   background-attachment: fixed !important;
 }
 
-/* Делаем слои VitePress прозрачными, чтобы они не перекрывали картинку на полях */
+/* Делаем слои VitePress прозрачными, чтобы они не перекрывали картинку */
 .VPApp, .VPLayout {
   background: transparent !important;
 }
 
-/* Контент и сайдбар оставляем жестко непрозрачными, чтобы текст не сливался */
+/* Контент и сайдбар оставляем жестко непрозрачными */
 .VPContent, .VPSidebar {
   background-color: var(--vp-c-bg) !important;
 }
 
-/* Добавляем тени, чтобы белые блоки со статьями красиво «парили» над фоном */
+/* Добавляем тени, чтобы блоки красиво «парили» над фоном */
 .VPContent {
   box-shadow: 0 0 30px rgba(0,0,0,0.08) !important;
 }
