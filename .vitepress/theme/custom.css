@@ -1,37 +1,28 @@
-/* Настройки ПЕРЕМЕННЫХ для СВЕТЛОЙ темы */
-:root {
-  --vp-c-page-bg: #f6f6f7 url('../bg.png') no-repeat center center fixed;
-  --vp-c-bg: #ffffff;
-  --vp-c-bg-alt: #f6f6f7;
-}
-
-/* Настройки ПЕРЕМЕННЫХ для ТЁМНОЙ темы */
-.dark {
-  --vp-c-page-bg: #111113 url('../bg.png') no-repeat center center fixed;
-  --vp-c-bg: #1e1e20;
-  --vp-c-bg-alt: #161618;
-}
-
-/* ПРИМЕНЕНИЕ СТИЛЕЙ К СТРАНИЦЕ */
-html, body, #app {
-  background-image: var(--vp-c-page-bg) !important;
-  background-size: cover !important;
-  background-attachment: fixed !important;
-}
-
 /* Делаем слои VitePress прозрачными, чтобы они не перекрывали картинку */
 .VPApp, .VPLayout {
   background: transparent !important;
 }
 
-/* Контент и сайдбар оставляем жестко непрозрачными */
-.VPContent, .VPSidebar {
-  background-color: var(--vp-c-bg) !important;
+/* Заливаем фон страницы */
+html, body, #app {
+  background-image: url('/wiki/bg.png') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
 }
 
-/* Добавляем тени, чтобы блоки красиво «парили» над фоном */
+/* Для СВЕТЛОЙ темы возвращаем непрозрачный белый фон тексту и меню */
+.VPContent, .VPSidebar {
+  background-color: #ffffff !important;
+}
 .VPContent {
   box-shadow: 0 0 30px rgba(0,0,0,0.08) !important;
+}
+
+/* Для ТЁМНОЙ темы возвращаем непрозрачный темно-серый фон тексту и меню */
+.dark .VPContent, .dark .VPSidebar {
+  background-color: #1e1e20 !important;
 }
 .dark .VPContent {
   box-shadow: 0 0 30px rgba(0,0,0,0.4) !important;
