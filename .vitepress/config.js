@@ -4,8 +4,41 @@ export default {
   description: "Самый большой архив информации, личностей, баек и мемов",
   
   head: [
-    ['link', { rel: 'icon', type: 'image/png', href: './favicon.png' }],
-    ['link', { rel: 'stylesheet', href: '/wiki/custom.css' }]
+    // 1. Иконка вкладки
+    ['link', { rel: 'icon', type: 'image/png', href: '/wiki/favicon.png' }],
+    
+    // 2. Агрессивная инъекция стилей фона
+    [
+      'style', 
+      {}, 
+      `
+      /* Насильно обнуляем фон у ВСЕХ оберток VitePress, включая Layout и внутренние слои темы */
+      html, body, #app, .VPApp, .VPLayout, .Layout, #VitePress-app {
+        background-color: transparent !important;
+        background-image: url('/wiki/bg.png') !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-attachment: fixed !important;
+        background-repeat: no-repeat !important;
+      }
+
+      /* Возвращаем сплошной НЕПРОЗРАЧНЫЙ белый фон для текста статьи и левого меню (СВЕТЛАЯ ТЕМА) */
+      .VPContent, .VPSidebar, .VPDoc, .vp-doc { 
+        background-color: #ffffff !important; 
+      }
+      .VPContent { 
+        box-shadow: 0 0 30px rgba(0,0,0,0.08) !important; 
+      }
+
+      /* Возвращаем сплошной НЕПРОЗРАЧНЫЙ темно-серый фон для текста и меню (ТЁМНАЯ ТЕМА) */
+      .dark .VPContent, .dark .VPSidebar, .dark .VPDoc, .dark .vp-doc { 
+        background-color: #1e1e20 !important; 
+      }
+      .dark .VPContent { 
+        box-shadow: 0 0 30px rgba(0,0,0,0.4) !important; 
+      }
+      `
+    ]
   ],
 
   themeConfig: {
