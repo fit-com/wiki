@@ -1,12 +1,11 @@
-.VPApp, .VPLayout { background: transparent !important; }
-html, body, #app {
-  background-image: url('/wiki/bg.png') !important;
-  background-size: cover !important;
-  background-position: center center !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
+:root {
+  --vp-c-page-bg: #f6f6f7 url('bg.png') no-repeat center center fixed;
+  background-size: cover;
+  --vp-c-bg: #ffffff;
 }
-.VPContent, .VPSidebar { background-color: #ffffff !important; }
-.VPContent { box-shadow: 0 0 30px rgba(0,0,0,0.08) !important; }
-.dark .VPContent, .dark .VPSidebar { background-color: #1e1e20 !important; }
-.dark .VPContent { box-shadow: 0 0 30px rgba(0,0,0,0.4) !important; }
+
+.dark {
+  --vp-c-page-bg: #111113 url('bg.png') no-repeat center center fixed;
+  background-size: cover;
+  --vp-c-bg: #1e1e20;
+}
