@@ -1,73 +1,90 @@
 :root {
   --bg-image-url: url('@theme/bg.png');
-  --vp-c-bg: #1e1e20; /* Базовый темный цвет по умолчанию */
+  --vp-c-bg: #1e1e20;
 }
 
-/* 1. Глобальный фон на весь экран */
+/* 1. ГЛОБАЛЬНЫЙ ФОН И УДАЛЕНИЕ ШВА НА ШАПКЕ */
 html {
   background-image: var(--bg-image-url) !important;
   background-size: cover !important;
   background-position: center center !important;
   background-attachment: fixed !important;
   background-repeat: no-repeat !important;
+  /* Убираем микро-сдвиги браузера, чтобы слои не вылезали на 1 пиксель */
+  margin-top: -1px !important;
+  padding-top: 1px !important;
 }
 
-/* 2. Делаем прозрачными системные слои */
-body, #app, .VPApp, .VPLayout, .Layout, .VPContent {
+body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container {
   background: transparent !important;
   background-color: transparent !important;
 }
 
-/* 3. МОНОЛИТНАЯ ЗАЛИТАЯ ШАПКА */
+/* 2. ШАПКА САЙТА (Плотная заливка одним цветом) */
 .VPNav, .VPNavBar {
   background-color: var(--vp-c-bg) !important;
   background-image: none !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
+  /* Перекрываем шов снизу тенью в цвет шапки */
+  box-shadow: 0 1px 0 var(--vp-c-bg) !important;
+  border-bottom: none !important;
 }
 
-/* СТРОКА ПОИСКА (Плотная заливка) */
+/* 3. ВОЗВРАЩАЕМ СТАНДАРТНУЮ СТРОКУ ПОИСКА */
 .VPNavBarSearch, .DocSearch-Button {
-  background-color: #2c2c2e !important;
+  background-color: transparent !important;
 }
 
-/* 4. БОКОВОЕ МЕНЮ (Полностью прозрачное, как ты просил) */
+/* 4. БОКОВОЕ МЕНЮ (Полностью прозрачное, без отступов) */
 .VPSidebar {
   background: transparent !important;
   background-color: transparent !important;
-  border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-right: none !important;
+  box-shadow: none !important;
+  padding-left: 0 !important; /* Убираем непонятный отступ слева в меню */
 }
 
-/* 5. АДАПТИВНОЕ ЦЕНТРИРОВАНИЕ КАРТОЧКИ ПО ВСЕМУ ЭКРАНУ */
-/* Сбрасываем внутренние ограничения VitePress, чтобы контент мог двигаться свободно */
-.VPContent .container {
-  max-width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
+/* 5. УПАКОВКА КОМПОНЕНТОВ МЕНЮ В ПОЛУПРОЗРАЧНЫЙ КОНТЕЙНЕР */
+.VPSidebar .group {
+  background-color: rgba(30, 30, 32, 0.6) !important; /* Полупрозрачный темный фон */
+  backdrop-filter: blur(10px) !important; /* Эффект матового стекла */
+  -webkit-backdrop-filter: blur(10px) !important;
+  margin: 15px 20px !important; /* Отступы от краев, чтобы получилась парящая плашка */
+  padding: 15px !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
-/* Превращаем саму статью в резиновую карточку */
+/* 6. ЖЕСТКОЕ ЦЕНТРИРОВАНИЕ КАРТОЧКИ ПО СЕРЕДИНЕ ВСЕГО ЭКРАНА */
 .VPDoc .container {
-  /* Занимает 65% ширины от ВСЕГО экрана (viewport width) */
-  width: 65vw !important; 
-  max-width: 95% !important; /* Защита для мобилок: на маленьких экранах займет почти всю ширину */
+  /* Карточка стала меньше: 55% от ширины всего монитора */
+  width: 55vw !important; 
+  max-width: 95% !important;
   
-  /* Магия центрирования по всему экрану: сдвигаем влево на половину оставшегося места */
-  margin: 40px auto !important; 
-  position: relative !important;
+  /* Вырываем её из разметки VitePress и ставим по центру экрана */
+  position: absolute !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important; /* Идеальное математическое центрирование */
   
-  /* Оформление карточки */
+  margin: 40px 0 !important;
   background-color: var(--vp-c-bg) !important;
-  padding: 3% !important; /* Внутренние отступы тоже в процентах от ширины */
+  padding: 40px !important;
   border-radius: 12px !important;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.6) !important;
 }
 
-/* 6. АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ (Медиа-запрос) */
+/* 7. АДАПТИВНОСТЬ ДЛЯ МОБИЛОК */
 @media (max-width: 960px) {
   .VPDoc .container {
-    width: 90vw !important; /* На смартфонах карточка расширится, чтобы текст читался удобно */
+    width: 90vw !important;
+    position: relative !important;
+    left: 0 !important;
+    transform: none !important;
     margin: 20px auto !important;
-    padding: 15px !important;
+    padding: 20px !important;
+  }
+  .VPSidebar .group {
+    margin: 10px !important;
   }
 }
