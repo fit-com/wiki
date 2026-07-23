@@ -40,7 +40,7 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 /* ==========================================================================
    3. ВСЕГДА ЧЕРНАЯ ШАПКА И ПОИСК ПО ШИРИНЕ СТАТЬИ
    ========================================================================== */
-/* Жестко зачищаем ВСЕ возможные бордюры и тени, которые плодили белую полосу */
+/* Жестко зачищаем ВСЕ возможные бордюры и тени */
 .VPNav, 
 .VPNavBar, 
 .VPNavBar .wrapper,
@@ -85,7 +85,6 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 .VPNavBar .title { padding-left: 12px !important; }
 
 /* ----------------- ПОИСК (Края ровно по ширине статьи) ----------------- */
-/* Убираем лишние обёртки */
 .VPNavBarSearch, 
 .VPNavBarSearch .search-box, 
 .VPNavBarSearch .VPSearchButton,
@@ -104,25 +103,25 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   width: 100% !important;
 }
 
-/* Контейнер поиска получает ТОЧНО ТУ ЖЕ ШИРИНУ, что и белая карточка статьи */
+/* Блок поиска получает ширину ровно как у карточки */
 .VPNavBarSearch {
-  width: calc(100vw - (19.8vw * 2) - 80px) !important;
-  max-width: 95% !important;
-  flex-grow: 1 !important;
+  width: auto !important;
+  min-width: calc(100vw - (19.8vw * 2) - 80px - 280px) !important; /* 280px - запас на логотип справа/слева */
+  max-width: calc(100vw - (19.8vw * 2) - 80px) !important;
+  flex-grow: 0 !important;
 }
 
-/* Кнопка поиска растягивается внутри контейнера на 100% (края совпадают) */
+/* Кнопка поиска растягивается на 100% внутри блока */
 .DocSearch-Button {
   background-color: #2c2c2e !important; 
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 8px !important;
   height: 36px !important;
   box-shadow: none !important;
-  width: 100% !important; /* ВАЖНО: Растягиваем! */
-  max-width: 100% !important;
+  width: 100% !important;
   padding: 0 12px !important;
   display: flex !important;
-  justify-content: flex-start !important; /* Текст и иконка слева */
+  justify-content: flex-start !important;
 }
 
 .DocSearch-Button .DocSearch-Button-Placeholder, 
@@ -232,14 +231,13 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 .VPSidebarItem .link { padding: 6px 0 !important; color: var(--text-color) !important; }
 
 /* ==========================================================================
-   6. ПРАВОЕ МЕНЮ (Убрана граница раз и навсегда)
+   6. ПРАВОЕ МЕНЮ (Стекло только у контейнера, без разрывов)
    ========================================================================== */
 .VPDoc .container {
   display: block !important;
   max-width: 100% !important;
 }
 
-/* Блок правого меню сдвинут вправо, без рамок */
 body .VPDocAside, 
 html body .VPLayout .VPDocAside {
   position: fixed !important;
@@ -256,13 +254,8 @@ html body .VPLayout .VPDocAside {
   box-shadow: none !important;
 }
 
-/* Стеклянный контейнер правого меню */
-body .VPDocAside .aside-container, 
-body .VPDocAside .content,
-html body .VPDocAside .content,
-.VPDocAsideOutline, 
-.VPDocAsideOutline .content,
-.VPDocAsideOutline .outline-marker {
+/* ТОЛЬКО ЭТОТ КОНТЕЙНЕР ПОЛУЧАЕТ СТЕКЛО И ЗАКРУГЛЕНИЕ */
+body .VPDocAside .aside-container {
   background-color: var(--glass-bg) !important; 
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
@@ -272,11 +265,29 @@ html body .VPDocAside .content,
   box-sizing: border-box !important;
   padding: 15px 20px !important; 
   height: auto !important;
-  
-  /* Жестко стираем все следы границ */
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* ВСЕ ВНУТРЕННИЕ ЭЛЕМЕНТЫ ДЕЛАЕМ ПРОЗРАЧНЫМИ И БЕЗ РАМОК */
+body .VPDocAside .content,
+html body .VPDocAside .content,
+.VPDocAsideOutline, 
+.VPDocAsideOutline .content,
+.VPDocAsideOutline .outline-marker,
+.VPDocOutlineItem,
+.VPDocAsideOutline .outline-title,
+.VPDocAside .aside-curtain {
+  background: transparent !important;
+  background-color: transparent !important;
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .VPDocAside .outline-link { 
@@ -284,7 +295,7 @@ html body .VPDocAside .content,
   white-space: normal !important; 
   color: var(--text-color) !important; 
 }
-.VPDocAside .aside-curtain, .VPDocAside .meta { display: none !important; }
+.VPDocAside .meta { display: none !important; }
 
 /* ==========================================================================
    7. ЖЕСТКОЕ МАТЕМАТИЧЕСКОЕ ЦЕНТРИРОВАНИЕ ОСНОВНОЙ КАРТОЧКИ (Стеклянная подложка)
