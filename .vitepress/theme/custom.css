@@ -38,7 +38,7 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 }
 
 /* ==========================================================================
-   3. ВСЕГДА ЧЕРНАЯ ШАПКА (ИСПРАВЛЕНО: Добиваем белую полосу и возвращаем инпут поиска)
+   3. ВСЕГДА ЧЕРНАЯ ШАПКА И ПОИСК ПО ШИРИНЕ СТАТЬИ
    ========================================================================== */
 /* Жестко зачищаем ВСЕ возможные бордюры и тени, которые плодили белую полосу */
 .VPNav, 
@@ -83,6 +83,56 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   padding: 0 !important;
 }
 .VPNavBar .title { padding-left: 12px !important; }
+
+/* ----------------- ПОИСК (Края ровно по ширине статьи) ----------------- */
+/* Убираем лишние обёртки */
+.VPNavBarSearch, 
+.VPNavBarSearch .search-box, 
+.VPNavBarSearch .VPSearchButton,
+.DocSearch-Button-Container {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Выравниваем контент шапки по центру */
+.VPNavBar .content-body {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+/* Контейнер поиска получает ТОЧНО ТУ ЖЕ ШИРИНУ, что и белая карточка статьи */
+.VPNavBarSearch {
+  width: calc(100vw - (19.8vw * 2) - 80px) !important;
+  max-width: 95% !important;
+  flex-grow: 1 !important;
+}
+
+/* Кнопка поиска растягивается внутри контейнера на 100% (края совпадают) */
+.DocSearch-Button {
+  background-color: #2c2c2e !important; 
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 8px !important;
+  height: 36px !important;
+  box-shadow: none !important;
+  width: 100% !important; /* ВАЖНО: Растягиваем! */
+  max-width: 100% !important;
+  padding: 0 12px !important;
+  display: flex !important;
+  justify-content: flex-start !important; /* Текст и иконка слева */
+}
+
+.DocSearch-Button .DocSearch-Button-Placeholder, 
+.DocSearch-Button .DocSearch-Button-Keys, 
+.DocSearch-Button .DocSearch-Button-Key, 
+.DocSearch-Button-Container .DocSearch-Search-Icon, 
+.DocSearch-Button-Container svg {
+  color: rgba(255, 255, 255, 0.8) !important; 
+  fill: rgba(255, 255, 255, 0.8) !important;
+}
 
 /* ==========================================================================
    4. ИСПРАВЛЕННЫЙ БЛОК ПОИСКА (Кнопка ровно по центру, как ширина статьи)
@@ -182,13 +232,14 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 .VPSidebarItem .link { padding: 6px 0 !important; color: var(--text-color) !important; }
 
 /* ==========================================================================
-   6. ПРАВОЕ МЕНЮ (ИСПРАВЛЕНО: Процент 19.8vw, убрана граница, отступ справа)
+   6. ПРАВОЕ МЕНЮ (Убрана граница раз и навсегда)
    ========================================================================== */
 .VPDoc .container {
   display: block !important;
   max-width: 100% !important;
 }
 
+/* Блок правого меню сдвинут вправо, без рамок */
 body .VPDocAside, 
 html body .VPLayout .VPDocAside {
   position: fixed !important;
@@ -201,12 +252,17 @@ html body .VPLayout .VPDocAside {
   display: block !important;
   z-index: 100 !important;
   background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 /* Стеклянный контейнер правого меню */
 body .VPDocAside .aside-container, 
 body .VPDocAside .content,
-html body .VPDocAside .content {
+html body .VPDocAside .content,
+.VPDocAsideOutline, 
+.VPDocAsideOutline .content,
+.VPDocAsideOutline .outline-marker {
   background-color: var(--glass-bg) !important; 
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
@@ -217,34 +273,16 @@ html body .VPDocAside .content {
   padding: 15px 20px !important; 
   height: auto !important;
   
-  /* Принудительно убираем границы у самого контейнера */
+  /* Жестко стираем все следы границ */
   border: none !important;
-  border-left: none !important;
-  border-right: none !important;
-  box-shadow: none !important;
-}
-
-/* ЖЁСТКО ЗАЧИЩАЕМ ВНУТРЕННИЙ БЛОК НАВИГАЦИИ (VPDocAsideOutline), 
-   ИМЕННО ОН ДАЁТ БЕЛУЮ РАМКУ НА СКРИНШОТЕ */
-.VPDocAsideOutline,
-.VPDocAsideOutline .content,
-.VPDocAsideOutline .outline,
-.VPDocAsideOutline .outline-marker,
-.VPDocAsideOutline .outline-title,
-.VPDocAsideOutline .VPDocOutlineItem {
-  background: transparent !important;
-  border: none !important;
-  border-top: none !important;
-  border-bottom: none !important;
-  box-shadow: none !important;
   outline: none !important;
+  box-shadow: none !important;
 }
 
 .VPDocAside .outline-link { 
   padding: 6px 0 !important; 
   white-space: normal !important; 
   color: var(--text-color) !important; 
-  border: none !important;
 }
 .VPDocAside .aside-curtain, .VPDocAside .meta { display: none !important; }
 
