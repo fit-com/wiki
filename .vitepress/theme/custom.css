@@ -1,5 +1,4 @@
 :root {
-  /* 1. Указываем сборщику жестко взять картинку из текущей папки темы */
   --bg-image-url: url('@theme/bg.png');
   --vp-c-bg: #ffffff;
 }
@@ -8,7 +7,7 @@
   --vp-c-bg: #1e1e20;
 }
 
-/* 2. Применяем фон КОРНЮ сайта, а не куче слоев сразу */
+/* 1. Глобальный фон на весь экран */
 html {
   background-image: var(--bg-image-url) !important;
   background-size: cover !important;
@@ -17,25 +16,44 @@ html {
   background-repeat: no-repeat !important;
 }
 
-/* 3. Делаем прозрачными только верхние системные плиты, чтобы открыть фон */
+/* 2. Обнуляем системные подложки */
 body, #app, .VPApp, .VPLayout, .Layout {
   background: transparent !important;
   background-color: transparent !important;
 }
 
-/* 4. СОХРАНЯЕМ ДИЗАЙН КАРТОЧКИ: сжимаем блок статьи по центру */
+/* 3. ВОЗВРАЩАЕМ СТАТЬЮ-КАРТОЧКУ: Сжимаем и центрируем контент */
 .VPContent {
-  max-width: 1400px !important;
+  max-width: 1300px !important; /* Оптимальная ширина для карточки преподавателя */
   margin: 0 auto !important;
   background-color: var(--vp-c-bg) !important;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.25) !important; /* Насыщенная тень для объема */
 }
 
+/* Тень карточки для темной темы */
 .dark .VPContent {
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.6) !important;
 }
 
-/* 5. Сайдбар (меню слева) тоже оставляем непрозрачным */
+/* Добавляем небольшой отступ сверху, чтобы карточка красиво "парила" под шапкой сайта */
+.VPContent {
+  margin-top: 24px !important;
+  border-radius: 12px 12px 0 0 !important; /* Скругляем верхние углы у статьи */
+}
+
+/* 4. ДЕЛАЕМ БОКОВОЕ МЕНЮ СТИЛЬНЫМ И ПОЛУПРОЗРАЧНЫМ */
 .VPSidebar {
-  background-color: var(--vp-c-bg) !important;
+  /* Для светлой темы: белый цвет с прозрачностью 75% */
+  background-color: rgba(255, 255, 255, 0.75) !important; 
+  /* Эффект матового стекла (размытие фона за меню) */
+  backdrop-filter: blur(12px) !important; 
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Полупрозрачный сайдбар для темной темы */
+.dark .VPSidebar {
+  /* Для темной темы: темно-серый цвет с прозрачностью 75% */
+  background-color: rgba(30, 30, 32, 0.75) !important; 
+  border-right: 1px solid rgba(0, 0, 0, 0.2) !important;
 }
