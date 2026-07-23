@@ -1,30 +1,36 @@
 :root {
-  /* ИСПРАВЛЕНО: добавлен префикс ./ для точного импорта файла сборщиком */
   --vp-c-page-bg: #f6f6f7 url('./bg.png') no-repeat center center fixed;
   background-size: cover;
   --vp-c-bg: #ffffff;
 }
 
 .dark {
-  /* ИСПРАВЛЕНО: аналогично для темной темы */
   --vp-c-page-bg: #111113 url('./bg.png') no-repeat center center fixed;
   background-size: cover;
   --vp-c-bg: #1e1e20;
 }
 
-/* Ограничиваем ширину страницы, чтобы по бокам открылись поля */
-.VPContent {
-  max-width: 1400px !important;
-  margin: 0 auto !important;
+/* 1. Насильно делаем прозрачными ВСЕ промежуточные и фоновые слои фреймворка */
+html, body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPDoc, .container {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* 2. Задаем жесткий НЕПРОЗРАЧНЫЙ фон ТОЛЬКО для левого меню и самого контента статьи */
+.VPSidebar, .content-container {
   background-color: var(--vp-c-bg) !important;
+}
+
+/* 3. Ограничиваем ширину основного контейнера с текстом, чтобы по бокам открылись поля */
+.content-container {
+  max-width: 1100px !important;
+  margin: 0 auto !important;
+  padding: 40px !important;
+  border-radius: 12px !important; /* Делаем аккуратные скругления углов у статьи */
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.15) !important;
 }
 
-.dark .VPContent {
+/* На ночном режиме делаем тень вокруг статьи поглубже */
+.dark .content-container {
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.5) !important;
-}
-
-/* Делаем прозрачной главную подложку VitePress, оголяя наш фон */
-.VPApp, .VPLayout, html, body {
-  background-color: transparent !important;
 }
