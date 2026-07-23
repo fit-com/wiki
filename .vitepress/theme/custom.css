@@ -40,8 +40,9 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   background-color: transparent !important;
 }
 
-/* 3. ЛЕВОЕ МЕНЮ (Сделали еще шире, чтобы закрыть боковую часть фона) */
-.VPSidebar {
+/* 3. ЛЕВОЕ МЕНЮ (Агрессивное расширение всей левой зоны) */
+/* Насильно расширяем базовый контейнер самого фреймворка, чтобы плашки заполнили всю левую треть */
+.VPSidebar, .VPLayout .VPSidebar, html body .VPSidebar {
   top: var(--vp-nav-height) !important;
   background: transparent !important;
   background-color: transparent !important;
@@ -49,12 +50,14 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   box-shadow: none !important;
   padding: 0 !important;
   margin: 0 !important;
-  width: 24vw !important; /* Увеличено до 24% от ширины экрана */
-  overflow: hidden !important;
+  width: 25vw !important; /* Увеличили базовую ширину до 25% от всего экрана */
+  max-width: 25vw !important;
+  overflow-y: hidden !important;
 }
 
 .VPSidebarNav {
   width: 100% !important;
+  max-width: 100% !important;
   padding: 0 !important;
 }
 
@@ -65,45 +68,54 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   -webkit-backdrop-filter: blur(10px) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 12px !important; 
-  
-  /* ИСПРАВЛЕНО: Заменили margin-bottom на margin-top и выровняли боковые зазоры */
-  margin: 20px 15px 0 15px !important; 
+  margin: 20px 15px 0 15px !important; /* Отступы перенесены наверх */
   padding: 15px 20px !important; 
 }
 
-/* Обнуляем дефолтные отступы элементов внутри плашек */
+/* ТОТАЛЬНОЕ УНИЧТОЖЕНИЕ ЛИШНИХ СТРОК И СКРЫТЫХ ОТСТУПОВ СНИЗУ ПЛАШЕК */
 .VPSidebar .group .title,
 .VPSidebar .group .items,
 .VPSidebarItem,
-.VPSidebar .group div {
-  margin: 0 !important;
-  padding: 0 !important;
+.VPSidebarNav .group,
+.VPSidebarNav .group div,
+.VPSidebarNav .group nav {
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
+  gap: 0 !important; /* Убираем встроенные флекс-отступы */
+}
+.VPSidebar .group .items::after,
+.VPSidebarNav::after,
+.VPSidebarItem::after {
+  content: none !important; /* Уничтожаем скрытые псевдоэлементы, которые создавали пустую строку */
 }
 .VPSidebarItem .link {
   padding: 6px 0 !important;
 }
 
-/* 4. ПРАВОЕ МЕНЮ НАВИГАЦИИ (Пробиваем прозрачность через точный класс контейнера) */
+/* 4. ПРАВОЕ МЕНЮ НАВИГАЦИИ (Тотальный пробой дефолтных темных стилей) */
 .VPDoc .container {
   display: block !important;
   max-width: 100% !important;
 }
 
-.VPDocAside {
+/* Насильно вырываем и позиционируем правый блок */
+.VPDocAside, .VPLayout .VPDocAside, html body .VPDocAside {
   position: fixed !important;
   top: calc(var(--vp-nav-height) + 40px) !important;
   right: 2vw !important;
   width: 18vw !important;
   display: block !important;
   z-index: 100 !important;
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
-/* ИСПРАВЛЕНО: Жесткий селектор, который заставит правое меню стать полупрозрачным */
+/* Пробиваем внутренний темный контейнер VitePress через сквозной селектор */
+.VPDocAside .aside-container,
 .VPDocAside .aside-container .content,
-.VPDocAside .content {
-  background: rgba(30, 30, 32, 0.6) !important; /* Полупрозрачный стеклянный фон */
+.VPDocAside .content,
+html body .VPDocAside .content {
+  background: rgba(30, 30, 32, 0.6) !important; /* Насильно делаем полупрозрачным стеклом */
   background-color: rgba(30, 30, 32, 0.6) !important;
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
@@ -118,7 +130,7 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 
 /* 5. ИДЕАЛЬНОЕ ЦЕНТРИРОВАНИЕ ОСНОВНОЙ КАРТОЧКИ */
 .VPDoc .content {
-  width: 48vw !important; /* Немного ужали, чтобы плашки по бокам не наезжали на текст */
+  width: 48vw !important; 
   max-width: 95% !important;
   
   position: absolute !important;
@@ -144,6 +156,7 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   }
   .VPSidebar {
     width: 100% !important;
+    max-width: 100% !important;
     top: 0 !important;
   }
   .VPSidebar .group {
