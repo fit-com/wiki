@@ -7,6 +7,9 @@
   --glass-bg: rgba(255, 255, 255, 0.65); 
   --glass-border: rgba(0, 0, 0, 0.08); 
   --text-color: #2c2c2e; 
+  
+  /* ВЗЛАМЫВАЕМ СИСТЕМНУЮ ПЕРЕМЕННУЮ ЦВЕТА ШАПКИ ФРЕЙМВОРКА */
+  --vp-nav-bg: #1e1e20 !important;
 }
 
 .dark {
@@ -14,6 +17,7 @@
   --glass-bg: rgba(30, 30, 32, 0.6); 
   --glass-border: rgba(255, 255, 255, 0.08); 
   --text-color: #ffffff; 
+  --vp-nav-bg: #1e1e20 !important;
 }
 
 /* ==========================================================================
@@ -33,27 +37,29 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 }
 
 /* ==========================================================================
-   3. ТОТАЛЬНОЕ УНИЧТОЖЕНИЕ ПОЛОСЫ И ФИКСАЦИЯ ТЕМНОЙ ШАПКИ
+   3. ЖЕЛЕЗОБЕТОННАЯ МОНОЛИТНАЯ ШАПКА (Уничтожение полосы и наложений в ноль)
    ========================================================================== */
-/* Вламываемся во ВСЕ компоненты навигации через жесткий селектор по части имени класса */
-[class*="VPNav"], 
-[class*="VPNavBar"], 
-[class*="VPNav"].nav,
-.VPNav, .VPNavBar, .VPNavBar .wrapper, .VPNavBar .container, .VPNavBar .content, .VPNavBar .content-body {
-  background: #1e1e20 !important;
-  background-color: #1e1e20 !important;
-  background-image: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  /* ЖЕСТКО: Стираем ту самую нижнюю рамку и тень, которые давали вылезающую полосу */
+/* Хак: выбираем вообще ВСЕ элементы внутри блока навигации и принудительно стираем им бордюры и тени */
+.VPNav, .VPNav *, .VPNavBar, .VPNavBar * {
   border: none !important;
   border-bottom: none !important;
-  box-shadow: none !important; 
-  margin: 0 !important;
+  box-shadow: none !important;
 }
 
-/* Принудительно красим элементы внутри шапки в белый */
-[class*="VPNavBar"] .title, [class*="VPNavBar"] .link, .VPNavBarHamburger, .VPNavBarMenuLink, .VPNavBar .text, .VPNavBar .icon {
+/* Насильно красим абсолютно всю подложку верха в чистый единый цвет #1e1e20 */
+#app .VPNav, 
+#app .VPNavBar, 
+#app .VPNavBar .wrapper, 
+#app .VPNavBar .content, 
+#app .VPNavBar .content-body {
+  background: #1e1e20 !important;
+  background-color: #1e1e20 !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Белый цвет для текстов и иконок в шапке */
+.VPNavBar .title, .VPNavBar .link, .VPNavBarItem, .VPNavBarHamburger, .VPNavBarMenuLink, .VPNavBar .text, .VPNavBar .icon {
   color: #ffffff !important;
   fill: #ffffff !important;
 }
@@ -65,25 +71,28 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 }
 .VPNavBar .title { padding-left: 12px !important; }
 
-/* 🔍 НАСТРОЙКА КНОПКИ ПОИСКА (ИСПРАВЛЕНО: Сделали шире и убрали артефакты) */
-.VPNavBarSearch, .VPNavBarSearch .search-box, .VPSearchButton {
+/* 🔍 УНИЧТОЖЕНИЕ СЕРЫХ ПОЛОС И УДЛИНЕНИЕ ПОИСКА (Строго 400px) */
+/* Обнуляем фоны у всех промежуточных контейнеров строки поиска */
+.VPNavBarSearch, .VPNavBarSearch .search-box, .VPSearchButton, .DocSearch-Button-Container {
   background: transparent !important;
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
 }
 
-/* Сама интерактивная кнопка-инпут (Сделали длиннее — 320px) */
+/* Стилизуем непосредственно саму кнопку-инпут Search */
 .DocSearch-Button {
+  background: #2c2c2e !important; 
   background-color: #2c2c2e !important; 
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 8px !important;
   padding: 0 16px !important;
   height: 38px !important;
-  box-shadow: none !important;
-  /* ИСПРАВЛЕНО: Увеличили длину строки поиска */
-  width: 320px !important; 
-  min-width: 320px !important;
+  
+  /* ЖЕСТКО: Вытягиваем поиск в длину на 400 пикселей */
+  width: 400px !important; 
+  max-width: 400px !important;
+  min-width: 400px !important;
 }
 
 .DocSearch-Button .DocSearch-Button-Placeholder, .DocSearch-Button .DocSearch-Button-Keys, .DocSearch-Button .DocSearch-Button-Key, .DocSearch-Button-Container .DocSearch-Search-Icon, .DocSearch-Button-Container svg {
@@ -113,7 +122,6 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 
 .VPSidebarNav { width: 100% !important; padding: 0 !important; }
 
-/* Стеклянные плашки левого меню */
 .VPSidebar .group {
   background-color: var(--glass-bg) !important; 
   backdrop-filter: blur(10px) !important;
@@ -126,7 +134,6 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   padding: 15px 20px !important; 
 }
 
-/* Чистка пустых строк */
 .VPSidebar .group .title, .VPSidebar .group .items, .VPSidebarItem, .VPSidebarNav .group, .VPSidebarNav .group div, .VPSidebarNav .group nav {
   margin-bottom: 0 !important; padding-bottom: 0 !important; gap: 0 !important;
 }
@@ -134,15 +141,14 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 .VPSidebarItem .link { padding: 6px 0 !important; color: var(--text-color) !important; }
 
 /* ==========================================================================
-   5. ПРАВОЕ МЕНЮ (Симметричные 19.9vw с зазорами)
+   5. ПРАВОЕ МЕНЮ (Симметричные 19.9vw)
    ========================================================================== */
 .VPDoc .container {
   display: block !important;
   max-width: 100% !important;
 }
 
-body .VPDocAside, 
-html body .VPLayout .VPDocAside {
+body .VPDocAside, html body .VPLayout .VPDocAside {
   position: fixed !important;
   top: calc(var(--vp-nav-height) + 20px) !important; 
   left: auto !important;
@@ -155,10 +161,7 @@ html body .VPLayout .VPDocAside {
   background: transparent !important;
 }
 
-/* Стеклянный контейнер правого меню */
-body .VPDocAside .aside-container, 
-body .VPDocAside .content,
-html body .VPDocAside .content {
+body .VPDocAside .aside-container, body .VPDocAside .content, html body .VPDocAside .content {
   background-color: var(--glass-bg) !important; 
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
@@ -176,7 +179,7 @@ html body .VPDocAside .content {
 .VPDocAside .aside-curtain, .VPDocAside .meta { display: none !important; }
 
 /* ==========================================================================
-   6. ЖЕСТКОЕ МАТЕМАТИЧЕСКОЕ ЦЕНТРИРОВАНИЕ ОСНОВНОЙ КАРТОЧКИ
+   6. МАТЕМАТИЧЕСКОЕ ЦЕНТРИРОВАНИЕ ОСНОВНОЙ КАРТОЧКИ
    ========================================================================== */
 .VPDoc .content {
   width: calc(100vw - (19.9vw * 2) - 80px) !important; 
