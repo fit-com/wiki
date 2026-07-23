@@ -17,7 +17,7 @@
 }
 
 /* ==========================================================================
-   2. ГЛОБАЛЬНЫЙ ФОН И СКВОЗНАЯ ПРОЗРАЧНОСТЬ
+   2. ГЛОБАЛЬНЫЙ ФОН И СКВОЗНАЯ ПРОЗРАЧНОСТЬ (УНИЧТОЖЕНИЕ ЗАСВЕТА)
    ========================================================================== */
 html {
   background-image: var(--bg-image-url) !important;
@@ -27,15 +27,15 @@ html {
   background-repeat: no-repeat !important;
 }
 
+/* Жестко зануляем фоны у ВСЕХ оберток, чтобы убрать белый засвет под шапкой */
 body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDoc, .VPDoc .container {
   background: transparent !important;
   background-color: transparent !important;
 }
 
 /* ==========================================================================
-   3. ВСЕГДА ТЕМНАЯ МОНОЛИТНАЯ ШАПКА САЙТА (Без швов и серой сосиски)
+   3. ВСЕГДА ТЕМНАЯ МОНОЛИТНАЯ ШАПКА САЙТА И ПОИСК
    ========================================================================== */
-/* Заливаем абсолютно все слои навигации в один цвет намертво */
 .VPNav, .VPNavBar, .VPNavBar .wrapper, .VPNavBar .container, .VPNavBar .content, .VPNavBar .content-body {
   background: #1e1e20 !important;
   background-color: #1e1e20 !important;
@@ -45,7 +45,6 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   margin: 0 !important;
 }
 
-/* Текст и элементы в шапке всегда белые */
 .VPNavBar .title, .VPNavBar .link, .VPNavBarItem, .VPNavBarHamburger, .VPNavBarMenuLink, .VPNavBar .text, .VPNavBar .icon {
   color: #ffffff !important;
   fill: #ffffff !important;
@@ -58,50 +57,32 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 }
 .VPNavBar .title { padding-left: 12px !important; }
 
-/* ==========================================================================
-   4. СТРОКА ПОИСКА (ИСПРАВЛЕНО: Строго по центру экрана, в ширину карточки)
-   ========================================================================== */
+/* Возвращаем стандартную стабильную кнопку поиска на свое место */
 .VPNavBarSearch, .VPNavBarSearch .search-box, .VPSearchButton {
   background: transparent !important;
-  background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
 }
 
-/* Вырываем саму кнопку поиска и центрируем её по экрану независимо от флекс-сетки */
 .DocSearch-Button {
-  position: absolute !important;
-  top: 10px !important; /* Центрируем по вертикали внутри шапки */
-  left: 50% !important;
-  transform: translateX(-50%) !important; /* Математический центр экрана */
-  
   background-color: #2c2c2e !important; 
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 8px !important;
-  padding: 0 16px !important;
+  padding: 0 12px !important;
   height: 36px !important;
-  box-shadow: none !important;
-  
-  /* ИСПРАВЛЕНО: Ширина теперь СТРОГО равна ширине центральной карточки лора */
-  width: 54vw !important;
-  max-width: 54vw !important;
-  min-width: 54vw !important;
+  width: auto !important; /* Убираем костыльную ширину, возвращаем стабильный дефолт */
+  max-width: 100% !important;
+  min-width: auto !important;
+  position: static !important;
+  transform: none !important;
 }
 
-/* Фиксируем оригинальные цвета элементов внутри поиска */
-.DocSearch-Button .DocSearch-Button-Placeholder, 
-.DocSearch-Button .DocSearch-Button-Keys, 
-.DocSearch-Button .DocSearch-Button-Key, 
-.DocSearch-Button-Container .DocSearch-Search-Icon, 
-.DocSearch-Button-Container svg {
-  color: rgba(255, 255, 255, 0.8) !important; 
-  fill: rgba(255, 255, 255, 0.8) !important;
+.DocSearch-Button .DocSearch-Button-Placeholder, .DocSearch-Button .DocSearch-Button-Keys, .DocSearch-Button .DocSearch-Button-Key, .DocSearch-Button-Container .DocSearch-Search-Icon, .DocSearch-Button-Container svg {
+  color: rgba(255, 255, 255, 0.8) !important; fill: rgba(255, 255, 255, 0.8) !important;
 }
 
 /* ==========================================================================
-   5. ЛЕВОЕ МЕНЮ (Ровно 19.9vw)
+   4. ЛЕВОЕ МЕНЮ (Ровно 19.9vw)
    ========================================================================== */
 :root {
   --vp-sidebar-width: 19.9vw !important; 
@@ -123,7 +104,6 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 
 .VPSidebarNav { width: 100% !important; padding: 0 !important; }
 
-/* Стеклянные плашки левого меню */
 .VPSidebar .group {
   background-color: var(--glass-bg) !important; 
   backdrop-filter: blur(10px) !important;
@@ -136,7 +116,6 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   padding: 15px 20px !important; 
 }
 
-/* Чистка пустых строк */
 .VPSidebar .group .title, .VPSidebar .group .items, .VPSidebarItem, .VPSidebarNav .group, .VPSidebarNav .group div, .VPSidebarNav .group nav {
   margin-bottom: 0 !important; padding-bottom: 0 !important; gap: 0 !important;
 }
@@ -144,16 +123,17 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 .VPSidebarItem .link { padding: 6px 0 !important; color: var(--text-color) !important; }
 
 /* ==========================================================================
-   6. ПРАВОЕ МЕНЮ (ИСПРАВЛЕНО: Симметричные 19.9vw, возвращено наверх вровень с левым)
+   5. ПРАВОЕ МЕНЮ (ТОТ САМЫЙ СТАБИЛЬНЫЙ КОД ПО ВЫСОТЕ ИЗ 5 СООБЩЕНИЙ НАЗАД)
    ========================================================================== */
 .VPDoc .container {
   display: block !important;
   max-width: 100% !important;
 }
 
-body .VPDocAside, html body .VPLayout .VPDocAside {
+body .VPDocAside, 
+html body .VPLayout .VPDocAside {
   position: fixed !important;
-  /* ИСПРАВЛЕНО: Четко вернули на высоту левого меню (20px от шапки) */
+  /* ТОТ САМЫЙ КОД: возвращаем идеальный уровень высоты (вровень с левым меню) */
   top: calc(var(--vp-nav-height) + 20px) !important; 
   left: auto !important;
   right: 0 !important; 
@@ -165,8 +145,10 @@ body .VPDocAside, html body .VPLayout .VPDocAside {
   background: transparent !important;
 }
 
-/* Стеклянный контейнер правого меню */
-body .VPDocAside .aside-container, body .VPDocAside .content, html body .VPDocAside .content {
+/* Стеклянный контейнер правого меню из стабильной версии */
+body .VPDocAside .aside-container, 
+body .VPDocAside .content,
+html body .VPDocAside .content {
   background-color: var(--glass-bg) !important; 
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
@@ -184,14 +166,14 @@ body .VPDocAside .aside-container, body .VPDocAside .content, html body .VPDocAs
 .VPDocAside .aside-curtain, .VPDocAside .meta { display: none !important; }
 
 /* ==========================================================================
-   7. МАТЕМАТИЧЕСКОЕ ЦЕНТРИРОВАНИЕ ОСНОВНОЙ КАРТОЧКИ СТАТЬИ
-   ========================================================================= */
+   6. СТАБИЛЬНАЯ ЦЕНТРАЛЬНАЯ КАРТОЧКА СТАТЬИ
+   ========================================================================== */
 .VPContent { padding-top: 0 !important; }
 
 .VPDoc .content {
-  width: 54vw !important; 
+  width: calc(100vw - (19.9vw * 2) - 80px) !important; 
   max-width: 95% !important;
-  position: absolute;
+  position: absolute !important;
   top: calc(var(--vp-nav-height) + 40px) !important; 
   left: 50% !important;
   transform: translateX(-50%) !important; 
@@ -207,7 +189,7 @@ body .VPDocAside .aside-container, body .VPDocAside .content, html body .VPDocAs
 }
 
 /* ==========================================================================
-   8. АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ
+   7. АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ
    ========================================================================== */
 @media (max-width: 960px) {
   .VPDoc .content { width: 90vw !important; position: relative !important; left: 0 !important; top: 0 !important; transform: none !important; margin: 20px auto !important; padding: 20px !important; }
