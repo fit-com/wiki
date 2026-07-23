@@ -83,7 +83,13 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   width: 100% !important;
   padding: 0 !important;
 }
-.VPNavBar .title { padding-left: 12px !important; }
+
+/* ================================================================
+   ИСПРАВЛЕНИЕ: ЛОГОТИП ПО ЦЕНТРУ ЛЕВОГО МЕНЮ
+   ================================================================ */
+.VPNavBar .title {
+  padding-left: 20px !important;
+}
 
 /* 🔍 НАСТРОЙКА КНОПКИ ПОИСКА (ИСПРАВЛЕНО: Стерли серую плашку вокруг) */
 .VPNavBarSearch, 
@@ -106,51 +112,31 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   box-shadow: none !important;
 }
 
-/* ======= ИСПРАВЛЕНИЕ ПОИСКА (Только этот блок) ======= */
-/* Заставляем область поиска занимать свободное место в шапке, 
-   но центрируем контент, чтобы логотип и кнопки не разъезжались */
+/* ================================================================
+   ИСПРАВЛЕНИЕ: ПОИСК ПО ШИРИНЕ СТАТЬИ (БЕЗ ВЫЧИТАНИЯ 80px)
+   ================================================================ */
 .VPNavBar .content-body {
   display: flex !important;
   align-items: center !important;
-  justify-content: space-between !important; /* Разносит логотип, поиск и кнопки */
   width: 100% !important;
 }
 
 .VPNavBarSearch {
-  flex-grow: 1 !important; /* Растягиваем контейнер поиска */
+  width: calc(100vw - (20vw * 2)) !important; 
+  max-width: 95% !important;
   display: flex !important;
-  justify-content: center !important; /* Кнопка внутри контейнера по центру */
+  justify-content: center !important;
+  margin: 0 auto !important;
+  flex: none !important;
 }
 
-/* Заставляем саму кнопку поиска иметь ширину контентной части статьи */
 .DocSearch-Button {
   width: 100% !important;
-  /* !!! НОВАЯ ФОРМУЛА: 20 вместо 19.8, убрал вычитание 160px, 
-     потому что space-between сам распределит место !!! */
-  max-width: calc(100vw - (20vw * 2) - 80px) !important; 
   box-sizing: border-box !important;
 }
-/* ====================================================== */
 
 .DocSearch-Button .DocSearch-Button-Placeholder, .DocSearch-Button .DocSearch-Button-Keys, .DocSearch-Button .DocSearch-Button-Key, .DocSearch-Button-Container .DocSearch-Search-Icon, .DocSearch-Button-Container svg {
   color: rgba(255, 255, 255, 0.8) !important; fill: rgba(255, 255, 255, 0.8) !important;
-}
-
-/* 1. Сдвигаем логотип ровно над левым меню (с учетом отступа в 20px) */
-.VPNavBarTitle {
-  padding-left: 20px !important; /* Ровно как отступы у левого меню */
-}
-
-/* 2. Заставляем поиск растянуться и занять всё место между логотипом и кнопкой */
-.VPNavBarSearch {
-  flex: 1 1 100% !important; /* Перебиваем дефолтное ограничение ширины */
-  min-width: 0 !important; /* Ломает скрытый предел VitePress */
-}
-
-/* 3. Кнопка поиска теперь растягивается на 100% ширины контейнера поиска */
-.DocSearch-Button {
-  width: 100% !important;
-  max-width: none !important; /* Убираем лимит, который я наставил раньше */
 }
 
 /* ==========================================================================
@@ -246,16 +232,19 @@ html body .VPDocAside .content {
 .VPDocAside .aside-curtain, .VPDocAside .meta { display: none !important; }
 
 /* ==========================================================================
-   6. ЖЕСТКОЕ МАТЕМАТИЧЕСКОЕ ЦЕНТРИРОВАНИЕ ОСНОВНОЙ КАРТОЧКИ (Стеклянная подложка)
+   6. ЖЕСТКОЕ МАТЕМАТИЧЕСКОЕ ЦЕНТРИРОВАНИЕ ОСНОВНОЙ КАРТОЧКИ (Исправлен засвет снизу)
    ========================================================================== */
 .VPDoc .content {
   /* Пересчитано под 20vw по бокам */
   width: calc(100vw - (20vw * 2) - 80px) !important; 
   max-width: 95% !important;
-  position: absolute !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important; 
-  margin: 40px 0 !important;
+  
+  /* Убрали position: absolute, чтобы убрать засвет снизу */
+  position: relative !important;
+  left: auto !important;
+  transform: none !important;
+  
+  margin: 40px auto !important; /* Центрируем через margin */
   
   /* Подключаем прозрачный фон и размытие для эффекта матового стекла у самой статьи */
   background-color: var(--vp-c-bg) !important; 
