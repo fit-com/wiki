@@ -35,9 +35,9 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 }
 
 /* ==========================================================================
-   3. ВСЕГДА ЧЕРНАЯ ШАПКА (Уничтожение серой полосы ПОЛНОСТЬЮ)
+   3. ВСЕГДА ЧЕРНАЯ ШАПКА (Уничтожение однопиксельной полосы и фейк-панели под поиском)
    ========================================================================== */
-/* Выжигаем дефолтные фоны у ВСЕХ внутренних прослоек и контейнеров шапки */
+/* Насильно заливаем абсолютно ВСЕ слои шапки в #1e1e20 и уничтожаем тени */
 body .VPNav, 
 body .VPNavBar, 
 body .VPNavBar .wrapper,
@@ -51,7 +51,8 @@ body .VPNavBar .content-body {
   -webkit-backdrop-filter: none !important;
   border: none !important;
   border-bottom: none !important;
-  box-shadow: none !important;
+  /* ИСПРАВЛЕНО: Уничтожаем однопиксельную белую полосу-тень */
+  box-shadow: none !important; 
   margin: 0 !important;
 }
 
@@ -68,14 +69,35 @@ body .VPNavBar .content-body {
 }
 .VPNavBar .title { padding-left: 12px !important; }
 
-/* Строка поиска */
-.VPNavBarSearch, .DocSearch-Button {
+/* 🔍 ИСПРАВЛЕНО: ЖЁСТКОЕ УНИЧТОЖЕНИЕ ДЛИННОЙ ПАНЕЛИ ПОД ПОИСКОМ */
+/* Мы перекрашиваем саму кнопку-контейнер поиска и все её родительские обёртки в цвет шапки */
+.VPNavBarSearch, 
+.VPNavBarSearch .search-box, 
+.VPNavBarSearch .VPSearchButton,
+.DocSearch-Button-Container,
+.DocSearch-Button {
+  background: #1e1e20 !important;
+  background-color: #1e1e20 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Красим непосредственно саму маленькую интерактивную область инпута, куда кликают */
+.DocSearch-Button {
   background-color: #2c2c2e !important; 
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 8px !important;
+  padding: 0 12px !important;
+  height: 36px !important;
 }
-.DocSearch-Button .DocSearch-Button-Placeholder, .DocSearch-Button .DocSearch-Button-Keys, .DocSearch-Button .DocSearch-Button-Key, .DocSearch-Button-Container .DocSearch-Search-Icon, .DocSearch-Button-Container svg {
-  color: rgba(255, 255, 255, 0.8) !important; fill: rgba(255, 255, 255, 0.8) !important;
+
+.DocSearch-Button .DocSearch-Button-Placeholder, 
+.DocSearch-Button .DocSearch-Button-Keys, 
+.DocSearch-Button .DocSearch-Button-Key, 
+.DocSearch-Button-Container .DocSearch-Search-Icon, 
+.DocSearch-Button-Container svg {
+  color: rgba(255, 255, 255, 0.8) !important; 
+  fill: rgba(255, 255, 255, 0.8) !important;
 }
 
 /* ==========================================================================
@@ -101,6 +123,7 @@ body .VPNavBar .content-body {
 
 .VPSidebarNav { width: 100% !important; padding: 0 !important; }
 
+/* Стеклянные плашки левого меню */
 .VPSidebar .group {
   background-color: var(--glass-bg) !important; 
   backdrop-filter: blur(10px) !important;
@@ -113,7 +136,7 @@ body .VPNavBar .content-body {
   padding: 15px 20px !important; 
 }
 
-/* Схлопывание пустых строк */
+/* Чистка пустых строк */
 .VPSidebar .group .title, .VPSidebar .group .items, .VPSidebarItem, .VPSidebarNav .group, .VPSidebarNav .group div, .VPSidebarNav .group nav {
   margin-bottom: 0 !important; padding-bottom: 0 !important; gap: 0 !important;
 }
@@ -121,7 +144,7 @@ body .VPNavBar .content-body {
 .VPSidebarItem .link { padding: 6px 0 !important; color: var(--text-color) !important; }
 
 /* ==========================================================================
-   5. ПРАВОЕ МЕНЮ (ИСПРАВЛЕНО: Жёсткое обнуление left/right для симметрии)
+   5. ПРАВОЕ МЕНЮ (Симметричные 20vw с зазорами)
    ========================================================================== */
 .VPDoc .container {
   display: block !important;
@@ -132,7 +155,6 @@ body .VPDocAside,
 html body .VPLayout .VPDocAside {
   position: fixed !important;
   top: calc(var(--vp-nav-height) + 20px) !important; 
-  /* Насильно сбрасываем встроенный левый сдвиг темы и задаем зеркальный правый */
   left: auto !important;
   right: 0 !important; 
   width: 20vw !important; 
@@ -152,8 +174,6 @@ html body .VPDocAside .content {
   -webkit-backdrop-filter: blur(10px) !important;
   border: 1px solid var(--glass-border) !important;
   border-radius: 12px !important;
-  
-  /* Идеально зеркальные отступы от краёв (по 20px) */
   margin: 0 20px 0 20px !important; 
   width: calc(100% - 40px) !important;
   box-sizing: border-box !important;
