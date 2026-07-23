@@ -59,6 +59,19 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   margin: 0 !important;
 }
 
+.VPNavBar .divider,
+.VPNavBar .divider-line {
+  display: none !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+.VPNavBarTitle .title {
+  border-bottom: none !important;
+}
+
 /* Красим элементы шапки в белый */
 .VPNavBar .title, .VPNavBar .link, .VPNavBarItem, .VPNavBarHamburger, .VPNavBarMenuLink, .VPNavBar .text, .VPNavBar .icon {
   color: #ffffff !important;
