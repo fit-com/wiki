@@ -106,6 +106,28 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   box-shadow: none !important;
 }
 
+/* Заставляем область поиска занимать всё свободное место в шапке */
+.VPNavBar .content-body {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.VPNavBarSearch {
+  flex-grow: 1 !important; /* Растягиваем контейнер поиска */
+  display: flex !important;
+  justify-content: center !important; /* Центрируем кнопку внутри растянутой области */
+}
+
+/* Заставляем саму кнопку поиска быть шириной с контентную часть статьи (относительно окна) */
+.DocSearch-Button {
+  width: 100% !important;
+  max-width: calc(100vw - (19.8vw * 2) - 80px - 160px) !important; 
+  /* 160px — это примерная ширина левого логотипа + правой иконки луны + отступов. 
+     Подгони это число, если кнопка будет слишком широкой или узкой. */
+  box-sizing: border-box !important;
+}
+
 .DocSearch-Button .DocSearch-Button-Placeholder, .DocSearch-Button .DocSearch-Button-Keys, .DocSearch-Button .DocSearch-Button-Key, .DocSearch-Button-Container .DocSearch-Search-Icon, .DocSearch-Button-Container svg {
   color: rgba(255, 255, 255, 0.8) !important; fill: rgba(255, 255, 255, 0.8) !important;
 }
@@ -166,7 +188,7 @@ html body .VPLayout .VPDocAside {
   position: fixed !important;
   top: calc(var(--vp-nav-height) + 20px) !important; 
   left: auto !important;
-  right: 0 !important; 
+  right: 20px !important; 
   width: 19.8vw !important; 
   max-width: 19.8vw !important;
   min-width: 19.8vw !important;
@@ -189,6 +211,14 @@ html body .VPDocAside .content {
   box-sizing: border-box !important;
   padding: 15px 20px !important; 
   height: auto !important;
+}
+
+/* Убираем любые рамки у правого меню */
+.VPDocAside .aside-container,
+.VPDocAside .content {
+  border: none !important;
+  border-left: none !important;
+  box-shadow: none !important;
 }
 
 .VPDocAside .outline-link { padding: 6px 0 !important; white-space: normal !important; color: var(--text-color) !important; }
