@@ -9,3 +9,23 @@
   background-size: cover;
   --vp-c-bg: #1e1e20;
 }
+
+/* Ограничиваем ширину страницы, чтобы по бокам наконец-то появились поля */
+.VPContent {
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  background-color: var(--vp-c-bg) !important;
+  /* Добавляем тень, чтобы статья красиво отделялась от картинки фона */
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* На ночном режиме делаем тень глубже */
+.dark .VPContent {
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Делаем сквозную прозрачность для главной подложки сайта */
+.VPApp, .VPLayout, html, body {
+  background-color: transparent !important;
+}
+
