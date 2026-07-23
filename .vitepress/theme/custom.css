@@ -5,7 +5,7 @@
   --bg-image-url: url('@theme/bg.png');
   --vp-c-bg: #ffffff; /* Белая карточка статьи днем */
   --glass-bg: rgba(30, 30, 32, 0.6); /* Намертво фиксируем темное стекло для плашек, чтобы они гармонировали с темной шапкой */
-  --glass-border: rgba(255, 255, 255, 0); 
+  --glass-border: rgba(255, 255, 255, 0.08); 
   --header-bg: #1e1e20 !important;
 }
 
@@ -43,7 +43,6 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 /* Насильно убираем любые дефолтные тени и фейковые полосы под поисковой строкой */
 .VPNavBarSearch, .DocSearch-Button, .local-search-box {
   background-color: #2c2c2e !important; 
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 8px !important;
   box-shadow: none !important; 
 }
@@ -76,7 +75,7 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
    4. ЛЕВОЕ МЕНЮ (ИСПРАВЛЕНО: Блоки теперь растянуты на всю ширину)
    ========================================================================== */
 :root {
-  --vp-sidebar-width: 20.36vw !important; 
+  --vp-sidebar-width: 19.9vw !important; 
 }
 
 .VPSidebar, .VPLayout .VPSidebar, html body .VPSidebar {
@@ -87,9 +86,9 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   box-shadow: none !important;
   padding: 0 !important;
   margin: 0 !important;
-  width: 20.36vw !important; 
-  max-width: 20.36vw !important;
-  min-width: 20.36vw !important;
+  width: 19.9vw !important; 
+  max-width: 19.9vw !important;
+  min-width: 19.9vw !important;
   overflow-y: hidden !important;
 }
 
@@ -132,9 +131,9 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   right: 0 !important; /* Обнулили правый сдвиг контейнера */
   
   /* ИСПРАВЛЕНО: Ширина правого меню стала СТРОГО равна левому */
-  width: 20.36vw !important; 
-  max-width: 20.36vw !important;
-  min-width: 20.36vw !important;
+  width: 19.9vw !important; 
+  max-width: 19.9vw !important;
+  min-width: 19.9vw !important;
   display: block !important;
   z-index: 100 !important;
   background: transparent !important;
@@ -167,7 +166,7 @@ html body .VPDocAside .content {
    6. ЖЕСТКОЕ МАТЕМАТИЧЕСКОЕ ЦЕНТРИРОВАНИЕ ОСНОВНОЙ КАРТОЧКИ
    ========================================================================== */
 .VPDoc .content {
-  width: calc(100vw - (20.36vw * 2) - 80px) !important; 
+  width: calc(100vw - (19.9vw * 2) - 80px) !important; 
   max-width: 95% !important;
   
   position: absolute !important;
