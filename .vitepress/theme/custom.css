@@ -1,26 +1,19 @@
 /* ==========================================================================
-   1. ПЕРЕМЕННЫЕ ЦВЕТОВ (ИСПРАВЛЕНО: Шапка теперь ВСЕГДА темная)
+   1. ПЕРЕМЕННЫЕ ЦВЕТОВ (Шапка ВСЕГДА темная)
    ========================================================================== */
 :root {
   --bg-image-url: url('@theme/bg.png');
-  
-  /* Основная карточка меняется (днем белая, ночью темная) */
-  --vp-c-bg: #ffffff; 
+  --vp-c-bg: #ffffff; /* Белая карточка статьи днем */
   --glass-bg: rgba(255, 255, 255, 0.65); 
   --glass-border: rgba(0, 0, 0, 0.08); 
-  --search-bg: #f4f4f5; 
-  
-  /* ЖЕСТКО: Шапка сайта ВСЕГДА остается темной, даже в светлой теме */
-  --header-bg: #1e1e20 !important;
-  --header-text: #ffffff !important;
+  --search-box-bg: #2c2c2e !important; 
 }
 
 .dark {
-  --vp-c-bg: #1e1e20; 
+  --vp-c-bg: #1e1e20; /* Темная карточка статьи ночью */
   --glass-bg: rgba(30, 30, 32, 0.6); 
   --glass-border: rgba(255, 255, 255, 0.08); 
-  --search-bg: transparent;
-  --header-bg: #1e1e20 !important;
+  --search-box-bg: #202022 !important;
 }
 
 /* ==========================================================================
@@ -32,6 +25,8 @@ html {
   background-position: center center !important;
   background-attachment: fixed !important;
   background-repeat: no-repeat !important;
+  margin-top: -1px !important;
+  padding-top: 1px !important;
 }
 
 body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDoc, .VPDoc .container {
@@ -40,20 +35,21 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 }
 
 /* ==========================================================================
-   3. ВСЕГДА ТЕМНАЯ ШАПКА САЙТА (Без сдвигов и отступов)
+   3. ВСЕГДА ТЕМНАЯ ШАПКА САЙТА И ЕЕ КОМПОНЕНТЫ
    ========================================================================== */
 .VPNav, .VPNavBar {
-  background-color: var(--header-bg) !important;
+  background-color: #1e1e20 !important;
   background-image: none !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   border-bottom: none !important;
-  box-shadow: 0 1px 0 var(--header-bg) !important;
+  box-shadow: 0 1px 0 #1e1e20 !important;
 }
 
-/* Красим текст и ссылки в шапке в белый цвет для перманентно темного режима */
-.VPNavBar .title, .VPNavBar .VPNavBarMenu .link, .VPNavBarHamburger {
-  color: var(--header-text) !important;
+/* Принудительно красим элементы шапки в белый */
+.VPNavBar .title, .VPNavBar .link, .VPNavBarItem, .VPNavBarHamburger, .VPNavBarMenuLink, .VPNavBar .text, .VPNavBar .icon {
+  color: #ffffff !important;
+  fill: #ffffff !important;
 }
 
 .VPNavBar .container {
@@ -67,16 +63,27 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   padding-left: 12px !important;
 }
 
+/* 🔍 Строка поиска и ее внутренности */
 .VPNavBarSearch, .DocSearch-Button {
-  background-color: var(--search-bg) !important;
+  background-color: var(--search-box-bg) !important; 
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 8px !important;
+}
+
+.DocSearch-Button .DocSearch-Button-Placeholder,
+.DocSearch-Button .DocSearch-Button-Keys,
+.DocSearch-Button .DocSearch-Button-Key,
+.DocSearch-Button-Container .DocSearch-Search-Icon,
+.DocSearch-Button-Container svg {
+  color: rgba(255, 255, 255, 0.8) !important;
+  fill: rgba(255, 255, 255, 0.8) !important;
 }
 
 /* ==========================================================================
-   4. ЛЕВОЕ МЕНЮ (ИСПРАВЛЕНО: Переведено на жесткие пиксели)
+   4. ЛЕВОЕ МЕНЮ (Математическая доля 391/1920 = 20.36vw)
    ========================================================================== */
 :root {
-  /* Жестко фиксируем ширину левой зоны в 350px, чтобы она не раздувалась */
-  --vp-sidebar-width: 350px !important; 
+  --vp-sidebar-width: 20.36vw !important; 
 }
 
 .VPSidebar, .VPLayout .VPSidebar, html body .VPSidebar {
@@ -87,9 +94,9 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   box-shadow: none !important;
   padding: 0 !important;
   margin: 0 !important;
-  width: 350px !important; 
-  max-width: 350px !important;
-  min-width: 350px !important;
+  width: 20.36vw !important; 
+  max-width: 20.36vw !important;
+  min-width: 20.36vw !important;
   overflow-y: hidden !important;
 }
 
@@ -106,32 +113,19 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   -webkit-backdrop-filter: blur(10px) !important;
   border: 1px solid var(--glass-border) !important;
   border-radius: 12px !important; 
-  margin: 20px 20px 0 20px !important; /* Идеальные 20px со всех сторон */
+  margin: 20px 20px 0 20px !important; /* Ровные отступы */
   padding: 15px 20px !important; 
 }
 
 /* Чистка пустых строк */
-.VPSidebar .group .title,
-.VPSidebar .group .items,
-.VPSidebarItem,
-.VPSidebarNav .group,
-.VPSidebarNav .group div,
-.VPSidebarNav .group nav {
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
-  gap: 0 !important;
+.VPSidebar .group .title, .VPSidebar .group .items, .VPSidebarItem, .VPSidebarNav .group, .VPSidebarNav .group div, .VPSidebarNav .group nav {
+  margin-bottom: 0 !important; padding-bottom: 0 !important; gap: 0 !important;
 }
-.VPSidebar .group .items::after,
-.VPSidebarNav::after,
-.VPSidebarItem::after {
-  content: none !important;
-}
-.VPSidebarItem .link {
-  padding: 6px 0 !important;
-}
+.VPSidebar .group .items::after, .VPSidebarNav::after, .VPSidebarItem::after { content: none !important; }
+.VPSidebarItem .link { padding: 6px 0 !important; }
 
 /* ==========================================================================
-   5. ПРАВОЕ МЕНЮ (ИСПРАВЛЕНО: Тот же размер 350px, выровнено по высоте, не лезет на текст)
+   5. ПРАВОЕ МЕНЮ (Зеркальная доля 20.36vw, выровнено, компактно)
    ========================================================================== */
 .VPDoc .container {
   display: block !important;
@@ -140,63 +134,44 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 
 .VPDocAside, .VPLayout .VPDocAside, html body .VPDocAside {
   position: fixed !important;
-  
-  /* ИСПРАВЛЕНО: Высота точь-в-точь как у левого меню (отступ 20px от шапки) */
-  top: calc(var(--vp-nav-height) + 20px) !important; 
-  
-  /* ИСПРАВЛЕНО: Отступ справа ровно 20px, симметрично левой стороне */
-  right: 20px !important; 
-  
-  /* ИСПРАВЛЕНО: Жесткие пиксели! Размер строго равен левому меню (350px вместе с отступами) */
-  width: 350px !important; 
-  max-width: 350px !important;
-  min-width: 350px !important;
-  
+  top: calc(var(--vp-nav-height) + 20px) !important; /* Высота вровень с левым меню */
+  right: 20px !important; /* Симметричный отступ справа */
+  width: 20.36vw !important; 
+  max-width: 20.36vw !important;
+  min-width: 20.36vw !important;
   display: block !important;
   z-index: 100 !important;
   background: transparent !important;
   background-color: transparent !important;
 }
 
-/* Контейнер правого меню */
-.VPDocAside .aside-container,
-.VPDocAside .aside-container .content,
-.VPDocAside .content,
-html body .VPDocAside .content {
+/* Стеклянный контейнер правого меню */
+.VPDocAside .aside-container, .VPDocAside .aside-container .content, .VPDocAside .content, html body .VPDocAside .content {
   background: var(--glass-bg) !important; 
-  background-color: var(--glass-bg) !important;
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   border: 1px solid var(--glass-border) !important;
   border-radius: 12px !important;
-  
-  /* Внутренние паддинги зеркальны левым плашкам */
   padding: 15px 20px !important; 
-  margin: 0 !important; /* Убираем дефолтные сдвиги темы */
+  margin: 0 !important; 
   height: auto !important;
   min-height: auto !important;
 }
 
-.VPDocAside .outline-link {
-  padding: 6px 0 !important;
-  white-space: normal !important;
-}
-
-.VPDocAside .aside-curtain, .VPDocAside .meta {
-  display: none !important;
-}
+.VPDocAside .outline-link { padding: 6px 0 !important; white-space: normal !important; }
+.VPDocAside .aside-curtain, .VPDocAside .meta { display: none !important; }
 
 /* ==========================================================================
-   6. ЦЕНТРАЛЬНАЯ КАРТОЧКА СТАТЬИ (ИСПРАВЛЕНО: Динамическая ширина без наездов)
+   6. ЖЕСТКОЕ МАТЕМАТИЧЕСКОЕ ЦЕНТРИРОВАНИЕ ОСНОВНОЙ КАРТОЧКИ
    ========================================================================== */
 .VPDoc .content {
-  /* Карточка занимает ВСЁ оставшееся по центру место между двумя блоками по 350px */
-  width: calc(100vw - 780px) !important; 
+  /* Карточка занимает весь оставшийся центр экрана между двумя витражами */
+  width: calc(100vw - (20.36vw * 2) - 80px) !important; 
   max-width: 95% !important;
   
   position: absolute !important;
   left: 50% !important;
-  transform: translateX(-50%) !important; /* Идеальный центр экрана */
+  transform: translateX(-50%) !important; /* Строго по центру физического монитора */
   
   margin: 40px 0 !important;
   background-color: var(--vp-c-bg) !important; 
@@ -226,10 +201,6 @@ html body .VPDocAside .content {
     max-width: 100% !important;
     top: 0 !important;
   }
-  .VPSidebar .group {
-    margin: 10px !important;
-  }
-  .VPDocAside {
-    display: none !important;
-  }
+  .VPSidebar .group { margin: 10px !important; }
+  .VPDocAside { display: none !important; }
 }
