@@ -1,12 +1,6 @@
 :root {
   --bg-image-url: url('@theme/bg.png');
-  --vp-c-bg: #ffffff;
-  --vp-nav-bg-color: #ffffff; /* Плотный цвет шапки для светлой темы */
-}
-
-.dark {
-  --vp-c-bg: #1e1e20;
-  --vp-nav-bg-color: #1e1e20; /* Плотный цвет шапки для темной темы */
+  --vp-c-bg: #1e1e20; /* Базовый темный цвет по умолчанию */
 }
 
 /* 1. Глобальный фон на весь экран */
@@ -18,51 +12,62 @@ html {
   background-repeat: no-repeat !important;
 }
 
-/* 2. Обнуляем системные подложки под карточкой */
-body, #app, .VPApp, .VPLayout, .Layout {
+/* 2. Делаем прозрачными системные слои */
+body, #app, .VPApp, .VPLayout, .Layout, .VPContent {
   background: transparent !important;
   background-color: transparent !important;
 }
 
-/* 3. ШАПКА САЙТА (Полностью залита одним плотным цветом) */
+/* 3. МОНОЛИТНАЯ ЗАЛИТАЯ ШАПКА */
 .VPNav, .VPNavBar {
-  background-color: var(--vp-nav-bg-color) !important;
+  background-color: var(--vp-c-bg) !important;
   background-image: none !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
 }
 
-/* 4. СТРОКА ПОИСКА (Убираем прозрачность, заливаем полностью) */
+/* СТРОКА ПОИСКА (Плотная заливка) */
 .VPNavBarSearch, .DocSearch-Button {
-  background-color: var(--vp-c-bg) !important;
+  background-color: #2c2c2e !important;
 }
 
-/* 5. БОКОВОЕ МЕНЮ (Глухое, без прозрачности) */
+/* 4. БОКОВОЕ МЕНЮ (Полностью прозрачное, как ты просил) */
 .VPSidebar {
-  background-color: var(--vp-c-bg) !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-
-/* 6. УЗКАЯ КАРТОЧКА СТАТЬИ СТРОГО ПО ЦЕНТРУ */
-/* Сужаем саму обертку контента, чтобы она встала как во 2-м варианте */
-.VPContent {
-  max-width: 1100px !important; 
-  margin: 0 auto !important;
   background: transparent !important;
+  background-color: transparent !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
-/* Задаем плотную подложку, тени и скругления для самой статьи */
-.VPDoc .container {
+/* 5. АДАПТИВНОЕ ЦЕНТРИРОВАНИЕ КАРТОЧКИ ПО ВСЕМУ ЭКРАНУ */
+/* Сбрасываем внутренние ограничения VitePress, чтобы контент мог двигаться свободно */
+.VPContent .container {
   max-width: 100% !important;
-  margin: 40px auto !important;
-  background-color: var(--vp-c-bg) !important;
-  padding: 40px !important;
-  border-radius: 12px !important;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.25) !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-/* Глубокая тень для темной темы */
-.dark .VPDoc .container {
+/* Превращаем саму статью в резиновую карточку */
+.VPDoc .container {
+  /* Занимает 65% ширины от ВСЕГО экрана (viewport width) */
+  width: 65vw !important; 
+  max-width: 95% !important; /* Защита для мобилок: на маленьких экранах займет почти всю ширину */
+  
+  /* Магия центрирования по всему экрану: сдвигаем влево на половину оставшегося места */
+  margin: 40px auto !important; 
+  position: relative !important;
+  
+  /* Оформление карточки */
+  background-color: var(--vp-c-bg) !important;
+  padding: 3% !important; /* Внутренние отступы тоже в процентах от ширины */
+  border-radius: 12px !important;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* 6. АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ (Медиа-запрос) */
+@media (max-width: 960px) {
+  .VPDoc .container {
+    width: 90vw !important; /* На смартфонах карточка расширится, чтобы текст читался удобно */
+    margin: 20px auto !important;
+    padding: 15px !important;
+  }
 }
