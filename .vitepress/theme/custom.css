@@ -56,11 +56,10 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   fill: #ffffff !important;
 }
 
-/* Жестко переопределяем контейнер шапки, чтобы поиск мог растянуться */
 .VPNavBar .container {
   max-width: 100% !important;
   width: 100% !important;
-  padding: 0 20px !important; /* Добавили небольшие отступы по бокам, чтобы не прилипало */
+  padding: 0 20px !important;
 }
 
 .VPNavBar .content-body {
@@ -71,10 +70,9 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   gap: 20px !important;
 }
 
-/* Обнуляем обёртку поиска */
 .VPNavBarSearch {
   background: transparent !important;
-  flex-grow: 1 !important; /* Заставляет поиск занять всё свободное место */
+  flex-grow: 1 !important; 
   max-width: 100% !important;
 }
 
@@ -84,7 +82,7 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   border-radius: 8px !important;
   height: 36px !important;
   box-shadow: none !important;
-  width: 100% !important; /* Растягиваем кнопку на всю ширину контейнера */
+  width: 100% !important;
   padding: 0 12px !important;
 }
 
@@ -126,54 +124,62 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 .VPSidebarItem .link { color: var(--text-color) !important; }
 
 /* ==========================================================================
-   5. ПРАВОЕ МЕНЮ (ВОЗВРАЩАЕМ НА МЕСТО И ДЕЛАЕМ СТЕКЛО)
+   5. ПРАВОЕ МЕНЮ (ЖЕСТКАЯ ФИКСАЦИЯ БЕЗ ЛИШНИХ ОТСТУПОВ)
    ========================================================================== */
-.VPDoc .container { display: block !important; }
+.VPDoc .container { 
+  display: block !important; 
+}
 
-/* Фиксируем правую панель и задаём ей ширину */
+/* Фиксируем позицию и размеры */
 body .VPDocAside {
   position: fixed !important;
   top: calc(var(--vp-nav-height) + 20px) !important; 
   right: 20px !important; 
   width: 19.8vw !important; 
   max-width: 19.8vw !important;
+  min-width: 250px !important; /* Не даём меню сжиматься в ноль */
   z-index: 100 !important;
   background: transparent !important;
   border: none !important;
 }
 
-/* Делаем стеклянным ТОЛЬКО контейнер, который держит всё меню */
+/* Стеклянная подложка с жесткими отступами */
 body .VPDocAside .aside-container {
   background-color: var(--glass-bg) !important; 
   backdrop-filter: blur(10px) !important;
   border-radius: 12px !important;
+  border: 1px solid var(--glass-border) !important;
   padding: 15px 20px !important; 
-  border: 1px solid var(--glass-border) !important; /* Аккуратная рамка */
-  box-shadow: none !important;
   width: 100% !important;
   box-sizing: border-box !important;
+  margin: 0 !important; /* Обнуляем отступы */
 }
 
-/* ВСЁ ВНУТРИ ДЕЛАЕМ ПРОЗРАЧНЫМ И БЕЗ РАМОК (чтобы не разваливалось) */
+/* Обнуляем всё внутреннее пространство, чтобы ничего не вылезало */
 .VPDocAside .content,
 .VPDocAsideOutline, 
 .VPDocAsideOutline .content,
 .VPDocAsideOutline .outline,
 .VPDocAsideOutline .outline-title,
-.VPDocOutlineItem {
+.VPDocOutlineItem,
+.VPDocAside .aside-curtain {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
   margin: 0 !important;
   padding: 0 !important;
+  width: 100% !important;
 }
 
 .VPDocAside .outline-link { 
   color: var(--text-color) !important; 
   padding: 6px 0 !important;
+  display: block !important;
+  white-space: normal !important;
+  word-break: break-word !important;
 }
 
-.VPDocAside .aside-curtain, .VPDocAside .meta { display: none !important; }
+.VPDocAside .meta { display: none !important; }
 
 /* ==========================================================================
    6. ЦЕНТРАЛЬНАЯ КАРТОЧКА СТАТЬИ
