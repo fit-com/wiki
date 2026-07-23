@@ -216,14 +216,36 @@ html body .VPDocAside .content {
   box-sizing: border-box !important;
   padding: 15px 20px !important; 
   height: auto !important;
-  /* ИСПРАВЛЕНО: Убираем границу полностью */
+  
+  /* Принудительно убираем границы у самого контейнера */
   border: none !important;
   border-left: none !important;
   border-right: none !important;
   box-shadow: none !important;
 }
 
-.VPDocAside .outline-link { padding: 6px 0 !important; white-space: normal !important; color: var(--text-color) !important; }
+/* ЖЁСТКО ЗАЧИЩАЕМ ВНУТРЕННИЙ БЛОК НАВИГАЦИИ (VPDocAsideOutline), 
+   ИМЕННО ОН ДАЁТ БЕЛУЮ РАМКУ НА СКРИНШОТЕ */
+.VPDocAsideOutline,
+.VPDocAsideOutline .content,
+.VPDocAsideOutline .outline,
+.VPDocAsideOutline .outline-marker,
+.VPDocAsideOutline .outline-title,
+.VPDocAsideOutline .VPDocOutlineItem {
+  background: transparent !important;
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.VPDocAside .outline-link { 
+  padding: 6px 0 !important; 
+  white-space: normal !important; 
+  color: var(--text-color) !important; 
+  border: none !important;
+}
 .VPDocAside .aside-curtain, .VPDocAside .meta { display: none !important; }
 
 /* ==========================================================================
