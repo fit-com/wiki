@@ -33,35 +33,27 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 }
 
 /* ==========================================================================
-   3. ВСЕГДА ТЕМНАЯ ШАПКА (Намертво закрашиваем любые полосы и выступы)
+   3. ТОТАЛЬНОЕ УНИЧТОЖЕНИЕ ПОЛОСЫ И ФИКСАЦИЯ ТЕМНОЙ ШАПКИ
    ========================================================================== */
-/* Заливаем абсолютно ВСЕ слои шапки, навигации и разделителей в один цвет #1e1e20 */
-.VPNav, 
-.VPNavBar, 
-.VPNavBar .wrapper,
-.VPNavBar .container,
-.VPNavBar .content,
-.VPNavBar .content-body,
-.VPNavScreen {
+/* Вламываемся во ВСЕ компоненты навигации через жесткий селектор по части имени класса */
+[class*="VPNav"], 
+[class*="VPNavBar"], 
+[class*="VPNav"].nav,
+.VPNav, .VPNavBar, .VPNavBar .wrapper, .VPNavBar .container, .VPNavBar .content, .VPNavBar .content-body {
   background: #1e1e20 !important;
   background-color: #1e1e20 !important;
   background-image: none !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  /* Уничтожаем любые рамки, бордюры и тени, которые создавали линии под шапкой */
+  /* ЖЕСТКО: Стираем ту самую нижнюю рамку и тень, которые давали вылезающую полосу */
   border: none !important;
   border-bottom: none !important;
   box-shadow: none !important; 
   margin: 0 !important;
 }
 
-/* Насильно убираем разделительную линию под шапкой на уровне сетки VitePress */
-.VPNavBar {
-  border-bottom: none !important;
-}
-
-/* Красим элементы шапки в белый */
-.VPNavBar .title, .VPNavBar .link, .VPNavBarItem, .VPNavBarHamburger, .VPNavBarMenuLink, .VPNavBar .text, .VPNavBar .icon {
+/* Принудительно красим элементы внутри шапки в белый */
+[class*="VPNavBar"] .title, [class*="VPNavBar"] .link, .VPNavBarHamburger, .VPNavBarMenuLink, .VPNavBar .text, .VPNavBar .icon {
   color: #ffffff !important;
   fill: #ffffff !important;
 }
@@ -73,14 +65,25 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 }
 .VPNavBar .title { padding-left: 12px !important; }
 
-/* 🔍 НАСТРОЙКА КНОПКИ ПОИСКА (Оригинальный залитый инпут) */
+/* 🔍 НАСТРОЙКА КНОПКИ ПОИСКА (ИСПРАВЛЕНО: Сделали шире и убрали артефакты) */
+.VPNavBarSearch, .VPNavBarSearch .search-box, .VPSearchButton {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Сама интерактивная кнопка-инпут (Сделали длиннее — 320px) */
 .DocSearch-Button {
   background-color: #2c2c2e !important; 
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 8px !important;
-  padding: 0 12px !important;
-  height: 36px !important;
+  padding: 0 16px !important;
+  height: 38px !important;
   box-shadow: none !important;
+  /* ИСПРАВЛЕНО: Увеличили длину строки поиска */
+  width: 320px !important; 
+  min-width: 320px !important;
 }
 
 .DocSearch-Button .DocSearch-Button-Placeholder, .DocSearch-Button .DocSearch-Button-Keys, .DocSearch-Button .DocSearch-Button-Key, .DocSearch-Button-Container .DocSearch-Search-Icon, .DocSearch-Button-Container svg {
