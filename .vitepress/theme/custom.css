@@ -3,14 +3,13 @@
   --vp-c-bg: #1e1e20;
 }
 
-/* 1. ГЛОБАЛЬНЫЙ ФОН И УДАЛЕНИЕ ШВА НА ШАПКЕ */
+/* 1. ГЛОБАЛЬНЫЙ ФОН И УДАЛЕНИЕ ШВА */
 html {
   background-image: var(--bg-image-url) !important;
   background-size: cover !important;
   background-position: center center !important;
   background-attachment: fixed !important;
   background-repeat: no-repeat !important;
-  /* Убираем микро-сдвиги браузера, чтобы слои не вылезали на 1 пиксель */
   margin-top: -1px !important;
   padding-top: 1px !important;
 }
@@ -20,52 +19,81 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container {
   background-color: transparent !important;
 }
 
-/* 2. ШАПКА САЙТА (Плотная заливка одним цветом) */
+/* 2. ШАПКА САЙТА (Убираем отступ слева и фиксируем заливку) */
 .VPNav, .VPNavBar {
   background-color: var(--vp-c-bg) !important;
   background-image: none !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  /* Перекрываем шов снизу тенью в цвет шапки */
   box-shadow: 0 1px 0 var(--vp-c-bg) !important;
   border-bottom: none !important;
 }
 
-/* 3. ВОЗВРАЩАЕМ СТАНДАРТНУЮ СТРОКУ ПОИСКА */
+/* Насильно растягиваем контейнер шапки на 100% ширины без отступов */
+.VPNavBar .container {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-left: 24px !important; /* Легкий аккуратный отступ для логотипа от самого края экрана */
+}
+
 .VPNavBarSearch, .DocSearch-Button {
   background-color: transparent !important;
 }
 
-/* 4. БОКОВОЕ МЕНЮ (Полностью прозрачное, без отступов) */
+/* 3. БОКОВОЕ МЕНЮ (Делаем шире на всю боковую часть) */
 .VPSidebar {
   background: transparent !important;
   background-color: transparent !important;
   border-right: none !important;
   box-shadow: none !important;
-  padding-left: 0 !important; /* Убираем непонятный отступ слева в меню */
+  padding-left: 0 !important;
+  width: 22vw !important; /* Увеличили ширину базового слоя меню до 22% экрана */
 }
 
-/* 5. УПАКОВКА КОМПОНЕНТОВ МЕНЮ В ПОЛУПРОЗРАЧНЫЙ КОНТЕЙНЕР */
+/* Стеклянные плашки левого меню (шире и аккуратнее) */
 .VPSidebar .group {
-  background-color: rgba(30, 30, 32, 0.6) !important; /* Полупрозрачный темный фон */
-  backdrop-filter: blur(10px) !important; /* Эффект матового стекла */
+  background-color: rgba(30, 30, 32, 0.6) !important;
+  backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
-  margin: 15px 20px !important; /* Отступы от краев, чтобы получилась парящая плашка */
-  padding: 15px !important;
+  margin: 15px 15px !important; /* Уменьшили внешние зазоры, чтобы плашки стали шире */
+  padding: 20px !important;
   border-radius: 10px !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
-/* 6. ЖЕСТКОЕ ЦЕНТРИРОВАНИЕ КАРТОЧКИ ПО СЕРЕДИНЕ ВСЕГО ЭКРАНА */
+/* 4. ПРАВОЕ МЕНЮ НАВИГАЦИИ (Выносим в правое поле в стеклянном стиле) */
+/* Вырываем блок из структуры статьи */
+.VPDocAside {
+  position: fixed !important;
+  top: 120px !important;
+  right: 2vw !important; /* Прибиваем к правому полю экрана */
+  width: 16vw !important; /* Задаем ширину правого меню */
+  display: block !important;
+}
+
+/* Упаковываем содержание страницы в такую же полупрозрачную плашку */
+.VPDocAside .content {
+  background-color: rgba(30, 30, 32, 0.6) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  padding: 20px !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Скрываем дефолтные разделительные линии правого меню */
+.VPDocAside .aside-curtain, .VPDocAside .meta {
+  display: none !important;
+}
+
+/* 5. МАТЕМАТИЧЕСКИ ИДЕАЛЬНОЕ ЦЕНТРИРОВАНИЕ ОСНОВНОЙ КАРТОЧКИ */
 .VPDoc .container {
-  /* Карточка стала меньше: 55% от ширины всего монитора */
-  width: 55vw !important; 
+  width: 50vw !important; /* Чуть уменьшили ширину до 50%, чтобы по бокам было больше воздуха */
   max-width: 95% !important;
   
-  /* Вырываем её из разметки VitePress и ставим по центру экрана */
   position: absolute !important;
   left: 50% !important;
-  transform: translateX(-50%) !important; /* Идеальное математическое центрирование */
+  transform: translateX(-50%) !important; /* Центрируем строго по центру монитора */
   
   margin: 40px 0 !important;
   background-color: var(--vp-c-bg) !important;
@@ -74,7 +102,13 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container {
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.6) !important;
 }
 
-/* 7. АДАПТИВНОСТЬ ДЛЯ МОБИЛОК */
+/* Отключаем внутреннюю сетку VitePress, которая ломала центрирование из-за правого меню */
+.VPDoc .content {
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
+/* 6. АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ */
 @media (max-width: 960px) {
   .VPDoc .container {
     width: 90vw !important;
@@ -84,7 +118,13 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container {
     margin: 20px auto !important;
     padding: 20px !important;
   }
+  .VPSidebar {
+    width: 100% !important;
+  }
   .VPSidebar .group {
     margin: 10px !important;
+  }
+  .VPDocAside {
+    display: none !important; /* На мобилках правое меню скрывается, чтобы не забивать экран */
   }
 }
