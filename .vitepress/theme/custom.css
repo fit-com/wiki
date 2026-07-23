@@ -1,13 +1,13 @@
 :root {
   /* ИСПРАВЛЕНО: добавлен префикс ./ для точного импорта файла сборщиком */
-  --vp-c-page-bg: #f6f6f7 url('bg.png') no-repeat center center fixed;
+  --vp-c-page-bg: #f6f6f7 url('./bg.png') no-repeat center center fixed;
   background-size: cover;
   --vp-c-bg: #ffffff;
 }
 
 .dark {
   /* ИСПРАВЛЕНО: аналогично для темной темы */
-  --vp-c-page-bg: #111113 url('bg.png') no-repeat center center fixed;
+  --vp-c-page-bg: #111113 url('./bg.png') no-repeat center center fixed;
   background-size: cover;
   --vp-c-bg: #1e1e20;
 }
