@@ -5,7 +5,7 @@
   --bg-image-url: url('@theme/bg.png');
   --vp-c-bg: #ffffff; /* Белая карточка статьи днем */
   --glass-bg: rgba(30, 30, 32, 0.6); /* Намертво фиксируем темное стекло для плашек, чтобы они гармонировали с темной шапкой */
-  --glass-border: rgba(255, 255, 255, 0.08); 
+  --glass-border: rgba(255, 255, 255, 1); 
   --header-bg: #1e1e20 !important;
 }
 
