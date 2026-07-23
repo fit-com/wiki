@@ -40,7 +40,12 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   background-color: transparent !important;
 }
 
-/* 3. ЛЕВОЕ МЕНЮ (Широкая зона) */
+/* 3. ЛЕВОЕ МЕНЮ (ИСПРАВЛЕНО: Разорвали ограничение ширины и выровняли отступы) */
+/* Взламываем внутреннюю переменную ширины сайдбара VitePress */
+:root {
+  --vp-sidebar-width: 25vw !important; 
+}
+
 .VPSidebar, .VPLayout .VPSidebar, html body .VPSidebar {
   top: var(--vp-nav-height) !important;
   background: transparent !important;
@@ -49,8 +54,10 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   box-shadow: none !important;
   padding: 0 !important;
   margin: 0 !important;
-  width: 24vw !important; /* Четко выверенная ширина левой части */
-  max-width: 24vw !important;
+  /* Жестко задаем новую широкую пропорцию */
+  width: 25vw !important; 
+  max-width: 25vw !important;
+  min-width: 25vw !important;
   overflow-y: hidden !important;
 }
 
@@ -67,7 +74,9 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   -webkit-backdrop-filter: blur(10px) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 12px !important; 
-  margin: 20px 15px 0 15px !important; 
+  
+  /* ИСПРАВЛЕНО: Сделали абсолютно одинаковые отступы СЛЕВА, СПРАВА и СВЕРХУ (по 20px) */
+  margin: 20px 20px 0 20px !important; 
   padding: 15px 20px !important; 
 }
 
@@ -91,7 +100,7 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   padding: 6px 0 !important;
 }
 
-/* 4. ПРАВОЕ МЕНЮ НАВИГАЦИИ (ИСПРАВЛЕНО: Сделали шире, как и левое) */
+/* 4. ПРАВОЕ МЕНЮ НАВИГАЦИИ (ИСПРАВЛЕНО: Полная пересборка геометрии виджета) */
 .VPDoc .container {
   display: block !important;
   max-width: 100% !important;
@@ -99,16 +108,20 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 
 .VPDocAside, .VPLayout .VPDocAside, html body .VPDocAside {
   position: fixed !important;
-  top: calc(var(--vp-nav-height) + 40px) !important;
-  right: 2vw !important;
-  width: 24vw !important; /* Увеличили ширину до 24%, теперь симметрично левому меню */
-  max-width: 24vw !important;
+  top: calc(var(--vp-nav-height) + 20px) !important; /* Выровняли уровень верха с левым меню */
+  right: 20px !important; /* Одинаковый аккуратный отступ от правого края экрана */
+  
+  /* ИСПРАВЛЕНО: Сделали правое меню полноценным широким блоком */
+  width: 21vw !important; 
+  max-width: 21vw !important;
+  min-width: 21vw !important;
   display: block !important;
   z-index: 100 !important;
   background: transparent !important;
   background-color: transparent !important;
 }
 
+/* Стеклянный контейнер правого меню */
 .VPDocAside .aside-container,
 .VPDocAside .aside-container .content,
 .VPDocAside .content,
@@ -118,17 +131,27 @@ html body .VPDocAside .content {
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  padding: 15px 20px !important; /* Одинаковые аккуратные паддинги с левым меню */
   border-radius: 12px !important;
+  
+  /* Внутренние паддинги и сброс высоты, чтобы плашка обтягивала только текст */
+  padding: 20px !important; 
+  height: auto !important;
+  min-height: auto !important;
+}
+
+/* Исправляем перенос и отображение ссылок в правом меню */
+.VPDocAside .outline-link {
+  padding: 6px 0 !important;
+  white-space: normal !important; /* Разрешаем тексту переноситься красиво, если строка длинная */
 }
 
 .VPDocAside .aside-curtain, .VPDocAside .meta {
   display: none !important;
 }
 
-/* 5. ОСНОВНАЯ КАРТОЧКА СТАТЬИ (ИСПРАВЛЕНО: Сделали шире, уменьшили отступы) */
+/* 5. ИДЕАЛЬНОЕ ЦЕНТРИРОВАНИЕ ОСНОВНОЙ КАРТОЧКИ */
 .VPDoc .content {
-  width: 55vw !important; /* Увеличили резиновый размер карточки (было 48) */
+  width: 48vw !important; /* Слегка скорректировали баланс под новые широкие боковины */
   max-width: 95% !important;
   
   position: absolute !important;
@@ -137,7 +160,7 @@ html body .VPDocAside .content {
   
   margin: 40px 0 !important;
   background-color: var(--vp-c-bg) !important;
-  padding: 40px 30px !important; /* Уменьшили боковые внутренние паддинги до 30px */
+  padding: 40px 30px !important; 
   border-radius: 12px !important;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.6) !important;
 }
