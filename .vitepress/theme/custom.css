@@ -33,7 +33,7 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 }
 
 /* ==========================================================================
-   3. ЧЕРНАЯ ШАПКА И ПОИСК
+   3. ЧЕРНАЯ ШАПКА И ПОИСК (Максимально просто)
    ========================================================================== */
 .VPNav, .VPNavBar, .VPNavBar .wrapper, .VPNavBar .container, .VPNavBar .content, .VPNavBar .content-body {
   background: #1e1e20 !important;
@@ -43,13 +43,9 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   box-shadow: none !important; 
 }
 
-.VPNavBar .divider, .VPNavBar .divider-line {
-  display: none !important;
-}
+.VPNavBar .divider, .VPNavBar .divider-line { display: none !important; }
 
-.VPNavBarTitle .title {
-  border-bottom: none !important;
-}
+.VPNavBarTitle .title { border-bottom: none !important; }
 
 .VPNavBar .title, .VPNavBar .link, .VPNavBarItem, .VPNavBarHamburger, .VPNavBarMenuLink, .VPNavBar .text, .VPNavBar .icon {
   color: #ffffff !important;
@@ -64,24 +60,18 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 
 .VPNavBar .content-body {
   display: flex !important;
-  justify-content: flex-start !important;
   align-items: center !important;
   width: 100% !important;
   gap: 20px !important;
 }
 
-.VPNavBarSearch {
-  background: transparent !important;
-  flex-grow: 1 !important; 
-  max-width: 100% !important;
-}
+.VPNavBarSearch { flex-grow: 1 !important; }
 
 .DocSearch-Button {
   background-color: #2c2c2e !important; 
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 8px !important;
   height: 36px !important;
-  box-shadow: none !important;
   width: 100% !important;
   padding: 0 12px !important;
 }
@@ -97,16 +87,12 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 /* ==========================================================================
    4. ЛЕВОЕ МЕНЮ
    ========================================================================== */
-:root {
-  --vp-sidebar-width: 19.8vw !important; 
-}
+:root { --vp-sidebar-width: 19.8vw !important; }
 
 .VPSidebar {
   top: var(--vp-nav-height) !important;
   background: transparent !important;
-  background-color: transparent !important;
   border-right: none !important;
-  box-shadow: none !important;
   width: 19.8vw !important; 
   max-width: 19.8vw !important;
 }
@@ -124,40 +110,37 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 .VPSidebarItem .link { color: var(--text-color) !important; }
 
 /* ==========================================================================
-   5. ПРАВОЕ МЕНЮ (ЖЕСТКАЯ ФИКСАЦИЯ БЕЗ ЛИШНИХ ОТСТУПОВ)
+   5. ПРАВОЕ МЕНЮ (ФИНАЛЬНОЕ РЕШЕНИЕ: ПРОСТО ЗАКРАСИТЬ И ОБНУЛИТЬ)
    ========================================================================== */
-.VPDoc .container { 
-  display: block !important; 
-}
+.VPDoc .container { display: block !important; }
 
-/* Фиксируем позицию и размеры */
+/* Главный контейнер правой панели */
 body .VPDocAside {
-  position: fixed !important;
-  top: calc(var(--vp-nav-height) + 20px) !important; 
-  right: 20px !important; 
   width: 19.8vw !important; 
   max-width: 19.8vw !important;
-  min-width: 250px !important; /* Не даём меню сжиматься в ноль */
-  z-index: 100 !important;
+  min-width: 200px !important;
   background: transparent !important;
+  padding-left: 20px !important; /* Отступ от контента */
   border: none !important;
 }
 
-/* Стеклянная подложка с жесткими отступами */
-body .VPDocAside .aside-container {
+/* Полностью перекрываем дефолтный белый/серый фон правого меню */
+body .VPDocAside .aside-container,
+body .VPDocAside .content,
+.VPDocAsideOutline {
   background-color: var(--glass-bg) !important; 
   backdrop-filter: blur(10px) !important;
   border-radius: 12px !important;
   border: 1px solid var(--glass-border) !important;
   padding: 15px 20px !important; 
+  box-shadow: none !important;
+  margin: 0 !important;
   width: 100% !important;
   box-sizing: border-box !important;
-  margin: 0 !important; /* Обнуляем отступы */
+  display: block !important;
 }
 
-/* Обнуляем всё внутреннее пространство, чтобы ничего не вылезало */
-.VPDocAside .content,
-.VPDocAsideOutline, 
+/* Обнуляем внутренние обертки, чтобы ничего не вылезало */
 .VPDocAsideOutline .content,
 .VPDocAsideOutline .outline,
 .VPDocAsideOutline .outline-title,
@@ -165,7 +148,6 @@ body .VPDocAside .aside-container {
 .VPDocAside .aside-curtain {
   background: transparent !important;
   border: none !important;
-  box-shadow: none !important;
   margin: 0 !important;
   padding: 0 !important;
   width: 100% !important;
@@ -175,8 +157,6 @@ body .VPDocAside .aside-container {
   color: var(--text-color) !important; 
   padding: 6px 0 !important;
   display: block !important;
-  white-space: normal !important;
-  word-break: break-word !important;
 }
 
 .VPDocAside .meta { display: none !important; }
@@ -191,7 +171,6 @@ body .VPDocAside .aside-container {
   left: 50% !important;
   transform: translateX(-50%) !important; 
   margin: 40px 0 !important;
-  
   background-color: var(--vp-c-bg) !important; 
   backdrop-filter: blur(8px) !important;
   padding: 40px 30px !important; 
