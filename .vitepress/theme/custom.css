@@ -17,35 +17,30 @@ html {
 }
 
 /* 2. Обнуляем системные подложки */
-body, #app, .VPApp, .VPLayout, .Layout {
+body, #app, .VPApp, .VPLayout, .Layout, .VPContent {
   background: transparent !important;
   background-color: transparent !important;
 }
 
-/* 3. ВОЗВРАЩАЕМ СТАТЬЮ-КАРТОЧКУ: Сжимаем и центрируем контент */
-.VPContent {
-  max-width: 1300px !important; /* Оптимальная ширина для карточки преподавателя */
-  margin: 0 auto !important;
+/* 3. ВОЗВРАЩАЕМ ИДЕАЛЬНУЮ КАРТОЧКУ СТАТЬИ БЕЗ СЛОМА ШАПКИ И МЕНЮ */
+/* Мы сужаем только сам внутренний контейнер текста (тот самый, что сжался до этого удачно) */
+.VPDoc .container {
+  max-width: 1100px !important; /* Оптимальная ширина самой карточки статьи */
+  margin: 40px auto !important; /* Отступы сверху и снизу, чтобы она "парила" */
   background-color: var(--vp-c-bg) !important;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.25) !important; /* Насыщенная тень для объема */
+  padding: 40px !important; /* Внутренние отступы, чтобы текст не прижимался к краям карточки */
+  border-radius: 12px !important; /* Красивые скругленные углы */
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.25) !important; /* Объемная тень */
 }
 
 /* Тень карточки для темной темы */
-.dark .VPContent {
+.dark .VPDoc .container {
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.6) !important;
 }
 
-/* Добавляем небольшой отступ сверху, чтобы карточка красиво "парила" под шапкой сайта */
-.VPContent {
-  margin-top: 24px !important;
-  border-radius: 12px 12px 0 0 !important; /* Скругляем верхние углы у статьи */
-}
-
-/* 4. ДЕЛАЕМ БОКОВОЕ МЕНЮ СТИЛЬНЫМ И ПОЛУПРОЗРАЧНЫМ */
+/* 4. БОКОВОЕ МЕНЮ СЛЕВА: Полупрозрачное, без отступов, во всю высоту */
 .VPSidebar {
-  /* Для светлой темы: белый цвет с прозрачностью 75% */
   background-color: rgba(255, 255, 255, 0.75) !important; 
-  /* Эффект матового стекла (размытие фона за меню) */
   backdrop-filter: blur(12px) !important; 
   -webkit-backdrop-filter: blur(12px) !important;
   border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -53,7 +48,6 @@ body, #app, .VPApp, .VPLayout, .Layout {
 
 /* Полупрозрачный сайдбар для темной темы */
 .dark .VPSidebar {
-  /* Для темной темы: темно-серый цвет с прозрачностью 75% */
   background-color: rgba(30, 30, 32, 0.75) !important; 
   border-right: 1px solid rgba(0, 0, 0, 0.2) !important;
 }
