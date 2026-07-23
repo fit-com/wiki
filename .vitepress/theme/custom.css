@@ -17,7 +17,7 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   background-color: transparent !important;
 }
 
-/* 2. ШАПКА САЙТА (Плотная заливка и убирание отступов в ноль) */
+/* 2. ШАПКА САЙТА (Плотная заливка и нулевые отступы) */
 .VPNav, .VPNavBar {
   background-color: var(--vp-c-bg) !important;
   background-image: none !important;
@@ -27,7 +27,6 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   box-shadow: 0 1px 0 var(--vp-c-bg) !important;
 }
 
-/* Полный сброс паддингов шапки, чтобы прижать название к самому краю */
 .VPNavBar .container {
   max-width: 100% !important;
   width: 100% !important;
@@ -41,39 +40,40 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   background-color: transparent !important;
 }
 
-/* 3. ЛЕВОЕ МЕНЮ (Возвращаем на место по вертикали, убираем скролл) */
+/* 3. ЛЕВОЕ МЕНЮ (Растягиваем на всю ширину левой части фона) */
 .VPSidebar {
-  top: var(--vp-nav-height) !important; /* Жестко возвращаем меню ПОД шапку, чтобы оно не уезжало вверх */
+  top: var(--vp-nav-height) !important;
   background: transparent !important;
   background-color: transparent !important;
   border-right: none !important;
   box-shadow: none !important;
   padding: 0 !important;
   margin: 0 !important;
-  width: 20vw !important; /* Пропорция от экрана */
+  width: 22vw !important; /* Занимает ровно всю левую треть фона под шапкой */
   overflow: hidden !important;
 }
 
-/* Растягиваем внутренний контейнер на ВСЮ ширину левого поля */
-.VPSidebarNav, .VPSidebarNav .group {
+.VPSidebarNav {
   width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 !important;
   padding: 0 !important;
 }
 
-/* СТЕННЫЕ ПЛАШКИ (Теперь они растянуты ровно от левого до правого края меню) */
+/* СТЕКЛЯННЫЕ ПЛАШКИ (Обтекаемые, с отступами и одинаковыми паддингами) */
 .VPSidebar .group {
   background-color: rgba(30, 30, 32, 0.6) !important;
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-radius: 0 !important; /* Убираем скругления, чтобы они монолитно заполнили боковину */
-  padding: 15px 20px !important;
-  margin-top: 1px !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  
+  /* ИСПРАВЛЕНО: Вернули обтекаемость и увеличили отступы между блоками */
+  border-radius: 12px !important; 
+  margin: 0 15px 20px 15px !important; /* 20px зазор снизу между блоками */
+  
+  /* ИСПРАВЛЕНО: Сделали строго одинаковые отступы слева и справа внутри плашек */
+  padding: 15px 20px 15px 20px !important; 
 }
 
-/* УНИЧТОЖАЕМ ЛИШНИЕ СТРОКИ СНИЗУ В ПЛАШКАХ КАТЕГОРИЙ */
+/* Фикс внутренних отступов элементов, чтобы текст не сползал */
 .VPSidebar .group .title,
 .VPSidebar .group .items,
 .VPSidebarItem,
@@ -84,47 +84,43 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   padding-bottom: 0 !important;
 }
 .VPSidebarItem .link {
-  padding: 6px 0 !important; /* Минимальный аккуратный отступ только для самих ссылок */
+  padding: 6px 0 !important;
 }
 
-/* 4. ПРАВОЕ МЕНЮ (Полный разрыв и вынос наружу) */
-/* Отключаем внутреннюю сетку (grid) VitePress, которая зажимала правое меню внутри карточки */
+/* 4. ПРАВОЕ МЕНЮ НАВИГАЦИИ (Полупрозрачный стеклянный стиль) */
 .VPDoc .container {
   display: block !important;
   max-width: 100% !important;
 }
 
-/* Вырываем правый блок через фиксированное позиционирование относительно экрана */
 .VPDocAside {
   position: fixed !important;
-  top: calc(var(--vp-nav-height) + 40px) !important; /* Высота под шапкой */
-  right: 2vw !important; /* В правом поле фона отдельно от текста */
+  top: calc(var(--vp-nav-height) + 40px) !important;
+  right: 2vw !important;
   width: 18vw !important;
   display: block !important;
+  z-index: 100 !important;
 }
 
-/* Упаковываем навигацию в стеклянную плашку */
+/* ИСПРАВЛЕНО: Сделали правое меню полупрозрачным матовым стеклом */
 .VPDocAside .content {
-  background-color: rgba(30, 30, 32, 0.6) !important;
+  background-color: rgba(30, 30, 32, 0.65) !important; /* Такой же полупрозрачный тон */
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
-  padding: 20px !important;
-  border-radius: 10px !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding: 20px !important;
+  border-radius: 12px !important; /* Одинаковая обтекаемость с левыми блоками */
 }
 
-/* Прячем дефолтные линии разметки */
 .VPDocAside .aside-curtain, .VPDocAside .meta {
   display: none !important;
 }
 
-/* 5. ИДЕАЛЬНОЕ МАТЕМАТИЧЕСКОЕ ЦЕНТРИРОВАНИЕ КАРТОЧКИ СТАТЬИ */
+/* 5. ИДЕАЛЬНОЕ ЦЕНТРИРОВАНИЕ ОСНОВНОЙ КАРТОЧКИ */
 .VPDoc .content {
-  /* Карточка занимает 50% от ширины монитора */
-  width: 50vw !important; 
+  width: 50vw !important;
   max-width: 95% !important;
   
-  /* Жестко выравниваем по центру всего экрана */
   position: absolute !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
@@ -149,6 +145,10 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   .VPSidebar {
     width: 100% !important;
     top: 0 !important;
+  }
+  .VPSidebar .group {
+    margin: 10px !important;
+    border-radius: 12px !important;
   }
   .VPDocAside {
     display: none !important;
