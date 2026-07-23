@@ -17,7 +17,7 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   background-color: transparent !important;
 }
 
-/* 2. ШАПКА САЙТА (Плотная заливка и нулевые отступы) */
+/* 2. ШАПКА САЙТА */
 .VPNav, .VPNavBar {
   background-color: var(--vp-c-bg) !important;
   background-image: none !important;
@@ -40,7 +40,7 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   background-color: transparent !important;
 }
 
-/* 3. ЛЕВОЕ МЕНЮ (Растягиваем на всю ширину левой части фона) */
+/* 3. ЛЕВОЕ МЕНЮ (Сделали еще шире, чтобы закрыть боковую часть фона) */
 .VPSidebar {
   top: var(--vp-nav-height) !important;
   background: transparent !important;
@@ -49,7 +49,7 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   box-shadow: none !important;
   padding: 0 !important;
   margin: 0 !important;
-  width: 22vw !important; /* Занимает ровно всю левую треть фона под шапкой */
+  width: 24vw !important; /* Увеличено до 24% от ширины экрана */
   overflow: hidden !important;
 }
 
@@ -58,22 +58,20 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   padding: 0 !important;
 }
 
-/* СТЕКЛЯННЫЕ ПЛАШКИ (Обтекаемые, с отступами и одинаковыми паддингами) */
+/* СТЕКЛЯННЫЕ ПЛАШКИ ЛЕВОГО МЕНЮ */
 .VPSidebar .group {
   background-color: rgba(30, 30, 32, 0.6) !important;
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  
-  /* ИСПРАВЛЕНО: Вернули обтекаемость и увеличили отступы между блоками */
   border-radius: 12px !important; 
-  margin: 0 15px 20px 15px !important; /* 20px зазор снизу между блоками */
   
-  /* ИСПРАВЛЕНО: Сделали строго одинаковые отступы слева и справа внутри плашек */
-  padding: 15px 20px 15px 20px !important; 
+  /* ИСПРАВЛЕНО: Заменили margin-bottom на margin-top и выровняли боковые зазоры */
+  margin: 20px 15px 0 15px !important; 
+  padding: 15px 20px !important; 
 }
 
-/* Фикс внутренних отступов элементов, чтобы текст не сползал */
+/* Обнуляем дефолтные отступы элементов внутри плашек */
 .VPSidebar .group .title,
 .VPSidebar .group .items,
 .VPSidebarItem,
@@ -87,7 +85,7 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   padding: 6px 0 !important;
 }
 
-/* 4. ПРАВОЕ МЕНЮ НАВИГАЦИИ (Полупрозрачный стеклянный стиль) */
+/* 4. ПРАВОЕ МЕНЮ НАВИГАЦИИ (Пробиваем прозрачность через точный класс контейнера) */
 .VPDoc .container {
   display: block !important;
   max-width: 100% !important;
@@ -102,14 +100,16 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   z-index: 100 !important;
 }
 
-/* ИСПРАВЛЕНО: Сделали правое меню полупрозрачным матовым стеклом */
+/* ИСПРАВЛЕНО: Жесткий селектор, который заставит правое меню стать полупрозрачным */
+.VPDocAside .aside-container .content,
 .VPDocAside .content {
-  background-color: rgba(30, 30, 32, 0.65) !important; /* Такой же полупрозрачный тон */
+  background: rgba(30, 30, 32, 0.6) !important; /* Полупрозрачный стеклянный фон */
+  background-color: rgba(30, 30, 32, 0.6) !important;
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   padding: 20px !important;
-  border-radius: 12px !important; /* Одинаковая обтекаемость с левыми блоками */
+  border-radius: 12px !important;
 }
 
 .VPDocAside .aside-curtain, .VPDocAside .meta {
@@ -118,7 +118,7 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 
 /* 5. ИДЕАЛЬНОЕ ЦЕНТРИРОВАНИЕ ОСНОВНОЙ КАРТОЧКИ */
 .VPDoc .content {
-  width: 50vw !important;
+  width: 48vw !important; /* Немного ужали, чтобы плашки по бокам не наезжали на текст */
   max-width: 95% !important;
   
   position: absolute !important;
@@ -148,7 +148,6 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   }
   .VPSidebar .group {
     margin: 10px !important;
-    border-radius: 12px !important;
   }
   .VPDocAside {
     display: none !important;
