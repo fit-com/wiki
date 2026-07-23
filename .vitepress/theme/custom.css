@@ -40,10 +40,9 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   background-color: transparent !important;
 }
 
-/* 3. ЛЕВОЕ МЕНЮ (ИСПРАВЛЕНО: Разорвали ограничение ширины и выровняли отступы) */
-/* Взламываем внутреннюю переменную ширины сайдбара VitePress */
+/* 3. ЛЕВОЕ МЕНЮ (ИСПРАВЛЕНО: Сделали немного уже) */
 :root {
-  --vp-sidebar-width: 25vw !important; 
+  --vp-sidebar-width: 20vw !important; /* Уменьшили ширину левой зоны до 20% экрана */
 }
 
 .VPSidebar, .VPLayout .VPSidebar, html body .VPSidebar {
@@ -54,10 +53,9 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   box-shadow: none !important;
   padding: 0 !important;
   margin: 0 !important;
-  /* Жестко задаем новую широкую пропорцию */
-  width: 25vw !important; 
-  max-width: 25vw !important;
-  min-width: 25vw !important;
+  width: 20vw !important; 
+  max-width: 20vw !important;
+  min-width: 20vw !important;
   overflow-y: hidden !important;
 }
 
@@ -74,13 +72,11 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   -webkit-backdrop-filter: blur(10px) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 12px !important; 
-  
-  /* ИСПРАВЛЕНО: Сделали абсолютно одинаковые отступы СЛЕВА, СПРАВА и СВЕРХУ (по 20px) */
-  margin: 20px 20px 0 20px !important; 
+  margin: 20px 20px 0 20px !important; /* Ровные отступы по 20px */
   padding: 15px 20px !important; 
 }
 
-/* Уничтожение скрытых пустых строк */
+/* Уничтожение пустых строк */
 .VPSidebar .group .title,
 .VPSidebar .group .items,
 .VPSidebarItem,
@@ -100,7 +96,7 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   padding: 6px 0 !important;
 }
 
-/* 4. ПРАВОЕ МЕНЮ НАВИГАЦИИ (ИСПРАВЛЕНО: Полная пересборка геометрии виджета) */
+/* 4. ПРАВОЕ МЕНЮ НАВИГАЦИИ (ИСПРАВЛЕНО: Сделали уже, выровняли внешние отступы) */
 .VPDoc .container {
   display: block !important;
   max-width: 100% !important;
@@ -108,20 +104,22 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 
 .VPDocAside, .VPLayout .VPDocAside, html body .VPDocAside {
   position: fixed !important;
-  top: calc(var(--vp-nav-height) + 20px) !important; /* Выровняли уровень верха с левым меню */
-  right: 20px !important; /* Одинаковый аккуратный отступ от правого края экрана */
+  top: calc(var(--vp-nav-height) + 20px) !important; /* Уровень верха совпадает с левым меню */
   
-  /* ИСПРАВЛЕНО: Сделали правое меню полноценным широким блоком */
-  width: 21vw !important; 
-  max-width: 21vw !important;
-  min-width: 21vw !important;
+  /* ИСПРАВЛЕНО: Отступ справа теперь ровно 20px, как и слева у левого меню */
+  right: 20px !important; 
+  
+  /* ИСПРАВЛЕНО: Сделали правое меню уже, пропорционально левому сайдбару */
+  width: 20vw !important; 
+  max-width: 20vw !important;
+  min-width: 20vw !important;
   display: block !important;
   z-index: 100 !important;
   background: transparent !important;
   background-color: transparent !important;
 }
 
-/* Стеклянный контейнер правого меню */
+/* Контейнер правого меню */
 .VPDocAside .aside-container,
 .VPDocAside .aside-container .content,
 .VPDocAside .content,
@@ -132,26 +130,24 @@ html body .VPDocAside .content {
   -webkit-backdrop-filter: blur(10px) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 12px !important;
-  
-  /* Внутренние паддинги и сброс высоты, чтобы плашка обтягивала только текст */
-  padding: 20px !important; 
+  padding: 15px 20px !important; /* Внутренние паддинги совпадают с левым меню */
   height: auto !important;
   min-height: auto !important;
 }
 
-/* Исправляем перенос и отображение ссылок в правом меню */
 .VPDocAside .outline-link {
   padding: 6px 0 !important;
-  white-space: normal !important; /* Разрешаем тексту переноситься красиво, если строка длинная */
+  white-space: normal !important;
 }
 
 .VPDocAside .aside-curtain, .VPDocAside .meta {
   display: none !important;
 }
 
-/* 5. ИДЕАЛЬНОЕ ЦЕНТРИРОВАНИЕ ОСНОВНОЙ КАРТОЧКИ */
+/* 5. ИДЕАЛЬНОЕ ЦЕНТРИРОВАНИЕ ОСНОВНОЙ КАРТОЧКИ (ИСПРАВЛЕНО: Сделали шире) */
 .VPDoc .content {
-  width: 48vw !important; /* Слегка скорректировали баланс под новые широкие боковины */
+  /* ИСПРАВЛЕНО: Расширили карточку статьи до 54% ширины экрана за счет сужения боковин */
+  width: 54vw !important; 
   max-width: 95% !important;
   
   position: absolute !important;
