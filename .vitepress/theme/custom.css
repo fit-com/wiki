@@ -7,9 +7,7 @@
   --glass-bg: rgba(255, 255, 255, 0.65); 
   --glass-border: rgba(0, 0, 0, 0.08); 
   --text-color: #2c2c2e; 
-  
-  /* ВЗЛАМЫВАЕМ СИСТЕМНУЮ ПЕРЕМЕННУЮ ЦВЕТА ШАПКИ ФРЕЙМВОРКА */
-  --vp-nav-bg: #1e1e20 !important;
+  --vp-nav-bg: #1e1e20 !important; /* Родной цвет шапки */
 }
 
 .dark {
@@ -37,28 +35,19 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 }
 
 /* ==========================================================================
-   3. ЖЕЛЕЗОБЕТОННАЯ МОНОЛИТНАЯ ШАПКА (Уничтожение полосы и наложений в ноль)
+   3. МОНОЛИТНАЯ ШАПКА И СТРОКА ПОИСКА НА ВСЮ ШИРИНУ КАРТОЧКИ
    ========================================================================== */
-/* Хак: выбираем вообще ВСЕ элементы внутри блока навигации и принудительно стираем им бордюры и тени */
-.VPNav, .VPNav *, .VPNavBar, .VPNavBar * {
+/* Заливаем абсолютно все слои шапки в один монолитный цвет */
+.VPNav, .VPNavBar, .VPNavBar .wrapper, .VPNavBar .container, .VPNavBar .content, .VPNavBar .content-body {
+  background: #1e1e20 !important;
+  background-color: #1e1e20 !important;
   border: none !important;
   border-bottom: none !important;
   box-shadow: none !important;
+  margin: 0 !important;
 }
 
-/* Насильно красим абсолютно всю подложку верха в чистый единый цвет #1e1e20 */
-#app .VPNav, 
-#app .VPNavBar, 
-#app .VPNavBar .wrapper, 
-#app .VPNavBar .content, 
-#app .VPNavBar .content-body {
-  background: #1e1e20 !important;
-  background-color: #1e1e20 !important;
-  box-shadow: none !important;
-  border: none !important;
-}
-
-/* Белый цвет для текстов и иконок в шапке */
+/* Белый цвет элементов для перманентно темной шапки */
 .VPNavBar .title, .VPNavBar .link, .VPNavBarItem, .VPNavBarHamburger, .VPNavBarMenuLink, .VPNavBar .text, .VPNavBar .icon {
   color: #ffffff !important;
   fill: #ffffff !important;
@@ -71,8 +60,7 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 }
 .VPNavBar .title { padding-left: 12px !important; }
 
-/* 🔍 УНИЧТОЖЕНИЕ СЕРЫХ ПОЛОС И УДЛИНЕНИЕ ПОИСКА (Строго 400px) */
-/* Обнуляем фоны у всех промежуточных контейнеров строки поиска */
+/* Полностью очищаем сосиску-подложку вокруг поиска */
 .VPNavBarSearch, .VPNavBarSearch .search-box, .VPSearchButton, .DocSearch-Button-Container {
   background: transparent !important;
   background-color: transparent !important;
@@ -80,23 +68,24 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   box-shadow: none !important;
 }
 
-/* Стилизуем непосредственно саму кнопку-инпут Search */
+/* ИСПРАВЛЕНО: Строка поиска теперь равна ширине центральной карточки (calc(100vw - 39.8vw - 80px)) */
 .DocSearch-Button {
-  background: #2c2c2e !important; 
   background-color: #2c2c2e !important; 
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 8px !important;
   padding: 0 16px !important;
   height: 38px !important;
+  box-shadow: none !important;
   
-  /* ЖЕСТКО: Вытягиваем поиск в длину на 400 пикселей */
-  width: 400px !important; 
-  max-width: 400px !important;
-  min-width: 400px !important;
+  /* Магия ширины: вычисляем ровно ту же ширину, что у контента */
+  width: calc(100vw - (19.9vw * 2) - 80px) !important;
+  max-width: calc(100vw - (19.9vw * 2) - 80px) !important;
+  min-width: calc(100vw - (19.9vw * 2) - 80px) !important;
 }
 
-.DocSearch-Button .DocSearch-Button-Placeholder, .DocSearch-Button .DocSearch-Button-Keys, .DocSearch-Button .DocSearch-Button-Key, .DocSearch-Button-Container .DocSearch-Search-Icon, .DocSearch-Button-Container svg {
-  color: rgba(255, 255, 255, 0.8) !important; fill: rgba(255, 255, 255, 0.8) !important;
+/* Возвращаем оригинальные цвета элементам поиска безJS-костылей */
+.DocSearch-Button * {
+  color: inherit;
 }
 
 /* ==========================================================================
@@ -107,7 +96,8 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 }
 
 .VPSidebar, .VPLayout .VPSidebar, html body .VPSidebar {
-  top: var(--vp-nav-height) !important;
+  /* ИСПРАВЛЕНО: Жёстко прижали к шапке без микро-зазоров */
+  top: var(--vp-nav-height) !important; 
   background: transparent !important;
   background-color: transparent !important;
   border-right: none !important;
@@ -134,6 +124,7 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   padding: 15px 20px !important; 
 }
 
+/* Чистка пустых строк */
 .VPSidebar .group .title, .VPSidebar .group .items, .VPSidebarItem, .VPSidebarNav .group, .VPSidebarNav .group div, .VPSidebarNav .group nav {
   margin-bottom: 0 !important; padding-bottom: 0 !important; gap: 0 !important;
 }
@@ -179,15 +170,23 @@ body .VPDocAside .aside-container, body .VPDocAside .content, html body .VPDocAs
 .VPDocAside .aside-curtain, .VPDocAside .meta { display: none !important; }
 
 /* ==========================================================================
-   6. МАТЕМАТИЧЕСКОЕ ЦЕНТРИРОВАНИЕ ОСНОВНОЙ КАРТОЧКИ
+   6. ЖЕСТКОЕ МАТЕМАТИЧЕСКОЕ ЦЕНТРИРОВАНИЕ ОСНОВНОЙ КАРТОЧКИ
    ========================================================================== */
+.VPContent {
+  /* ИСПРАВЛЕНО: схлопываем системный padding-top, чтобы уничтожить щель под шапкой */
+  padding-top: 0 !important; 
+}
+
 .VPDoc .content {
   width: calc(100vw - (19.9vw * 2) - 80px) !important; 
   max-width: 95% !important;
   position: absolute !important;
+  
+  /* ИСПРАВЛЕНО: Привязали карточку ровно на 40px ниже шапки, убрав зависимость от системного сдвига */
+  top: calc(var(--vp-nav-height) + 40px) !important; 
   left: 50% !important;
   transform: translateX(-50%) !important; 
-  margin: 40px 0 !important;
+  margin: 0 !important;
   
   background-color: var(--vp-c-bg) !important; 
   backdrop-filter: blur(8px) !important;
@@ -202,7 +201,7 @@ body .VPDocAside .aside-container, body .VPDocAside .content, html body .VPDocAs
    7. АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ
    ========================================================================== */
 @media (max-width: 960px) {
-  .VPDoc .content { width: 90vw !important; position: relative !important; left: 0 !important; transform: none !important; margin: 20px auto !important; padding: 20px !important; }
+  .VPDoc .content { width: 90vw !important; position: relative !important; left: 0 !important; top: 0 !important; transform: none !important; margin: 20px auto !important; padding: 20px !important; }
   .VPSidebar { width: 100% !important; max-width: 100% !important; top: 0 !important; }
   .VPSidebar .group { margin: 10px !important; width: calc(100% - 20px) !important; }
   .VPDocAside { display: none !important; }
