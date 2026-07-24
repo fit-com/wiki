@@ -83,7 +83,6 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   width: 100% !important;
   padding: 0 !important;
 }
-.VPNavBar .title { padding-left: 12px !important; }
 
 /* 🔍 НАСТРОЙКА КНОПКИ ПОИСКА (ИСПРАВЛЕНО: Стерли серую плашку вокруг) */
 .VPNavBarSearch, 
@@ -111,36 +110,46 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 }
 
 /* ================================================================
-   ИСПРАВЛЕНИЕ ЛОГОТИПА, ПОИСКА И РАСПОЛОЖЕНИЯ В ШАПКЕ
+   НОВАЯ ЛОГИКА РАЗБИВКИ ШАПКИ НА 3 ПРОПОРЦИОНАЛЬНЫЕ ЧАСТИ
    ================================================================ */
-/* 1. Сдвигаем логотип ровно над левым меню (с учетом отступа в 20px) */
-.VPNavBarTitle {
-  padding-left: 20px !important;
-}
-
-/* 2. Переключаем контейнер на space-between */
+/* Делаем контейнер гибким, растягиваем на 100% */
 .VPNavBar .content-body {
   display: flex !important;
   align-items: center !important;
-  justify-content: space-between !important; /* Разносит логотип и иконку по краям */
   width: 100% !important;
-  padding: 0 20px !important; /* Отступы от краев экрана */
+  padding: 0 20px !important; /* Небольшие отступы от краев экрана */
 }
 
-/* 3. Поиск занимает всё свободное место между логотипом и иконкой */
-.VPNavBarSearch {
-  flex: 1 1 auto !important; /* Заставляет поиск растянуться на всё доступное место */
+/* 1. ЛЕВАЯ ЧАСТЬ: 20% - для логотипа, центрируем внутри */
+.VPNavBarTitle {
+  flex: 0 0 20% !important; /* Жестко 20% ширины */
   display: flex !important;
-  justify-content: center !important;
-  margin: 0 20px !important; /* Небольшой отступ от логотипа и иконки */
-  min-width: 0 !important;
+  align-items: center !important;
+  justify-content: flex-start !important; /* Логотип внутри своей части у левого края */
+  padding-left: 0 !important; /* Убираем старые отступы */
 }
 
-/* 4. Задаем кнопке поиска ширину, равную ширине статьи */
+/* 2. СРЕДНЯЯ ЧАСТЬ: 60% - для поиска, центрируем внутри */
+.VPNavBarSearch {
+  flex: 0 0 60% !important; /* Жестко 60% ширины */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important; /* Поиск по центру своей части */
+}
+
+/* Растягиваем кнопку на 100% ширины средней части (чтобы края совпадали со статьей) */
 .DocSearch-Button {
-  width: calc(100vw - (20vw * 2) - 80px) !important; /* Та же формула, что и у статьи */
-  max-width: 95% !important;
+  width: 100% !important;
+  max-width: 100% !important;
   box-sizing: border-box !important;
+}
+
+/* 3. ПРАВАЯ ЧАСТЬ: 20% - для иконки темы, центрируем внутри */
+.VPNavBarAppearance {
+  flex: 0 0 20% !important; /* Жестко 20% ширины */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important; /* Иконка внутри своей части у правого края */
 }
 
 /* ==========================================================================
