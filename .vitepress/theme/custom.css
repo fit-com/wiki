@@ -232,16 +232,20 @@ html body .VPDocAside .content {
 .VPDocAside .aside-curtain, .VPDocAside .meta { display: none !important; }
 
 /* ==========================================================================
-   6. ЖЕСТКОЕ МАТЕМАТИЧЕСКОЕ ЦЕНТРИРОВАНИЕ ОСНОВНОЙ КАРТОЧКИ (Стеклянная подложка)
+   6. ЖЕСТКОЕ МАТЕМАТИЧЕСКОЕ ЦЕНТРИРОВАНИЕ ОСНОВНОЙ КАРТОЧКИ (Убрали засвет, выровняли по верху)
    ========================================================================== */
 .VPDoc .content {
   /* Пересчитано под 20vw по бокам */
   width: calc(100vw - (20vw * 2) - 80px) !important; 
   max-width: 95% !important;
-  position: absolute !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important; 
-  margin: 40px 0 !important;
+  
+  /* Убрали position: absolute и сдвиг, чтобы убрать засвет и прижать к верху */
+  position: relative !important;
+  left: auto !important;
+  transform: none !important;
+  
+  /* margin: 0 auto — центрирует по горизонтали. 1px сверху — чтобы компенсировать html margin-top: -1px */
+  margin: 1px auto 0 auto !important;
   
   /* Подключаем прозрачный фон и размытие для эффекта матового стекла у самой статьи */
   background-color: var(--vp-c-bg) !important; 
