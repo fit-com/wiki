@@ -11,26 +11,24 @@ IQ: ниже 0
 
 <Mermaid>
 flowchart TD
-    %% Стили для узлов
     classDef male fill:#21254a,stroke:#333,stroke-width:2px;
     classDef female fill:#4a1e1b,stroke:#333,stroke-width:2px;
     classDef family fill:#777,stroke:#333,stroke-width:1px;
 
-    %% Описание участников
-    FGF[<img src='https://placehold.co' width='50'/><br>Имя\nФамилия]:::male
-    FGM[<img src='https://placehold.co' width='50'/><br>Имя\nФамилия]:::female
-    MGF[<img src='https://placehold.co' width='50'/><br>Имя\nФамилия]:::male
-    MGM[<img src='https://placehold.co' width='50'/><br>Имя\nФамилия]:::female
+    FGF["<div><img src='https://placehold.co' width='50'/><br>Имя Фамилия</div>"]:::male
+    FGM["<div><img src='https://placehold.co' width='50'/><br>Имя Фамилия</div>"]:::female
+    MGF["<div><img src='https://placehold.co' width='50'/><br>Имя Фамилия</div>"]:::male
+    MGM["<div><img src='https://placehold.co' width='50'/><br>Имя Фамилия</div>"]:::female
 
-    F[<img src='https://placehold.co' width='50'/><br>Имя\nФамилия]:::male
-    M[<img src='https://placehold.co' width='50'/><br>Имя\nФамилия]:::female
+    F["<div><img src='https://placehold.co' width='50'/><br>Имя Фамилия</div>"]:::male
+    M["<div><img src='https://placehold.co' width='50'/><br>Имя Фамилия</div>"]:::female
 
-    CH1[<img src='https://placehold.co' width='50'/><br>Имя\nФамилия]:::male
-    CH2[<img src='https://placehold.co' width='50'/><br>Имя\nФамилия]:::female
+    CH1["<div><img src='https://placehold.co' width='50'/><br>Имя Фамилия</div>"]:::male
+    Ch2["<div><img src='https://placehold.co' width='50'/><br>Имя Фамилия</div>"]:::female
 
     FFamily(( )):::family
     MFamily(( )):::family
-    Family(( ))
+    Family(( )):::family
 
     FGF --- FFamily
     FGM --- FFamily
@@ -42,7 +40,6 @@ flowchart TD
 
     F --- Family
     M --- Family
-    
     Family --> CH1
-    Family --> CH2
+    Family --> Ch2
 </Mermaid>
