@@ -266,3 +266,21 @@ html body .VPDocAside .content {
   .VPSidebar .group { margin: 10px !important; width: calc(100% - 20px) !important; }
   .VPDocAside { display: none !important; }
 }
+
+/* 1. Убираем вертикальный отступ сверху у статьи (выравниваем с меню) */
+.VPDoc .content {
+  margin-top: 0 !important;
+}
+
+/* 2. Убираем засвет снизу (обнуляем дефолтный нижний отступ контейнера) */
+.VPDoc .container {
+  padding-bottom: 0 !important;
+}
+
+/* 3. Кнопка темы: ровно 20px от правого края */
+.VPNavBarAppearance {
+  position: absolute !important;
+  right: 20px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
