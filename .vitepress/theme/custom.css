@@ -111,7 +111,7 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 }
 
 /* ================================================================
-   ДОБАВЛЕНИЕ 5 СТРОК (Ничего не удалено, только добавлено)
+   ТВОИ ПРАВКИ (35px и flex-раскладка)
    ================================================================ */
 .VPNavBar .content-body {
   display: flex !important;
@@ -120,13 +120,25 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   gap: 20px !important;
 }
 .VPNavBarTitle {
-  padding-left: 35px !important; /* ИЗМЕНЕНО С 20 НА 35 */
+  padding-left: 35px !important; /* Твоя просьба */
 }
 .VPNavBarSearch {
   width: calc(100vw - (20vw * 2) - 80px) !important;
 }
 .DocSearch-Button {
   width: 100% !important;
+}
+
+/* ================================================================
+   ФИНАЛЬНАЯ ПРАВКА ПОИСКА (Убираем вшитый padding и центрируем)
+   ================================================================ */
+.VPNavBarSearch {
+  padding-left: 0 !important;
+}
+.DocSearch-Button {
+  width: calc(100vw - (20vw * 2) - 80px) !important;
+  max-width: 95% !important;
+  margin: 0 auto !important;
 }
 
 /* ==========================================================================
