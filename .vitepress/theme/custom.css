@@ -38,9 +38,9 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 }
 
 /* ==========================================================================
-   3. ВСЕГДА ЧЕРНАЯ ШАПКА (ИСПРАВЛЕНО: Добиваем белую полосу и возвращаем инпут поиска)
+   3. ВСЕГДА ЧЕРНАЯ ШАПКА (ДЕЛИМ ВСЮ ШАПКУ НА 3 ЧАСТИ)
    ========================================================================== */
-/* Жестко зачищаем ВСЕ возможные бордюры и тени, которые плодили белую полосу */
+/* Жестко зачищаем ВСЕ возможные бордюры и тени */
 .VPNav, 
 .VPNavBar, 
 .VPNavBar .wrapper,
@@ -52,7 +52,6 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   background-image: none !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  /* ИСПРАВЛЕНО: Тотальное уничтожение белой линии-тени на стыке */
   border: none !important;
   border-bottom: none !important;
   box-shadow: none !important; 
@@ -78,24 +77,56 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   fill: #ffffff !important;
 }
 
+/* ================================================================
+   НОВАЯ ЛОГИКА РАЗБИВКИ ВСЕЙ ШАПКИ НА 3 ПРОПОРЦИОНАЛЬНЫЕ ЧАСТИ
+   ================================================================ */
 .VPNavBar .container {
   max-width: 100% !important;
   width: 100% !important;
   padding: 0 !important;
+  display: flex !important; /* Превращаем всю шапку в flex-контейнер */
+  align-items: center !important;
 }
 
-/* 🔍 НАСТРОЙКА КНОПКИ ПОИСКА (ИСПРАВЛЕНО: Стерли серую плашку вокруг) */
+/* ЛЕВАЯ ЧАСТЬ: 20% - иконка + название */
+.VPNavBar .title {
+  flex: 0 0 20% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  padding-left: 20px !important; /* Отступ от края, чтобы логотип стоял ровно над меню */
+}
+
+/* ПРАВАЯ ЧАСТЬ (содержит поиск и переключатель): 80% */
+.VPNavBar .content-body {
+  flex: 0 0 80% !important;
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  justify-content: flex-start !important;
+  padding-right: 20px !important; /* Отступ от правого края */
+  gap: 10px !important; /* Отступ между поиском и переключателем */
+}
+
+/* 🔍 НАСТРОЙКА КНОПКИ ПОИСКА */
 .VPNavBarSearch, 
 .VPNavBarSearch .search-box, 
 .VPNavBarSearch .VPSearchButton,
 .DocSearch-Button-Container {
-  background: transparent !important; /* Убираем внешнюю сосиску-подложку */
+  background: transparent !important;
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
 }
 
-/* Возвращаем красивую, залитую серым цветом саму кнопку Search */
+/* СРЕДНЯЯ ЧАСТЬ: Поиск занимает 60% от всей ширины шапки (он внутри правой части, но мы растянем) */
+.VPNavBarSearch {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  justify-content: center !important;
+  min-width: 0 !important;
+}
+
 .DocSearch-Button {
   background-color: #2c2c2e !important; 
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -103,53 +134,16 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   padding: 0 12px !important;
   height: 36px !important;
   box-shadow: none !important;
+  width: 100% !important; /* Растягиваем кнопку на всю ширину поиска */
 }
 
 .DocSearch-Button .DocSearch-Button-Placeholder, .DocSearch-Button .DocSearch-Button-Keys, .DocSearch-Button .DocSearch-Button-Key, .DocSearch-Button-Container .DocSearch-Search-Icon, .DocSearch-Button-Container svg {
   color: rgba(255, 255, 255, 0.8) !important; fill: rgba(255, 255, 255, 0.8) !important;
 }
 
-/* ================================================================
-   НОВАЯ ЛОГИКА РАЗБИВКИ ШАПКИ НА 3 ПРОПОРЦИОНАЛЬНЫЕ ЧАСТИ
-   ================================================================ */
-/* Делаем контейнер гибким, растягиваем на 100% */
-.VPNavBar .content-body {
-  display: flex !important;
-  align-items: center !important;
-  width: 100% !important;
-  padding: 0 20px !important; /* Небольшие отступы от краев экрана */
-}
-
-/* 1. ЛЕВАЯ ЧАСТЬ: 20% - для логотипа, центрируем внутри */
-.VPNavBarTitle {
-  flex: 0 0 20% !important; /* Жестко 20% ширины */
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-start !important; /* Логотип внутри своей части у левого края */
-  padding-left: 0 !important; /* Убираем старые отступы */
-}
-
-/* 2. СРЕДНЯЯ ЧАСТЬ: 60% - для поиска, центрируем внутри */
-.VPNavBarSearch {
-  flex: 0 0 60% !important; /* Жестко 60% ширины */
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important; /* Поиск по центру своей части */
-}
-
-/* Растягиваем кнопку на 100% ширины средней части (чтобы края совпадали со статьей) */
-.DocSearch-Button {
-  width: 100% !important;
-  max-width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-/* 3. ПРАВАЯ ЧАСТЬ: 20% - для иконки темы, центрируем внутри */
+/* Переключатель темы - просто справа */
 .VPNavBarAppearance {
-  flex: 0 0 20% !important; /* Жестко 20% ширины */
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-end !important; /* Иконка внутри своей части у правого края */
+  flex: 0 0 auto !important;
 }
 
 /* ==========================================================================
