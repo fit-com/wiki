@@ -9,7 +9,7 @@
 IQ: ниже 0  
 Образование: азбука  
 
-```mermaid
+<pre class="mermaid">
 flowchart TD
     %% Стили для узлов
     classDef male fill:#21254a,stroke:#333,stroke-width:2px;
@@ -46,3 +46,4 @@ flowchart TD
     Family --> CH1
     Family --> CH2
 ```
+</pre>
