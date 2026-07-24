@@ -120,7 +120,7 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   gap: 20px !important;
 }
 .VPNavBarTitle {
-  padding-left: 20px !important;
+  padding-left: 35px !important; /* ИЗМЕНЕНО С 20 НА 35 */
 }
 .VPNavBarSearch {
   width: calc(100vw - (20vw * 2) - 80px) !important;
