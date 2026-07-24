@@ -145,9 +145,6 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 /* ==========================================================================
    4. ЛЕВОЕ МЕНЮ (ИСПРАВЛЕНО: Процент изменен на 20vw)
    ========================================================================== */
-:root {
-  --vp-sidebar-width: 20vw !important; 
-}
 
 .VPSidebar, .VPLayout .VPSidebar, html body .VPSidebar {
   top: var(--vp-nav-height) !important;
