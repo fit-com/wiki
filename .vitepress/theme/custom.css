@@ -38,7 +38,7 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 }
 
 /* ==========================================================================
-   3. ВСЕГДА ЧЕРНАЯ ШАПКА (ИСПРАВЛЕНО: Добиваем белую полосу и возвращаем инпут поиска)
+   3. ВСЕГДА ЧЕРНАЯ ШАПКА (ИСПРАВЛЕНО: Добиваем белую полосу)
    ========================================================================== */
 /* Жестко зачищаем ВСЕ возможные бордюры и тени, которые плодили белую полосу */
 .VPNav, 
@@ -52,7 +52,6 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   background-image: none !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  /* ИСПРАВЛЕНО: Тотальное уничтожение белой линии-тени на стыке */
   border: none !important;
   border-bottom: none !important;
   box-shadow: none !important; 
@@ -85,12 +84,12 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 }
 .VPNavBar .title { padding-left: 12px !important; }
 
-/* 🔍 НАСТРОЙКА КНОПКИ ПОИСКА (ИСПРАВЛЕНО: Стерли серую плашку вокруг) */
+/* 🔍 НАСТРОЙКА КНОПКИ ПОИСКА */
 .VPNavBarSearch, 
 .VPNavBarSearch .search-box, 
 .VPNavBarSearch .VPSearchButton,
 .DocSearch-Button-Container {
-  background: transparent !important; /* Убираем внешнюю сосиску-подложку */
+  background: transparent !important; 
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
@@ -111,41 +110,39 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 }
 
 /* ================================================================
-   ТВОИ ПРАВКИ (35px и flex-раскладка)
+   ПРАВКИ ЛОГОТИПА, ПОИСКА И КНОПКИ ТЕМЫ
    ================================================================ */
 .VPNavBar .content-body {
   display: flex !important;
   align-items: center !important;
   width: 100% !important;
   gap: 20px !important;
+  position: relative !important; /* Чтобы позиционировать кнопку абсолютно */
 }
 .VPNavBarTitle {
-  padding-left: 35px !important; /* Твоя просьба */
+  padding-left: 35px !important;
 }
 .VPNavBarSearch {
   width: calc(100vw - (20vw * 2) - 80px) !important;
-}
-.DocSearch-Button {
-  width: 100% !important;
-}
-
-/* ================================================================
-   ФИНАЛЬНАЯ ПРАВКА ПОИСКА (Убираем вшитый padding, меняем 80 на 38)
-   ================================================================ */
-.VPNavBarSearch {
   padding-left: 0 !important;
 }
 .DocSearch-Button {
-  /* ЗАМЕНИЛИ 80 НА 38 ПО ТВОЕЙ ПРОСЬБЕ */
   width: calc(100vw - (20vw * 2) - 38px) !important;
   max-width: 95% !important;
   margin: 0 auto !important;
 }
 
-/* ==========================================================================
-   4. ЛЕВОЕ МЕНЮ (ИСПРАВЛЕНО: Процент изменен на 20vw)
-   ========================================================================== */
+/* ПЕРЕНОС КНОПКИ ТЕМЫ: жёстко 20px от правого края */
+.VPNavBarAppearance {
+  position: absolute !important;
+  right: 20px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
 
+/* ==========================================================================
+   4. ЛЕВОЕ МЕНЮ (20vw)
+   ========================================================================== */
 .VPSidebar, .VPLayout .VPSidebar, html body .VPSidebar {
   top: var(--vp-nav-height) !important;
   background: transparent !important;
@@ -175,7 +172,6 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   padding: 15px 20px !important; 
 }
 
-/* Чистка пустых строк */
 .VPSidebar .group .title, .VPSidebar .group .items, .VPSidebarItem, .VPSidebarNav .group, .VPSidebarNav .group div, .VPSidebarNav .group nav {
   margin-bottom: 0 !important; padding-bottom: 0 !important; gap: 0 !important;
 }
@@ -183,7 +179,7 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 .VPSidebarItem .link { padding: 6px 0 !important; color: var(--text-color) !important; }
 
 /* ==========================================================================
-   5. ПРАВОЕ МЕНЮ (ИСПРАВЛЕНО: Процент 20vw и идеальная симметрия)
+   5. ПРАВОЕ МЕНЮ (20vw)
    ========================================================================== */
 .VPDoc .container {
   display: block !important;
@@ -232,22 +228,19 @@ html body .VPDocAside .content {
 .VPDocAside .aside-curtain, .VPDocAside .meta { display: none !important; }
 
 /* ==========================================================================
-   6. ЖЕСТКОЕ МАТЕМАТИЧЕСКОЕ ЦЕНТРИРОВАНИЕ ОСНОВНОЙ КАРТОЧКИ (Возвращаем absolute + убираем засвет)
+   6. ЦЕНТРАЛЬНАЯ КАРТОЧКА (Убираем нижний засвет, выравниваем по верху)
    ========================================================================== */
 .VPDoc .content {
-  /* Пересчитано под 20vw по бокам */
   width: calc(100vw - (20vw * 2) - 80px) !important; 
   max-width: 95% !important;
-  
-  /* Возвращаем absolute, чтобы центрироваться через translate */
   position: absolute !important;
   left: 50% !important;
   transform: translateX(-50%) !important; 
   
-  /* margin: 0 сверху (на уровне меню), и margin-bottom, чтобы не было засвета */
-  margin: 0 0 40px 0 !important;
+  /* Убираем верхний отступ, чтобы совпадало с меню */
+  margin-top: 0 !important;
+  margin-bottom: 40px !important; /* Отступ снизу, чтобы не упираться вниз */
   
-  /* Подключаем прозрачный фон и размытие для эффекта матового стекла у самой статьи */
   background-color: var(--vp-c-bg) !important; 
   backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
@@ -255,6 +248,13 @@ html body .VPDocAside .content {
   padding: 40px 30px !important; 
   border-radius: 12px !important;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ================================================================
+   УБИРАЕМ ЗАСВЕТ СНИЗУ: обнуляем padding у контейнера статьи
+   ================================================================ */
+.VPDoc .container {
+  padding-bottom: 0 !important;
 }
 
 /* ==========================================================================
