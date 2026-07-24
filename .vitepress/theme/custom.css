@@ -130,13 +130,14 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 }
 
 /* ================================================================
-   ФИНАЛЬНАЯ ПРАВКА ПОИСКА (Убираем вшитый padding и центрируем)
+   ФИНАЛЬНАЯ ПРАВКА ПОИСКА (Убираем вшитый padding, меняем 80 на 38)
    ================================================================ */
 .VPNavBarSearch {
   padding-left: 0 !important;
 }
 .DocSearch-Button {
-  width: calc(100vw - (20vw * 2) - 80px) !important;
+  /* ЗАМЕНИЛИ 80 НА 38 ПО ТВОЕЙ ПРОСЬБЕ */
+  width: calc(100vw - (20vw * 2) - 38px) !important;
   max-width: 95% !important;
   margin: 0 auto !important;
 }
