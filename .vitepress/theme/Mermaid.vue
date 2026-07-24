@@ -19,7 +19,7 @@ onMounted(() => {
       
       await nextTick()
       if (mermaidRef.value) {
-        const rawCode = mermaidRef.value.innerText.trim()
+        const rawCode = mermaidRef.value.textContent.trim()
         mermaidRef.value.innerHTML = ''
         const { svg } = await mermaid.render('mermaid-' + Math.random().toString(36).substr(2, 9), rawCode)
         mermaidRef.value.innerHTML = svg
