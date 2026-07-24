@@ -9,37 +9,4 @@
 IQ: ниже 0  
 Образование: азбука  
 
-<Mermaid>
-flowchart TD
-    classDef male fill:#21254a,stroke:#333,stroke-width:2px;
-    classDef female fill:#4a1e1b,stroke:#333,stroke-width:2px;
-    classDef family fill:#777,stroke:#333,stroke-width:1px;
-
-    FGF["<div><img src='https://placehold.co' width='50'/><br>Имя Фамилия</div>"]:::male
-    FGM["<div><img src='https://placehold.co' width='50'/><br>Имя Фамилия</div>"]:::female
-    MGF["<div><img src='https://placehold.co' width='50'/><br>Имя Фамилия</div>"]:::male
-    MGM["<div><img src='https://placehold.co' width='50'/><br>Имя Фамилия</div>"]:::female
-
-    F["<div><img src='https://placehold.co' width='50'/><br>Имя Фамилия</div>"]:::male
-    M["<div><img src='https://placehold.co' width='50'/><br>Имя Фамилия</div>"]:::female
-
-    CH1["<div><img src='https://placehold.co' width='50'/><br>Имя Фамилия</div>"]:::male
-    Ch2["<div><img src='https://placehold.co' width='50'/><br>Имя Фамилия</div>"]:::female
-
-    FFamily(( )):::family
-    MFamily(( )):::family
-    Family(( )):::family
-
-    FGF --- FFamily
-    FGM --- FFamily
-    FFamily --> F
-
-    MGF --- MFamily
-    MGM --- MFamily
-    MFamily --> M
-
-    F --- Family
-    M --- Family
-    Family --> CH1
-    Family --> Ch2
-</Mermaid>
+[![](https://mermaid.ink/img/pako:eNq9lM1um0AQx19lNTk4kbDNLmDMxvHFltsLt55aetjA2qAsH1rWTVLLz5BrHqAP0GOk5iHIGxUwTnDqRsohcNr5-P9mZ1bDBvw04EBhKdJrP2RSoS9zT3oJKj9fsDyf8yWKmeBoGQlBTwgmlsm0XMn0itMTwzCac_86ClRISXZz_o9-yVsEk2GOL99LYHEkbhuCbdv_l-NGvkcsPi2-eTAJoh_TSRSvUC79i16oVJbT4TATzOdhKoKBn_ZQDbjoWXpvOJ1cymlxXzw-3aHiV_G7eCweij_Fw9PdZFihPPhOKa26eqnjflid3fz2ldyOOnI76eh5ft301GFHs8-4k55mIenynRb1Kp6eorOzKqG2nsf7VrAVe7WgqN_v78GtfTrq3pllaIoWbYzbYNzDfLfBvHa3MO7BbXZFD5OP-Fr68p2PeUMCGqxkFABVcs01iLmMWWXCpsr2QIU85h7Q8hgweeWBl2xLTcaSr2ka72UyXa9CKGcp8tJaZwFTfB6xlWQvKTwJuJyl60QBNcwaAXQDN0CJMx5YtuPgka1bNsG2BrdAsY4HZvknJybBlm44Y7zV4GddVB-MDN2w9JHpGNZobJLtXz37LQU?type=png)](https://mermaid.live/edit#pako:eNq9lM1um0AQx19lNTk4kbDNLmDC1vHFlpsLt5xactjA2qAAi5Z182H5GXLNA-QBeozUPAR5owDGCU7dSj0UTjsf_9_szGpYgy8CDhQWsbjxQyYVuph50ktR-fkxy_MZX6CExRwtojimRwQTy2RarqS45vTIMIzm3L-JAhVSkt1--U2_4C2CyTDHV_9KYEkU3zUE27b_LMeNfIeYf51_92AcRD8m4yhZolz6Z71QqSynw2EWM5-HIg4GvuihGnDWs_TecDK-kpPisXh5fUDFU_GzeCmei1_F8-vDeFihPLiklFZdfdRx_1ud7fx2ldyOOnI76eh9ft301GFH03PcSU_TkHT5TvN6FY-P0clJlVBb7-P9W7AV-7SgqN_v78CtfTro3pplaILmbYzbYNz9fLfBfHa3MO7ebbZF95MP-Fr68p0PeUMCGixlFABVcsU1SLhMWGXCusr2QIU84R7Q8hgwee2Bl25KTcbSb0IkO5kUq2UI5SzjvLRWWcAUn0VsKdlHCk8DLqdilSqghl4jgK7hFihxTgeW7Th4ZOuWTbCtwR1QrOOBWf7JiUmwpRvOKd5ocF8X1QcjQzcsfWRajmPZIwNv3gBpyS05)
