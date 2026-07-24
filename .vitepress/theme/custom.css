@@ -111,18 +111,35 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 }
 
 /* ================================================================
-   ВСТАВКА 4 СТРОЧЕК (ИСПРАВЛЕНИЕ ЛОГОТИПА И ПОИСКА)
+   ИСПРАВЛЕНИЕ ЛОГОТИПА И ПОИСКА (Только нужные правки)
    ================================================================ */
+/* 1. Сдвигаем логотип ровно над левым меню (с учетом отступа в 20px) */
 .VPNavBarTitle {
-  padding-left: 20px !important;
+  padding-left: 20px !important; /* Ровно как отступы у левого меню */
 }
-.VPNavBarSearch {
-  flex: 1 1 100% !important;
-  min-width: 0 !important;
-}
-.DocSearch-Button {
+
+/* 2. Центрируем контент внутри шапки, чтобы поиск не уезжал */
+.VPNavBar .content-body {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important; /* Центрируем все элементы */
   width: 100% !important;
-  max-width: none !important;
+  gap: 20px !important; /* Задаем отступы между логотипом, поиском и кнопкой */
+}
+
+/* 3. Убираем растягивание flex'ом, чтобы кнопка встала в нужную ширину */
+.VPNavBarSearch {
+  flex: none !important;
+  display: flex !important;
+  justify-content: center !important;
+  width: auto !important;
+}
+
+/* 4. Задаем кнопке поиска ТОЧНУЮ ширину, равную ширине статьи */
+.DocSearch-Button {
+  width: calc(100vw - (20vw * 2) - 80px) !important; /* Та же формула, что и у статьи */
+  max-width: 95% !important;
+  box-sizing: border-box !important;
 }
 
 /* ==========================================================================
