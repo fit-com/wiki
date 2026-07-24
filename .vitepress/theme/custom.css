@@ -232,20 +232,20 @@ html body .VPDocAside .content {
 .VPDocAside .aside-curtain, .VPDocAside .meta { display: none !important; }
 
 /* ==========================================================================
-   6. ЖЕСТКОЕ МАТЕМАТИЧЕСКОЕ ЦЕНТРИРОВАНИЕ ОСНОВНОЙ КАРТОЧКИ (Убрали засвет, выровняли по верху)
+   6. ЖЕСТКОЕ МАТЕМАТИЧЕСКОЕ ЦЕНТРИРОВАНИЕ ОСНОВНОЙ КАРТОЧКИ (Возвращаем absolute + убираем засвет)
    ========================================================================== */
 .VPDoc .content {
   /* Пересчитано под 20vw по бокам */
   width: calc(100vw - (20vw * 2) - 80px) !important; 
   max-width: 95% !important;
   
-  /* Убрали position: absolute и сдвиг, чтобы убрать засвет и прижать к верху */
-  position: relative !important;
-  left: auto !important;
-  transform: none !important;
+  /* Возвращаем absolute, чтобы центрироваться через translate */
+  position: absolute !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important; 
   
-  /* margin: 0 auto — центрирует по горизонтали. 1px сверху — чтобы компенсировать html margin-top: -1px */
-  margin: 1px auto 0 auto !important;
+  /* margin: 0 сверху (на уровне меню), и margin-bottom, чтобы не было засвета */
+  margin: 0 0 40px 0 !important;
   
   /* Подключаем прозрачный фон и размытие для эффекта матового стекла у самой статьи */
   background-color: var(--vp-c-bg) !important; 
