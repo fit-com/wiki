@@ -5,18 +5,7 @@ export default {
   
   head: [
     // 1. Иконка вкладки
-    ['link', { rel: 'icon', type: 'image/png', href: '/wiki/favicon.png' }],
-    
-    [
-      'script',
-      { type: 'module' },
-      `if (!import.meta.env.SSR) {
-        import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs')
-          .then((m) => {
-            m.default.initialize({ startOnLoad: true });
-          });
-      }`
-    ]
+    ['link', { rel: 'icon', type: 'image/png', href: '/wiki/favicon.png' }]
   ],
 
   themeConfig: {
