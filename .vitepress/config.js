@@ -21,7 +21,7 @@ export default {
       {
         text: 'Категории',
         items: [
-          { text: '👨‍🏫 Преподаватели' link: '/teachers/'  },
+          { text: '👨‍🏫 Преподаватели', link: '/teachers/'  },
           { text: '🎭 События' },
           { text: '🛠️ Предметы' },
           { text: '🏢 Корпуса и аудитории' },
