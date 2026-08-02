@@ -19,37 +19,23 @@ export default {
     // Настраиваем левое меню (Sidebar)
     sidebar: [
       {
-        text: '➕ Добавить контент',
+        text: 'Категории',
         items: [
+          { text: '👨‍🏫 Преподаватели' },
+          { text: '🎭 События' },
+          { text: '🛠️ Предметы' },
+          { text: '🏢 Корпуса и аудитории' },
           { 
-            text: '✨ Написать новую статью', 
+            text: '➕ Добавить контент',
             link: 'https://github.com/fit-com/wiki/new/main' 
           }
         ]
-      },
-      {
-        text: '👨‍🏫 Преподаватели',
-        items: [
-          { text: 'Епишин И.С.', link: '/epishin' }
-        ]
-      },
-      {
-        text: '🎭 События',
-        items: []
-      },
-      { 
-        text: '🛠️ Предметы',
-        items: []
-      },
-      { 
-        text: '🏢 Корпуса и аудитории',
-        items: []
       }
     ],
 
     editLink: {
       pattern: 'https://github.com/fit-com/wiki/edit/main/:path',
-      text: 'Редактировать эту страницу на GitHub'
+      text: 'Редактировать статью на GitHub'
     }
   }
 }
