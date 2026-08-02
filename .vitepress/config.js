@@ -21,14 +21,11 @@ export default {
       {
         text: 'Категории',
         items: [
-          { text: '👨‍🏫 Преподаватели' },
+          { text: '👨‍🏫 Преподаватели' link: '/teachers/'  },
           { text: '🎭 События' },
           { text: '🛠️ Предметы' },
           { text: '🏢 Корпуса и аудитории' },
-          { 
-            text: '➕ Добавить контент',
-            link: 'https://github.com/fit-com/wiki/new/main' 
-          }
+          { text: '➕ Добавить контент', link: 'https://github.com/fit-com/wiki/new/main' }
         ]
       }
     ],
