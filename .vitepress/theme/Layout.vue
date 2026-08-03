@@ -11,7 +11,7 @@ onMounted(() => {
     const navBar = document.querySelector('.VPNavBar .content-body')
     if (!navBar) return
 
-    // Создаем wrapper для кнопки категорий
+    // Создаем кнопку (как выше)
     const wrapper = document.createElement('div')
     wrapper.className = 'categories-wrapper'
     wrapper.innerHTML = `
@@ -21,40 +21,51 @@ onMounted(() => {
         <span class="arrow">▼</span>
       </div>
       <div class="categories-dropdown" id="categoriesDropdown">
-        <a href="/wiki/teachers/" class="category-item">
+        <a href="/teachers/" class="category-item">
           <span class="category-icon">👨‍🏫</span> Преподаватели
         </a>
-        <a href="/wiki/events/" class="category-item">
+        <a href="/events/" class="category-item">
           <span class="category-icon">🎭</span> События
         </a>
-        <a href="/wiki/subjects/" class="category-item">
+        <a href="/subjects/" class="category-item">
           <span class="category-icon">🛠️</span> Предметы
         </a>
-        <a href="/wiki/buildings/" class="category-item">
+        <a href="/buildings/" class="category-item">
           <span class="category-icon">🏢</span> Корпуса и аудитории
         </a>
         <div class="dropdown-divider"></div>
-        <a href="/wikihttps://github.com/fit-com/wiki/new/main" class="category-item add-content">
+        <a href="https://github.com/fit-com/wiki/new/main" class="category-item add-content">
           <span class="category-icon">➕</span> Добавить контент
         </a>
       </div>
     `
 
-    // Находим поиск
     const search = navBar.querySelector('.VPNavBarSearch')
     if (search) {
-      // Вставляем кнопку перед поиском
       search.before(wrapper)
+      search.classList.add('search-with-categories')
+      
+      // Настраиваем ширину поиска после рендера
+      setTimeout(() => {
+        const btn = document.querySelector('.categories-button')
+        if (btn) {
+          const btnWidth = btn.offsetWidth
+          const searchBtn = search.querySelector('.DocSearch-Button')
+          if (searchBtn) {
+            // Ширина поиска = старая ширина - (ширина кнопки + 16px)
+            const containerWidth = navBar.offsetWidth
+            const titleWidth = document.querySelector('.VPNavBarTitle')?.offsetWidth || 0
+            const availableWidth = containerWidth - titleWidth - btnWidth - 16 - 80 // 80 на отступы
+            searchBtn.style.width = Math.min(Math.max(availableWidth, 160), 400) + 'px'
+            searchBtn.style.maxWidth = Math.min(Math.max(availableWidth, 160), 400) + 'px'
+          }
+        }
+      }, 50)
     } else {
       navBar.appendChild(wrapper)
     }
 
-    // Добавляем класс к поиску для управления шириной
-    if (search) {
-      search.classList.add('search-with-categories')
-    }
-
-    // Обработчики для выпадающего меню
+    // Обработчики (как выше)
     const toggle = document.getElementById('categoriesToggle')
     const dropdown = document.getElementById('categoriesDropdown')
 
