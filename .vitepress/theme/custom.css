@@ -1,10 +1,8 @@
 /* ==========================================================================
-   1. ПЕРЕМЕННЫЕ ЦВЕТОВ (Светлая / Темная темы с прозрачностью для статьи)
+   1. ПЕРЕМЕННЫЕ ЦВЕТОВ
    ========================================================================== */
 :root {
   --bg-image-url: url('@theme/bg.png');
-  
-  /* ИСПРАВЛЕНО: Центральная карточка статьи теперь полупрозрачная (белое матовое стекло) */
   --vp-c-bg: rgba(255, 255, 255, 0.85) !important; 
   --glass-bg: rgba(255, 255, 255, 0.65); 
   --glass-border: rgba(0, 0, 0, 0.08); 
@@ -12,7 +10,6 @@
 }
 
 .dark {
-  /* ИСПРАВЛЕНО: Центральная карточка статьи ночью становится темным стеклом */
   --vp-c-bg: rgba(30, 30, 32, 0.85) !important; 
   --glass-bg: rgba(30, 30, 32, 0.6); 
   --glass-border: rgba(255, 255, 255, 0.08); 
@@ -20,7 +17,7 @@
 }
 
 /* ==========================================================================
-   2. ГЛОБАЛЬНЫЙ ФОН И СКВОЗНАЯ ПРОЗРАЧНОСТЬ
+   2. ФОН
    ========================================================================== */
 html {
   background-image: var(--bg-image-url) !important;
@@ -38,7 +35,7 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 }
 
 /* ==========================================================================
-   3. ВСЕГДА ЧЕРНАЯ ШАПКА
+   3. ШАПКА
    ========================================================================== */
 .VPNav, 
 .VPNavBar, 
@@ -82,7 +79,6 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 }
 .VPNavBar .title { padding-left: 12px !important; }
 
-/* Поиск */
 .VPNavBarSearch, 
 .VPNavBarSearch .search-box, 
 .VPNavBarSearch .VPSearchButton,
@@ -139,7 +135,7 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 }
 
 /* ==========================================================================
-   4. ЛЕВОЕ МЕНЮ (Остается фиксированным)
+   4. ЛЕВОЕ МЕНЮ
    ========================================================================== */
 .VPSidebar, .VPLayout .VPSidebar, html body .VPSidebar {
   top: var(--vp-nav-height) !important;
@@ -176,18 +172,18 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
 .VPSidebarItem .link { padding: 6px 0 !important; color: var(--text-color) !important; }
 
 /* ==========================================================================
-   5. ПРАВОЕ МЕНЮ - ТЕПЕРЬ В ПОТОКЕ ДОКУМЕНТА!
+   5. ГЛАВНЫЙ КОНТЕНТ - теперь flex контейнер для размещения контента и правого меню
    ========================================================================== */
 
-/* Главный контейнер документа - делаем flex */
+/* Делаем контейнер флексом */
 .VPDoc .container {
   display: flex !important;
-  gap: 20px !important;
+  gap: 30px !important;
   max-width: 100% !important;
-  padding: 0 20px !important;
+  padding: 0 30px !important;
 }
 
-/* Основной контент - занимает все свободное место */
+/* Основной контент - растягивается */
 .VPDoc .content {
   flex: 1 !important;
   width: auto !important;
@@ -208,53 +204,64 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   min-height: 70vh !important;
 }
 
-/* Правое меню - теперь статичное, в потоке документа */
-body .VPDocAside, 
-html body .VPLayout .VPDocAside {
-  position: relative !important; /* Убираем fixed */
+/* ==========================================================================
+   6. ПРАВОЕ МЕНЮ - ТЕПЕРЬ ВНУТРИ СТРАНИЦЫ!
+   ========================================================================== */
+
+/* Убираем фиксированное позиционирование */
+.VPDocAside {
+  position: relative !important;
   top: auto !important;
-  left: auto !important;
   right: auto !important;
-  width: 20vw !important; 
-  max-width: 20vw !important;
-  min-width: 200px !important;
+  width: 280px !important;
+  flex-shrink: 0 !important;
+  margin: 40px 0 !important;
   display: block !important;
-  z-index: auto !important;
   background: transparent !important;
-  flex-shrink: 0 !important; /* Не сжимается */
-  margin: 40px 0 !important; /* Выравниваем с контентом */
 }
 
-/* Стеклянный контейнер правого меню */
-body .VPDocAside .aside-container, 
-body .VPDocAside .content,
-html body .VPDocAside .content {
-  background-color: var(--glass-bg) !important; 
+/* Стеклянный блок оглавления */
+.VPDocAside .aside-container,
+.VPDocAside .content {
+  background-color: var(--glass-bg) !important;
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   border: 1px solid var(--glass-border) !important;
   border-radius: 12px !important;
-  margin: 0 !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  padding: 15px 20px !important; 
-  height: auto !important;
-  position: sticky !important; /* Прилипает при скролле */
+  padding: 20px !important;
+  position: sticky !important;
   top: calc(var(--vp-nav-height) + 20px) !important;
 }
 
-.VPDocAside .aside-container,
-.VPDocAside .content {
-  border: none !important;
-  border-left: none !important;
-  box-shadow: none !important;
+/* Стили для пунктов оглавления */
+.VPDocAside .outline-link {
+  color: var(--text-color) !important;
+  padding: 4px 0 !important;
+  font-size: 14px !important;
 }
 
-.VPDocAside .outline-link { padding: 6px 0 !important; white-space: normal !important; color: var(--text-color) !important; }
-.VPDocAside .aside-curtain, .VPDocAside .meta { display: none !important; }
+.VPDocAside .outline-link:hover {
+  color: var(--vp-c-brand) !important;
+}
+
+/* Скрываем ненужные элементы */
+.VPDocAside .aside-curtain,
+.VPDocAside .meta {
+  display: none !important;
+}
+
+/* Заголовок "Содержание" */
+.VPDocAside .outline-title {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  opacity: 0.7 !important;
+  margin-bottom: 12px !important;
+}
 
 /* ==========================================================================
-   6. УБИРАЕМ ЛИШНИЕ ОТСТУПЫ
+   7. Убираем лишние отступы
    ========================================================================== */
 .VPDoc .container > div:last-child {
   padding-bottom: 0 !important;
@@ -266,7 +273,7 @@ html body .VPDocAside .content {
 }
 
 /* ==========================================================================
-   7. АДАПТИВНОСТЬ
+   8. АДАПТИВНОСТЬ
    ========================================================================== */
 @media (max-width: 960px) {
   .VPDoc .container {
@@ -276,7 +283,7 @@ html body .VPDocAside .content {
   
   .VPDoc .content { 
     width: 100% !important;
-    margin: 20px auto !important;
+    margin: 20px 0 !important;
     padding: 20px !important;
     flex: none !important;
   }
@@ -292,17 +299,13 @@ html body .VPDocAside .content {
     width: calc(100% - 20px) !important; 
   }
   
-  body .VPDocAside, 
-  html body .VPLayout .VPDocAside {
+  .VPDocAside {
     width: 100% !important;
-    max-width: 100% !important;
-    min-width: auto !important;
     margin: 0 0 20px 0 !important;
   }
   
-  body .VPDocAside .aside-container, 
-  body .VPDocAside .content,
-  html body .VPDocAside .content {
+  .VPDocAside .aside-container,
+  .VPDocAside .content {
     position: relative !important;
     top: auto !important;
   }
