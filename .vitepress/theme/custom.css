@@ -398,6 +398,7 @@ html body .VPDocAside .content {
 /* Меняем текст Search на Поиск */
 .DocSearch-Button .DocSearch-Button-Placeholder {
   font-size: 14px;
+   color: rgba(255, 255, 255, 0.8) !important;
 }
 
 /* Скрываем Ctrl+K */
