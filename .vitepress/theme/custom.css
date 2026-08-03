@@ -351,17 +351,17 @@ html body .VPDocAside .content {
   margin-left: auto; /* Прижимаем к правому краю */
 }
 
-/* Кнопка категорий внутри поиска - теперь имеет цвет старого поиска (#2c2c2e) */
+/* Кнопка категорий внутри поиска - цвет как у шапки (#1e1e20) */
 .categories-button {
   display: flex;
   align-items: center;
   gap: 6px;
   padding: 0 10px;
   height: 30px;
-  background: #2c2c2e !important;
+  background: #1e1e20 !important; /* Цвет как у шапки */
   border: none !important;
   border-radius: 6px !important;
-  color: #ffffff !important;
+  color: rgba(255, 255, 255, 0.8) !important;
   font-size: 13px;
   font-weight: 400;
   cursor: pointer;
@@ -372,7 +372,7 @@ html body .VPDocAside .content {
 }
 
 .categories-button:hover {
-  background: #3c3c3e !important;
+  background: #2c2c2e !important; /* Как поиск при наведении */
   color: #ffffff !important;
 }
 
@@ -392,7 +392,7 @@ html body .VPDocAside .content {
 }
 
 /* ================================================================
-   НАСТРОЙКА КНОПКИ ПОИСКА - цвет как у шапки (#1e1e20)
+   НАСТРОЙКА КНОПКИ ПОИСКА - цвет #2c2c2e (как на скрине)
    ================================================================ */
 
 /* Меняем текст Search на Поиск */
@@ -405,25 +405,25 @@ html body .VPDocAside .content {
   display: none !important;
 }
 
-/* Кнопка поиска - цвет как у шапки */
+/* Кнопка поиска - цвет #2c2c2e */
 .DocSearch-Button {
   display: flex !important;
   align-items: center !important;
   gap: 8px !important;
-  background-color: #1e1e20 !important; /* Цвет как у шапки */
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background-color: #2c2c2e !important; /* Цвет как на скрине */
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 8px !important;
   padding: 0 4px 0 12px !important;
   height: 36px !important;
   box-shadow: none !important;
 }
 
-/* Текст поиска белый */
+/* Текст поиска */
 .DocSearch-Button .DocSearch-Button-Placeholder {
   color: rgba(255, 255, 255, 0.8) !important;
 }
 
-/* Иконка поиска белая */
+/* Иконка поиска */
 .DocSearch-Button .DocSearch-Search-Icon {
   color: rgba(255, 255, 255, 0.6) !important;
   fill: rgba(255, 255, 255, 0.6) !important;
@@ -442,7 +442,7 @@ html body .VPDocAside .content {
 
 /* Светлая тема для кнопки поиска */
 :root .DocSearch-Button {
-  background-color: #ffffff !important;
+  background-color: #f0f0f0 !important;
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
 
@@ -457,12 +457,12 @@ html body .VPDocAside .content {
 
 /* Светлая тема для кнопки категорий */
 :root .categories-button {
-  background: #f0f0f0 !important;
+  background: #ffffff !important;
   color: rgba(0, 0, 0, 0.7) !important;
 }
 
 :root .categories-button:hover {
-  background: #e8e8e8 !important;
+  background: #f0f0f0 !important;
   color: #000000 !important;
 }
 
