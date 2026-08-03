@@ -294,71 +294,17 @@ html body .VPDocAside .content {
   display: inline-flex;
   align-items: center;
   flex-shrink: 0;
-  margin-left: auto; /* Прижимаем к правому краю */
-}
-
-/* Кнопка категорий внутри поиска */
-.categories-button {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0 8px;
-  height: 28px;
-  background: transparent !important;
-  border: none !important;
-  border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
-  border-radius: 0 !important;
-  color: rgba(255, 255, 255, 0.7) !important;
-  font-size: 13px;
-  font-weight: 400;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-  user-select: none;
-  margin-left: 4px;
-}
-
-.categories-button:hover {
-  color: #ffffff !important;
-  background: transparent !important;
-}
-
-.categories-icon {
-  font-size: 14px;
-}
-
-.arrow {
-  font-size: 9px;
-  transition: transform 0.2s ease;
-  margin-left: 2px;
-  opacity: 0.5;
-}
-
-.arrow.open {
-  transform: rotate(180deg);
-}
-
-/* ==========================================================================
-   КНОПКА КАТЕГОРИЙ ВНУТРИ ПОИСКА
-   ========================================================================== */
-
-/* Контейнер для кнопки категорий внутри поиска */
-.categories-wrapper {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  flex-shrink: 0;
   margin-left: auto;
 }
 
-/* Кнопка категорий - цвет как у шапки (#1e1e20) */
+/* Кнопка категорий - цвет #2c2c2e, как у поиска */
 .categories-button {
   display: flex;
   align-items: center;
   gap: 6px;
   padding: 0 10px;
   height: 30px;
-  background: #1e1e20 !important;
+  background: #2c2c2e !important;
   border: none !important;
   border-radius: 6px !important;
   color: rgba(255, 255, 255, 0.8) !important;
@@ -372,7 +318,7 @@ html body .VPDocAside .content {
 }
 
 .categories-button:hover {
-  background: #2c2c2e !important;
+  background: #3c3c3e !important;
   color: #ffffff !important;
 }
 
@@ -392,7 +338,7 @@ html body .VPDocAside .content {
 }
 
 /* ================================================================
-   НАСТРОЙКА КНОПКИ ПОИСКА - цвет #2c2c2e (как на скрине)
+   НАСТРОЙКА КНОПКИ ПОИСКА
    ================================================================ */
 
 /* Меняем текст Search на Поиск */
@@ -452,12 +398,12 @@ html body .VPDocAside .content {
 }
 
 :root .categories-button {
-  background: #ffffff !important;
+  background: #f0f0f0 !important;
   color: rgba(0, 0, 0, 0.7) !important;
 }
 
 :root .categories-button:hover {
-  background: #f0f0f0 !important;
+  background: #e8e8e8 !important;
   color: #000000 !important;
 }
 
@@ -532,7 +478,7 @@ html body .VPDocAside .content {
   background: rgba(100, 200, 255, 0.1) !important;
 }
 
-/* Светлая тема для меню */
+/* Светлая тема */
 :root .categories-dropdown {
   background: rgba(255, 255, 255, 0.98) !important;
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
