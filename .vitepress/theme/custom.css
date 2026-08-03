@@ -348,17 +348,17 @@ html body .VPDocAside .content {
   display: inline-flex;
   align-items: center;
   flex-shrink: 0;
-  margin-left: auto; /* Прижимаем к правому краю */
+  margin-left: auto;
 }
 
-/* Кнопка категорий внутри поиска - цвет как у шапки (#1e1e20) */
+/* Кнопка категорий - цвет как у шапки (#1e1e20) */
 .categories-button {
   display: flex;
   align-items: center;
   gap: 6px;
   padding: 0 10px;
   height: 30px;
-  background: #1e1e20 !important; /* Цвет как у шапки */
+  background: #1e1e20 !important;
   border: none !important;
   border-radius: 6px !important;
   color: rgba(255, 255, 255, 0.8) !important;
@@ -372,7 +372,7 @@ html body .VPDocAside .content {
 }
 
 .categories-button:hover {
-  background: #2c2c2e !important; /* Как поиск при наведении */
+  background: #2c2c2e !important;
   color: #ffffff !important;
 }
 
@@ -410,7 +410,7 @@ html body .VPDocAside .content {
   display: flex !important;
   align-items: center !important;
   gap: 8px !important;
-  background-color: #2c2c2e !important; /* Цвет как на скрине */
+  background-color: #2c2c2e !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 8px !important;
   padding: 0 4px 0 12px !important;
@@ -418,17 +418,15 @@ html body .VPDocAside .content {
   box-shadow: none !important;
 }
 
-/* Текст поиска */
 .DocSearch-Button .DocSearch-Button-Placeholder {
   color: rgba(255, 255, 255, 0.8) !important;
 }
 
-/* Иконка поиска */
 .DocSearch-Button .DocSearch-Search-Icon {
   color: rgba(255, 255, 255, 0.6) !important;
+  fill: rgba(255, 255, 255, 0.6) !important;
 }
 
-/* Отступ для иконки поиска и текста */
 .DocSearch-Button-Container {
   display: flex !important;
   align-items: center !important;
@@ -439,7 +437,6 @@ html body .VPDocAside .content {
    СВЕТЛАЯ ТЕМА
    ================================================================ */
 
-/* Светлая тема для кнопки поиска */
 :root .DocSearch-Button {
   background-color: #f0f0f0 !important;
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
@@ -454,7 +451,6 @@ html body .VPDocAside .content {
   fill: rgba(0, 0, 0, 0.5) !important;
 }
 
-/* Светлая тема для кнопки категорий */
 :root .categories-button {
   background: #ffffff !important;
   color: rgba(0, 0, 0, 0.7) !important;
@@ -466,7 +462,7 @@ html body .VPDocAside .content {
 }
 
 /* ================================================================
-   ВЫПАДАЮЩЕЕ МЕНЮ - полная поддержка темной и светлой темы
+   ВЫПАДАЮЩЕЕ МЕНЮ
    ================================================================ */
 
 .categories-dropdown {
@@ -490,7 +486,7 @@ html body .VPDocAside .content {
   transform: translateY(0) scale(1);
 }
 
-/* ----- ТЕМНАЯ ТЕМА (по умолчанию) ----- */
+/* Темная тема */
 .categories-dropdown {
   background: rgba(30, 30, 32, 0.95) !important;
   backdrop-filter: blur(16px) !important;
@@ -524,14 +520,9 @@ html body .VPDocAside .content {
 .dropdown-divider {
   height: 1px;
   margin: 6px 8px;
-}
-
-/* Темная тема - разделитель */
-.categories-dropdown .dropdown-divider {
   background: rgba(255, 255, 255, 0.08) !important;
 }
 
-/* Темная тема - добавить контент */
 .categories-dropdown .add-content {
   color: rgba(255, 255, 255, 0.6) !important;
 }
@@ -541,11 +532,9 @@ html body .VPDocAside .content {
   background: rgba(100, 200, 255, 0.1) !important;
 }
 
-/* ----- СВЕТЛАЯ ТЕМА для выпадающего меню ----- */
+/* Светлая тема для меню */
 :root .categories-dropdown {
   background: rgba(255, 255, 255, 0.98) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15) !important;
 }
@@ -559,7 +548,7 @@ html body .VPDocAside .content {
   color: #000000 !important;
 }
 
-:root .categories-dropdown .dropdown-divider {
+:root .dropdown-divider {
   background: rgba(0, 0, 0, 0.08) !important;
 }
 
