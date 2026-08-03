@@ -431,11 +431,13 @@ html body .VPDocAside .content {
    КНОПКА КАТЕГОРИЙ И НАСТРОЙКА ПОИСКА
    ========================================================================== */
 
-/* Контейнер кнопки категорий */
+/* Контейнер кнопки категорий - справа от поиска */
 .categories-wrapper {
   position: relative;
+  display: inline-flex;
+  align-items: center;
   flex-shrink: 0;
-  margin-right: 16px; /* Отступ от поиска 16px */
+  margin-left: 16px; /* Отступ от поиска 16px */
 }
 
 /* Кнопка категорий - такая же высота, как у поиска */
@@ -444,23 +446,23 @@ html body .VPDocAside .content {
   align-items: center;
   gap: 8px;
   padding: 0 16px;
-  height: 36px; /* Такая же высота, как у поиска */
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  height: 36px;
+  background: #2c2c2e; /* Такой же фон как у поиска */
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.8); /* Такой же цвет как у поиска */
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
   cursor: pointer;
   transition: all 0.2s ease;
-  backdrop-filter: blur(4px);
   white-space: nowrap;
   user-select: none;
 }
 
 .categories-button:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.25);
+  background: #3c3c3e;
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
 }
 
 .categories-icon {
@@ -471,20 +473,42 @@ html body .VPDocAside .content {
   font-size: 10px;
   transition: transform 0.2s ease;
   margin-left: 4px;
+  opacity: 0.6;
 }
 
 .arrow.open {
   transform: rotate(180deg);
 }
 
-/* Выпадающее меню */
+/* ================================================================
+   НАСТРОЙКА КНОПКИ ПОИСКА - уменьшаем на размер кнопки категорий + 16
+   ================================================================ */
+
+/* Скрываем Ctrl+K */
+.DocSearch-Button .DocSearch-Button-Keys {
+  display: none !important;
+}
+
+/* Уменьшаем ширину поиска */
+.VPNavBarSearch .DocSearch-Button {
+  width: calc(100% - 140px) !important; /* 140px = примерный размер кнопки категорий + 16 */
+  min-width: 120px !important;
+  max-width: 400px !important;
+}
+
+/* ================================================================
+   ВЫПАДАЮЩЕЕ МЕНЮ - с поддержкой темной/светлой темы
+   ================================================================ */
+
+/* Темная тема (по умолчанию) */
 .categories-dropdown {
   position: absolute;
   top: calc(100% + 8px);
-  left: 0;
-  min-width: 240px;
+  right: 0;
+  min-width: 220px;
   background: rgba(30, 30, 32, 0.95);
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   padding: 8px;
@@ -502,12 +526,13 @@ html body .VPDocAside .content {
   transform: translateY(0) scale(1);
 }
 
+/* Стили пунктов меню - темная тема */
 .category-item {
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 10px 14px;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
   border-radius: 8px;
   transition: all 0.15s ease;
@@ -532,7 +557,7 @@ html body .VPDocAside .content {
 }
 
 .add-content {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .add-content:hover {
@@ -541,53 +566,31 @@ html body .VPDocAside .content {
 }
 
 /* ================================================================
-   НАСТРОЙКА КНОПКИ ПОИСКА
-   ================================================================ */
-
-/* Убираем текст Ctrl+K и делаем поиск уже */
-.search-with-categories .DocSearch-Button {
-  width: auto !important;
-  min-width: 160px !important;
-  max-width: 300px !important;
-}
-
-/* Скрываем текст Ctrl+K */
-.DocSearch-Button .DocSearch-Button-Placeholder {
-  display: inline-block !important;
-}
-
-.DocSearch-Button .DocSearch-Button-Keys {
-  display: none !important;
-}
-
-/* Чтобы поиск не растягивался на всю ширину */
-.VPNavBarSearch.search-with-categories {
-  width: auto !important;
-  flex: 0 1 auto !important;
-}
-
-/* ================================================================
    СВЕТЛАЯ ТЕМА
    ================================================================ */
 
 :root .categories-button {
-  background: rgba(0, 0, 0, 0.06);
+  background: #f0f0f0;
   border-color: rgba(0, 0, 0, 0.1);
-  color: #2c2c2e;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 :root .categories-button:hover {
-  background: rgba(0, 0, 0, 0.1);
+  background: #e8e8e8;
   border-color: rgba(0, 0, 0, 0.15);
+  color: #000000;
 }
 
 :root .categories-dropdown {
   background: rgba(255, 255, 255, 0.98);
-  border-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 :root .category-item {
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.75);
 }
 
 :root .category-item:hover {
@@ -599,13 +602,22 @@ html body .VPDocAside .content {
   background: rgba(0, 0, 0, 0.08);
 }
 
+:root .add-content {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+:root .add-content:hover {
+  color: #000000;
+  background: rgba(0, 100, 200, 0.05);
+}
+
 /* ================================================================
    МОБИЛЬНАЯ АДАПТАЦИЯ
    ================================================================ */
 
 @media (max-width: 768px) {
   .categories-wrapper {
-    margin-right: 8px;
+    margin-left: 8px;
   }
   
   .categories-button {
@@ -614,37 +626,21 @@ html body .VPDocAside .content {
     font-size: 13px;
   }
   
-  .categories-button span:not(.categories-icon):not(.arrow) {
+  .categories-button .categories-text {
     display: none; /* Скрываем текст "Категории" на мобилках */
   }
   
   .categories-dropdown {
     position: fixed;
     top: 60px;
-    left: 10px;
     right: 10px;
+    left: 10px;
     min-width: unset;
     width: auto;
   }
   
-  .search-with-categories .DocSearch-Button {
-    min-width: 100px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .categories-button {
-    padding: 0 8px;
-    height: 28px;
-    font-size: 12px;
-  }
-  
-  .search-with-categories .DocSearch-Button {
+  .VPNavBarSearch .DocSearch-Button {
+    width: calc(100% - 100px) !important;
     min-width: 80px !important;
-    padding: 0 8px !important;
-  }
-  
-  .DocSearch-Button .DocSearch-Button-Placeholder {
-    font-size: 12px !important;
   }
 }
