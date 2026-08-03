@@ -285,194 +285,53 @@ html body .VPDocAside .content {
 }
 
 /* ==========================================================================
-   9. СТИЛИ ДЛЯ ВЫПАДАЮЩЕГО МЕНЮ КАТЕГОРИЙ
+   КНОПКА КАТЕГОРИЙ ВНУТРИ ПОИСКА
    ========================================================================== */
 
-.categories-wrapper {
-  position: relative;
-  flex-shrink: 0;
-}
-
-.categories-button {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 8px;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  backdrop-filter: blur(4px);
-  white-space: nowrap;
-}
-
-.categories-button:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.25);
-}
-
-.categories-dropdown {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  min-width: 240px;
-  background: rgba(30, 30, 32, 0.95);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 8px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-  z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-8px) scale(0.98);
-  transition: all 0.2s ease;
-}
-
-.categories-dropdown.open {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0) scale(1);
-}
-
-.arrow {
-  font-size: 10px;
-  transition: transform 0.2s ease;
-}
-
-.arrow.open {
-  transform: rotate(180deg);
-}
-
-.category-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 14px;
-  color: rgba(255, 255, 255, 0.9);
-  text-decoration: none;
-  border-radius: 8px;
-  transition: all 0.15s ease;
-  font-size: 14px;
-}
-
-.category-item:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
-}
-
-.category-icon {
-  font-size: 18px;
-  width: 24px;
-  text-align: center;
-}
-
-.dropdown-divider {
-  height: 1px;
-  background: rgba(255, 255, 255, 0.08);
-  margin: 6px 8px;
-}
-
-.add-content {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.add-content:hover {
-  color: #ffffff;
-  background: rgba(100, 200, 255, 0.1);
-}
-
-/* Светлая тема */
-:root .categories-dropdown {
-  background: rgba(255, 255, 255, 0.98);
-  border-color: rgba(0, 0, 0, 0.1);
-}
-
-:root .category-item {
-  color: rgba(0, 0, 0, 0.8);
-}
-
-:root .category-item:hover {
-  background: rgba(0, 0, 0, 0.05);
-  color: #000000;
-}
-
-:root .dropdown-divider {
-  background: rgba(0, 0, 0, 0.08);
-}
-
-/* Мобильная адаптация */
-@media (max-width: 768px) {
-  .categories-wrapper {
-    margin-left: 10px;
-  }
-  
-  .categories-button {
-    padding: 6px 12px;
-    font-size: 13px;
-  }
-  
-  .categories-dropdown {
-    position: fixed;
-    top: 60px;
-    left: 10px;
-    right: 10px;
-    min-width: unset;
-    width: auto;
-  }
-}
-
-/* ==========================================================================
-   КНОПКА КАТЕГОРИЙ И НАСТРОЙКА ПОИСКА
-   ========================================================================== */
-
-/* Контейнер кнопки категорий - справа от поиска */
+/* Контейнер для кнопки категорий внутри поиска */
 .categories-wrapper {
   position: relative;
   display: inline-flex;
   align-items: center;
   flex-shrink: 0;
+  margin-left: auto; /* Прижимаем к правому краю */
 }
 
-/* Кнопка категорий - копия стилей кнопки поиска */
+/* Кнопка категорий внутри поиска */
 .categories-button {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 0 12px;
-  height: 36px;
-  background-color: #2c2c2e !important; /* Как у поиска в темной теме */
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 8px !important;
-  color: rgba(255, 255, 255, 0.8) !important;
-  font-size: 14px;
+  gap: 6px;
+  padding: 0 8px;
+  height: 28px;
+  background: transparent !important;
+  border: none !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 0 !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 13px;
   font-weight: 400;
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
   user-select: none;
-  box-shadow: none;
+  margin-left: 4px;
 }
 
 .categories-button:hover {
-  background-color: #3c3c3e !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
   color: #ffffff !important;
+  background: transparent !important;
 }
 
 .categories-icon {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .arrow {
-  font-size: 10px;
+  font-size: 9px;
   transition: transform 0.2s ease;
-  margin-left: 4px;
-  opacity: 0.6;
+  margin-left: 2px;
+  opacity: 0.5;
 }
 
 .arrow.open {
@@ -480,12 +339,37 @@ html body .VPDocAside .content {
 }
 
 /* ================================================================
-   НАСТРОЙКА ПОИСКА - возвращаем исходный расчет и уменьшаем
+   НАСТРОЙКА КНОПКИ ПОИСКА
    ================================================================ */
+
+/* Меняем текст Search на Поиск */
+.DocSearch-Button .DocSearch-Button-Placeholder {
+  font-size: 14px;
+}
 
 /* Скрываем Ctrl+K */
 .DocSearch-Button .DocSearch-Button-Keys {
   display: none !important;
+}
+
+/* Делаем кнопку поиска flex-контейнером для размещения кнопки категорий */
+.DocSearch-Button {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background-color: #2c2c2e !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 8px !important;
+  padding: 0 4px 0 12px !important;
+  height: 36px !important;
+  box-shadow: none !important;
+}
+
+/* Отступ для иконки поиска и текста */
+.DocSearch-Button-Container {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
 }
 
 /* ================================================================
@@ -595,16 +479,13 @@ html body .VPDocAside .content {
   background: rgba(0, 100, 200, 0.05) !important;
 }
 
-/* ----- СВЕТЛАЯ ТЕМА для кнопки ----- */
+/* Светлая тема для кнопки категорий внутри поиска */
 :root .categories-button {
-  background-color: #f0f0f0 !important;
-  border-color: rgba(0, 0, 0, 0.1) !important;
-  color: rgba(0, 0, 0, 0.7) !important;
+  border-left: 1px solid rgba(0, 0, 0, 0.1) !important;
+  color: rgba(0, 0, 0, 0.6) !important;
 }
 
 :root .categories-button:hover {
-  background-color: #e8e8e8 !important;
-  border-color: rgba(0, 0, 0, 0.15) !important;
   color: #000000 !important;
 }
 
@@ -613,14 +494,9 @@ html body .VPDocAside .content {
    ================================================================ */
 
 @media (max-width: 768px) {
-  .categories-wrapper {
-    margin-left: 8px;
-  }
-  
   .categories-button {
-    padding: 0 10px;
-    height: 32px;
-    font-size: 13px;
+    padding: 0 6px;
+    font-size: 12px;
   }
   
   .categories-button .categories-text {
@@ -634,5 +510,9 @@ html body .VPDocAside .content {
     left: 10px;
     min-width: unset;
     width: auto;
+  }
+  
+  .DocSearch-Button {
+    padding: 0 4px 0 8px !important;
   }
 }
