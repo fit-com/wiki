@@ -338,8 +338,61 @@ html body .VPDocAside .content {
   transform: rotate(180deg);
 }
 
+/* ==========================================================================
+   КНОПКА КАТЕГОРИЙ ВНУТРИ ПОИСКА
+   ========================================================================== */
+
+/* Контейнер для кнопки категорий внутри поиска */
+.categories-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: auto; /* Прижимаем к правому краю */
+}
+
+/* Кнопка категорий внутри поиска - теперь имеет цвет старого поиска (#2c2c2e) */
+.categories-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px;
+  height: 30px;
+  background: #2c2c2e !important;
+  border: none !important;
+  border-radius: 6px !important;
+  color: #ffffff !important;
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  user-select: none;
+  margin-left: 4px;
+}
+
+.categories-button:hover {
+  background: #3c3c3e !important;
+  color: #ffffff !important;
+}
+
+.categories-icon {
+  font-size: 14px;
+}
+
+.arrow {
+  font-size: 9px;
+  transition: transform 0.2s ease;
+  margin-left: 2px;
+  opacity: 0.6;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
+
 /* ================================================================
-   НАСТРОЙКА КНОПКИ ПОИСКА
+   НАСТРОЙКА КНОПКИ ПОИСКА - цвет как у шапки (#1e1e20)
    ================================================================ */
 
 /* Меняем текст Search на Поиск */
@@ -352,17 +405,28 @@ html body .VPDocAside .content {
   display: none !important;
 }
 
-/* Делаем кнопку поиска flex-контейнером для размещения кнопки категорий */
+/* Кнопка поиска - цвет как у шапки */
 .DocSearch-Button {
   display: flex !important;
   align-items: center !important;
   gap: 8px !important;
-  background-color: #2c2c2e !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background-color: #1e1e20 !important; /* Цвет как у шапки */
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 8px !important;
   padding: 0 4px 0 12px !important;
   height: 36px !important;
   box-shadow: none !important;
+}
+
+/* Текст поиска белый */
+.DocSearch-Button .DocSearch-Button-Placeholder {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Иконка поиска белая */
+.DocSearch-Button .DocSearch-Search-Icon {
+  color: rgba(255, 255, 255, 0.6) !important;
+  fill: rgba(255, 255, 255, 0.6) !important;
 }
 
 /* Отступ для иконки поиска и текста */
@@ -370,6 +434,36 @@ html body .VPDocAside .content {
   display: flex !important;
   align-items: center !important;
   gap: 8px !important;
+}
+
+/* ================================================================
+   СВЕТЛАЯ ТЕМА
+   ================================================================ */
+
+/* Светлая тема для кнопки поиска */
+:root .DocSearch-Button {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+:root .DocSearch-Button .DocSearch-Button-Placeholder {
+  color: rgba(0, 0, 0, 0.7) !important;
+}
+
+:root .DocSearch-Button .DocSearch-Search-Icon {
+  color: rgba(0, 0, 0, 0.5) !important;
+  fill: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Светлая тема для кнопки категорий */
+:root .categories-button {
+  background: #f0f0f0 !important;
+  color: rgba(0, 0, 0, 0.7) !important;
+}
+
+:root .categories-button:hover {
+  background: #e8e8e8 !important;
+  color: #000000 !important;
 }
 
 /* ================================================================
@@ -448,7 +542,7 @@ html body .VPDocAside .content {
   background: rgba(100, 200, 255, 0.1) !important;
 }
 
-/* ----- СВЕТЛАЯ ТЕМА ----- */
+/* ----- СВЕТЛАЯ ТЕМА для выпадающего меню ----- */
 :root .categories-dropdown {
   background: rgba(255, 255, 255, 0.98) !important;
   backdrop-filter: blur(16px) !important;
@@ -479,16 +573,6 @@ html body .VPDocAside .content {
   background: rgba(0, 100, 200, 0.05) !important;
 }
 
-/* Светлая тема для кнопки категорий внутри поиска */
-:root .categories-button {
-  border-left: 1px solid rgba(0, 0, 0, 0.1) !important;
-  color: rgba(0, 0, 0, 0.6) !important;
-}
-
-:root .categories-button:hover {
-  color: #000000 !important;
-}
-
 /* ================================================================
    МОБИЛЬНАЯ АДАПТАЦИЯ
    ================================================================ */
@@ -497,6 +581,7 @@ html body .VPDocAside .content {
   .categories-button {
     padding: 0 6px;
     font-size: 12px;
+    height: 26px;
   }
   
   .categories-button .categories-text {
@@ -514,5 +599,6 @@ html body .VPDocAside .content {
   
   .DocSearch-Button {
     padding: 0 4px 0 8px !important;
+    height: 32px !important;
   }
 }
