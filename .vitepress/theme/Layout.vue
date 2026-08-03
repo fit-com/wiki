@@ -11,6 +11,7 @@ onMounted(() => {
     const navBar = document.querySelector('.VPNavBar .content-body')
     if (!navBar) return
 
+    // Создаем wrapper для кнопки категорий
     const wrapper = document.createElement('div')
     wrapper.className = 'categories-wrapper'
     wrapper.innerHTML = `
@@ -20,33 +21,40 @@ onMounted(() => {
         <span class="arrow">▼</span>
       </div>
       <div class="categories-dropdown" id="categoriesDropdown">
-        <a href="/teachers/" class="category-item">
+        <a href="/wiki/teachers/" class="category-item">
           <span class="category-icon">👨‍🏫</span> Преподаватели
         </a>
-        <a href="/events/" class="category-item">
+        <a href="/wiki/events/" class="category-item">
           <span class="category-icon">🎭</span> События
         </a>
-        <a href="/subjects/" class="category-item">
+        <a href="/wiki/subjects/" class="category-item">
           <span class="category-icon">🛠️</span> Предметы
         </a>
-        <a href="/buildings/" class="category-item">
+        <a href="/wiki/buildings/" class="category-item">
           <span class="category-icon">🏢</span> Корпуса и аудитории
         </a>
         <div class="dropdown-divider"></div>
-        <a href="https://github.com/fit-com/wiki/new/main" class="category-item add-content">
+        <a href="/wikihttps://github.com/fit-com/wiki/new/main" class="category-item add-content">
           <span class="category-icon">➕</span> Добавить контент
         </a>
       </div>
     `
 
+    // Находим поиск
     const search = navBar.querySelector('.VPNavBarSearch')
     if (search) {
-      search.after(wrapper)
+      // Вставляем кнопку перед поиском
+      search.before(wrapper)
     } else {
       navBar.appendChild(wrapper)
     }
 
-    // Обработчики (те же)
+    // Добавляем класс к поиску для управления шириной
+    if (search) {
+      search.classList.add('search-with-categories')
+    }
+
+    // Обработчики для выпадающего меню
     const toggle = document.getElementById('categoriesToggle')
     const dropdown = document.getElementById('categoriesDropdown')
 
