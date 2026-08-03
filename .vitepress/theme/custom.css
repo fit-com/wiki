@@ -436,7 +436,6 @@ html body .VPDocAside .content {
   display: inline-flex;
   align-items: center;
   flex-shrink: 0;
-  margin-left: 16px; /* Отступ от поиска 16px */
 }
 
 /* Кнопка категорий - копия стилей кнопки поиска */
