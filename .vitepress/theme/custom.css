@@ -570,3 +570,19 @@ html body .VPDocAside .content {
     padding: 0 4px 0 8px !important;
   }
 }
+
+.DocSearch-Button .DocSearch-Button-Placeholder {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Также для иконки поиска */
+.DocSearch-Button .DocSearch-Search-Icon {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+/* Для всех элементов внутри кнопки поиска */
+.DocSearch-Button * {
+  color: #ffffff !important;
+}
