@@ -183,25 +183,76 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   padding: 0 30px !important;
 }
 
-/* Основной контент - растягивается */
+/* Контент - занимает место */
 .VPDoc .content {
   flex: 1 !important;
   width: auto !important;
   max-width: none !important;
+  margin: 40px 0 !important;
   position: relative !important;
   left: auto !important;
   transform: none !important;
-  margin: 40px 0 !important;
   
-  background-color: var(--vp-c-bg) !important; 
+  background-color: var(--vp-c-bg) !important;
   backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
-  
-  padding: 40px 30px !important; 
+  padding: 40px 30px !important;
   border-radius: 12px !important;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Правое меню - теперь в потоке */
+.VPDocAside {
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  width: 280px !important;
+  flex-shrink: 0 !important;
+  margin: 40px 0 !important;
+}
+
+/* Стеклянный блок для оглавления */
+.VPDocAside .aside-container,
+.VPDocAside .content {
+  background-color: var(--glass-bg) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  position: sticky !important;
+  top: calc(var(--vp-nav-height) + 20px) !important;
+}
+
+/* Скрываем лишнее */
+.VPDocAside .aside-curtain,
+.VPDocAside .meta {
+  display: none !important;
+}
+
+/* Адаптив */
+@media (max-width: 960px) {
+  .VPDoc .container {
+    flex-direction: column !important;
+    padding: 0 10px !important;
+  }
   
-  min-height: 70vh !important;
+  .VPDoc .content {
+    margin: 20px 0 !important;
+    padding: 20px !important;
+    flex: none !important;
+  }
+  
+  .VPDocAside {
+    width: 100% !important;
+    margin: 0 0 20px 0 !important;
+  }
+  
+  .VPDocAside .aside-container,
+  .VPDocAside .content {
+    position: relative !important;
+    top: auto !important;
+  }
 }
 
 /* ==========================================================================
