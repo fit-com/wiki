@@ -484,21 +484,9 @@ html body .VPDocAside .content {
    НАСТРОЙКА ПОИСКА - возвращаем исходный расчет и уменьшаем
    ================================================================ */
 
-/* Возвращаем исходные стили поиска */
-.VPNavBarSearch {
-  width: calc(100vw - (20vw * 2) - 38px) !important;
-  max-width: 95% !important;
-}
-
 /* Скрываем Ctrl+K */
 .DocSearch-Button .DocSearch-Button-Keys {
   display: none !important;
-}
-
-/* Уменьшаем ширину поиска на размер кнопки категорий + 16px */
-.VPNavBarSearch .DocSearch-Button {
-  width: calc(100% - 140px) !important; /* 140px = ~120px кнопка + 16px отступ + запас */
-  min-width: 120px !important;
 }
 
 /* ================================================================
@@ -647,15 +635,5 @@ html body .VPDocAside .content {
     left: 10px;
     min-width: unset;
     width: auto;
-  }
-  
-  .VPNavBarSearch {
-    width: auto !important;
-    flex: 1 !important;
-  }
-  
-  .VPNavBarSearch .DocSearch-Button {
-    width: calc(100% - 80px) !important;
-    min-width: 80px !important;
   }
 }
