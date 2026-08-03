@@ -1,11 +1,9 @@
-import DefaultTheme from 'vitepress/theme'
+import Layout from './Layout.vue'
 import './custom.css'
-import injectCategories from './injectCategories.js'
 
 export default {
-  extends: DefaultTheme,
+  extends: Layout,
   enhanceApp({ app }) {
-    // Добавляем кастомную логику
-    app.mixin(injectCategories)
+    // Ваш код, если есть
   }
 }
