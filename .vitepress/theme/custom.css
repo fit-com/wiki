@@ -123,7 +123,7 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   padding-left: 35px !important; /* Твоя просьба */
 }
 .VPNavBarSearch {
-  width: calc(100vw - (20vw * 2) - 80px) !important;
+  width: calc(100vw - (20vw * 2) - 160px) !important;
 }
 .DocSearch-Button {
   width: 100% !important;
