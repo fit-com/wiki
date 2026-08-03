@@ -8,10 +8,11 @@ onMounted(() => {
   nextTick(() => {
     if (document.querySelector('.categories-wrapper')) return
 
-    const navBar = document.querySelector('.VPNavBar .content-body')
-    if (!navBar) return
+    // Находим кнопку поиска
+    const searchButton = document.querySelector('.DocSearch-Button')
+    if (!searchButton) return
 
-    // Создаем кнопку категорий
+    // Создаем контейнер для кнопки категорий
     const wrapper = document.createElement('div')
     wrapper.className = 'categories-wrapper'
     wrapper.innerHTML = `
@@ -40,12 +41,13 @@ onMounted(() => {
       </div>
     `
 
-    // Вставляем ПОСЛЕ поиска
-    const search = navBar.querySelector('.VPNavBarSearch')
-    if (search) {
-      search.after(wrapper)
-    } else {
-      navBar.appendChild(wrapper)
+    // Вставляем кнопку категорий внутрь кнопки поиска (в конец)
+    searchButton.appendChild(wrapper)
+
+    // Меняем текст Search на Поиск
+    const placeholder = searchButton.querySelector('.DocSearch-Button-Placeholder')
+    if (placeholder) {
+      placeholder.textContent = 'Поиск'
     }
 
     // Обработчики для выпадающего меню
