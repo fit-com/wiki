@@ -426,7 +426,6 @@ html body .VPDocAside .content {
 /* Иконка поиска */
 .DocSearch-Button .DocSearch-Search-Icon {
   color: rgba(255, 255, 255, 0.6) !important;
-  fill: rgba(255, 255, 255, 0.6) !important;
 }
 
 /* Отступ для иконки поиска и текста */
