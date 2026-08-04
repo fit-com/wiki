@@ -300,14 +300,15 @@ html body .VPDocAside .content {
 }
 
 /* ==========================================================================
-   9. КНОПКА КАТЕГОРИЙ (ВНУТРИ ПОИСКА)
+   9. КНОПКА КАТЕГОРИЙ ВНУТРИ ПОИСКА
    ========================================================================== */
 .categories-wrapper {
+  position: relative;
   display: inline-flex;
   align-items: center;
+  flex-shrink: 0;
   margin-left: auto;
   height: 100%;
-  position: relative;
 }
 
 .categories-button {
@@ -318,16 +319,21 @@ html body .VPDocAside .content {
   height: 30px;
   background: transparent !important;
   border: none !important;
-  border-left: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
   border-radius: 0 !important;
   color: #ffffff !important;
   font-size: 13px;
+  font-weight: 400;
   cursor: pointer;
+  transition: all 0.2s ease;
   white-space: nowrap;
+  user-select: none;
+  margin-left: 4px;
 }
 
 .categories-button:hover {
   color: #ffffff !important;
+  background: transparent !important;
 }
 
 .categories-icon {
@@ -337,9 +343,10 @@ html body .VPDocAside .content {
 
 .arrow {
   font-size: 9px;
-  margin-left: 2px;
-  color: #ffffff !important;
   transition: transform 0.2s ease;
+  margin-left: 2px;
+  opacity: 0.5;
+  color: #ffffff !important;
 }
 
 .arrow.open {
@@ -347,38 +354,40 @@ html body .VPDocAside .content {
 }
 
 /* ==========================================================================
-   10. ВЫПАДАЮЩЕЕ МЕНЮ (ГОРИЗОНТАЛЬНОЕ)
+   10. ВЫПАДАЮЩЕЕ МЕНЮ КАТЕГОРИЙ (ГОРИЗОНТАЛЬНОЕ, ПОД КНОПКОЙ ПОИСКА)
    ========================================================================== */
 .categories-dropdown {
   position: absolute !important;
-  top: 44px !important;
+  top: calc(100% + 8px) !important;
   left: 0 !important;
   right: 0 !important;
   width: 100% !important;
+  min-width: unset !important;
   background: #2c2c2e !important;
   border: 2px solid rgba(255, 255, 255, 0.2) !important;
   border-radius: 12px !important;
   padding: 8px 12px !important;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6) !important;
   z-index: 9999 !important;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.2s ease;
   display: flex !important;
   flex-direction: row !important;
   flex-wrap: wrap !important;
   align-items: center !important;
   gap: 4px !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  transform: translateY(-8px) !important;
-  transition: all 0.2s ease !important;
   box-sizing: border-box !important;
-  pointer-events: none !important;
+  margin: 0 !important;
+  pointer-events: none;
 }
 
 .categories-dropdown.open {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: translateY(0) !important;
-  pointer-events: auto !important;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .category-item {
@@ -389,9 +398,9 @@ html body .VPDocAside .content {
   color: #ffffff !important;
   text-decoration: none !important;
   border-radius: 8px !important;
+  transition: all 0.15s ease !important;
   font-size: 13px !important;
   white-space: nowrap !important;
-  transition: background 0.15s ease !important;
   flex: 0 0 auto !important;
 }
 
@@ -411,7 +420,7 @@ html body .VPDocAside .content {
   width: 1px !important;
   height: 28px !important;
   background: rgba(255, 255, 255, 0.15) !important;
-  margin: 4px !important;
+  margin: 4px 4px !important;
   flex-shrink: 0 !important;
 }
 
@@ -470,7 +479,16 @@ html body .VPDocAside .content {
     left: 10px !important;
     right: 10px !important;
     width: auto !important;
+    flex-direction: row !important;
     flex-wrap: wrap !important;
+    padding: 8px !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+  }
+
+  .category-item {
+    font-size: 12px !important;
+    padding: 6px 10px !important;
+    flex: 0 0 auto !important;
   }
 
   .dropdown-divider {
