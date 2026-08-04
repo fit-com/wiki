@@ -499,3 +499,174 @@ html body .VPDocAside .content {
     padding: 0 4px 0 8px !important;
   }
 }
+
+/* ==========================================================================
+   ГОРИЗОНТАЛЬНОЕ ВЫПАДАЮЩЕЕ МЕНЮ ПОД КНОПКОЙ ПОИСКА
+   ========================================================================== */
+
+/* Родительский контейнер - вся кнопка поиска */
+.DocSearch-Button {
+  position: relative !important; /* Важно для позиционирования меню */
+}
+
+.categories-wrapper {
+  position: static !important; /* Не позиционируем относительно wrapper */
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: auto;
+  height: 100%;
+}
+
+/* Кнопка категорий */
+.categories-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px;
+  height: 30px;
+  background: transparent !important;
+  border: none !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 0 !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  user-select: none;
+  margin-left: 4px;
+}
+
+.categories-button:hover {
+  color: #ffffff !important;
+  background: transparent !important;
+}
+
+.categories-icon {
+  font-size: 14px;
+}
+
+.arrow {
+  font-size: 9px;
+  transition: transform 0.2s ease;
+  margin-left: 2px;
+  opacity: 0.5;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+/* ВЫПАДАЮЩЕЕ МЕНЮ - ПОД КНОПКОЙ ПОИСКА */
+.categories-dropdown {
+  position: absolute !important;
+  top: calc(100% + 8px) !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  min-width: unset !important;
+  background: #2c2c2e !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 8px 12px !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6) !important;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.2s ease;
+  display: flex !important;
+  flex-direction: row !important; /* Элементы слева направо */
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 4px !important;
+  box-sizing: border-box !important;
+}
+
+.categories-dropdown.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Пункты меню - горизонтально, слева направо */
+.category-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 14px !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-decoration: none !important;
+  border-radius: 8px !important;
+  transition: all 0.15s ease !important;
+  font-size: 13px !important;
+  white-space: nowrap !important;
+  flex: 0 0 auto !important;
+}
+
+.category-item:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+.category-icon {
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+}
+
+.dropdown-divider {
+  width: 1px !important;
+  height: 28px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  margin: 4px 4px !important;
+  flex-shrink: 0 !important;
+}
+
+.add-content {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.add-content:hover {
+  color: #ffffff !important;
+  background: rgba(100, 200, 255, 0.15) !important;
+}
+
+/* ================================================================
+   МОБИЛЬНАЯ АДАПТАЦИЯ
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .categories-button {
+    padding: 0 6px;
+    font-size: 12px;
+    height: 26px;
+  }
+  
+  .categories-button .categories-text {
+    display: none;
+  }
+  
+  .categories-dropdown {
+    position: fixed !important;
+    top: 60px !important;
+    left: 10px !important;
+    right: 10px !important;
+    width: auto !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    padding: 8px !important;
+  }
+  
+  .category-item {
+    font-size: 12px !important;
+    padding: 6px 10px !important;
+    flex: 0 0 auto !important;
+  }
+  
+  .dropdown-divider {
+    display: none !important;
+  }
+}
