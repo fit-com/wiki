@@ -11,15 +11,18 @@ onMounted(() => {
     const searchButton = document.querySelector('.DocSearch-Button')
     if (!searchButton) return
 
+    // Убедимся, что у кнопки поиска есть position: relative
+    searchButton.style.position = 'relative'
+
     // Создаем контейнер для кнопки категорий
     const wrapper = document.createElement('div')
     wrapper.className = 'categories-wrapper'
-    wrapper.style.position = 'relative'
     wrapper.style.display = 'inline-flex'
     wrapper.style.alignItems = 'center'
     wrapper.style.flexShrink = '0'
     wrapper.style.marginLeft = 'auto'
     wrapper.style.height = '100%'
+    wrapper.style.position = 'static'
     
     wrapper.innerHTML = `
       <div class="categories-button" id="categoriesToggle">
@@ -76,7 +79,7 @@ onMounted(() => {
       })
 
       document.addEventListener('click', (e) => {
-        if (!wrapper.contains(e.target)) {
+        if (!wrapper.contains(e.target) && !dropdown.contains(e.target)) {
           close()
         }
       })
