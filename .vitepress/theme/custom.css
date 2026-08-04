@@ -154,11 +154,11 @@ body,
   max-width: 95% !important;
 
   position: absolute;
-  top: 32px;
+  top: 16px;
   left: 50%;
   transform: translate(-50%, -50%);
   
-  width: 96%; 
+  width: 91%; 
   margin-left: 2vw !important;
 }
 
