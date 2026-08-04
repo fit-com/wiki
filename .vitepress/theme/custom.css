@@ -146,7 +146,6 @@ body,
 
 .VPNavBarSearch {
   width: calc(100vw - (20vw * 2)) !important;
-  padding-left: 0 !important;
 }
 
 .DocSearch-Button {
@@ -156,8 +155,6 @@ body,
   top: 16px;
   left: 50%;
   transform: translate(-50%, -50%);
-  
-  margin-left: 2vw !important;
 }
 
 /* ==========================================================================
