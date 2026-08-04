@@ -14,7 +14,13 @@ onMounted(() => {
     // Создаем контейнер для кнопки категорий
     const wrapper = document.createElement('div')
     wrapper.className = 'categories-wrapper'
-    wrapper.style.position = 'relative' // Важно для позиционирования
+    wrapper.style.position = 'relative'
+    wrapper.style.display = 'inline-flex'
+    wrapper.style.alignItems = 'center'
+    wrapper.style.flexShrink = '0'
+    wrapper.style.marginLeft = 'auto'
+    wrapper.style.height = '100%'
+    
     wrapper.innerHTML = `
       <div class="categories-button" id="categoriesToggle">
         <span class="categories-icon">📂</span>
@@ -41,7 +47,6 @@ onMounted(() => {
       </div>
     `
 
-    // Вставляем кнопку категорий внутрь кнопки поиска
     searchButton.appendChild(wrapper)
 
     // Меняем текст Search на Поиск
@@ -50,7 +55,7 @@ onMounted(() => {
       placeholder.textContent = 'Поиск'
     }
 
-    // Обработчики для выпадающего меню
+    // Обработчики
     const toggle = document.getElementById('categoriesToggle')
     const dropdown = document.getElementById('categoriesDropdown')
 
