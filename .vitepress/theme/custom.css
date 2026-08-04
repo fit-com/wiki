@@ -151,16 +151,8 @@ body,
 
 .DocSearch-Button {
   width: calc(100vw - (20vw * 2) - 80px) !important;
-  max-width: 95% !important;
+  max-width: 100% !important;
   margin: 0 auto !important;
-}
-
-/* Кнопка темы */
-.VPNavBarAppearance {
-  position: absolute !important;
-  right: 20px !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
 }
 
 /* ==========================================================================
