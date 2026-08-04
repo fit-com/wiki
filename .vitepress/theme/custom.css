@@ -154,14 +154,12 @@ body,
   max-width: 95% !important;
 
   position: absolute;
-  top: 100%;
+  top: 32px;
   left: 50%;
   transform: translate(-50%, -50%);
   
   width: 96%; 
-  max-width: 96% !important; 
   margin-left: 2vw !important;
-  margin-right: 2vw !important;
 }
 
 /* ==========================================================================
