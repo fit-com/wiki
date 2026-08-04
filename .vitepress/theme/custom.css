@@ -158,7 +158,8 @@ body,
   left: 50%;
   transform: translate(-50%, -50%);
   
-  margin-left: 0vw !important;
+  margin-left: 2vw !important;
+  margin-right: 2vw !important;
 }
 
 /* ==========================================================================
