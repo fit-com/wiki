@@ -132,27 +132,34 @@ body,
 }
 
 /* ==========================================================================
-   5. РАСКЛАДКА ШАПКИ
+   5. РАСКЛАДКА ШАПКИ - СДВИГ ПОИСКА ВПРАВО, ЛОГОТИПА ВЛЕВО
    ========================================================================== */
 .VPNavBar .content-body {
   display: flex !important;
   align-items: center !important;
   width: 100% !important;
   gap: 20px !important;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+  box-sizing: border-box !important;
 }
 
 .VPNavBarTitle {
-  padding-left: 35px !important;
+  padding-left: 0 !important;
+  flex-shrink: 0 !important;
 }
 
 .VPNavBarSearch {
   width: calc(100vw - (20vw * 2)) !important;
   padding-left: 0 !important;
+  flex: 0 1 auto !important;
 }
 
 .DocSearch-Button {
   width: calc(100vw - (20vw * 2) - 80px) !important;
   max-width: 100% !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
 }
 
 /* ==========================================================================
@@ -318,6 +325,56 @@ html body .VPDocAside .content {
   pointer-events: none;
 }
 
+.categories-dropdown.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.category-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 14px !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  border-radius: 8px !important;
+  transition: all 0.15s ease !important;
+  font-size: 13px !important;
+  white-space: nowrap !important;
+  flex: 0 0 auto !important;
+}
+
+.category-item:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+.category-icon {
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+  color: #ffffff !important;
+}
+
+.dropdown-divider {
+  width: 1px !important;
+  height: 28px !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  margin: 4px 4px !important;
+  flex-shrink: 0 !important;
+}
+
+.add-content {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.add-content:hover {
+  color: #ffffff !important;
+  background: rgba(100, 200, 255, 0.15) !important;
+}
+
 /* ==========================================================================
    11. АДАПТИВНОСТЬ
    ========================================================================== */
@@ -344,6 +401,11 @@ html body .VPDocAside .content {
 
   .VPDocAside {
     display: none !important;
+  }
+
+  .VPNavBar .content-body {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
   }
 }
 
@@ -382,6 +444,11 @@ html body .VPDocAside .content {
 
   .DocSearch-Button {
     padding: 0 4px 0 8px !important;
+  }
+
+  .VPNavBar .content-body {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
   }
 }
 
