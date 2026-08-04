@@ -110,7 +110,7 @@ body,
   height: 36px !important;
   box-shadow: none !important;
   position: relative !important;
-  margin: 0px 0px 0px 20vw !important;
+  # margin: 0px 0px 0px 20vw !important;
 }
 
 .DocSearch-Button .DocSearch-Button-Placeholder,
@@ -153,6 +153,14 @@ body,
 .DocSearch-Button {
   width: calc(100vw - (20vw * 2)) !important;
   max-width: 95% !important;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  width: 95%; 
+  max-width: 95% !important; 
 }
 
 /* ==========================================================================
