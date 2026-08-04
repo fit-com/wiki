@@ -151,14 +151,14 @@ body,
 
 .DocSearch-Button {
   width: calc(100vw - (20vw * 2)) !important;
-  max-width: 95% !important;
+  max-width: 80% !important;
 
   position: absolute;
   top: 16px;
   left: 50%;
   transform: translate(-50%, -50%);
   
-  width: 91%; 
+  width: 80%;
   margin-left: 2vw !important;
 }
 
