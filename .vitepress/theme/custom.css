@@ -300,10 +300,8 @@ html body .VPDocAside .content {
 }
 
 /* ==========================================================================
-   9. КНОПКА КАТЕГОРИЙ И ВЫПАДАЮЩЕЕ МЕНЮ (ФИНАЛЬНАЯ ВЕРСИЯ)
+   9. КНОПКА КАТЕГОРИЙ (ВНУТРИ ПОИСКА)
    ========================================================================== */
-
-/* Кнопка категорий */
 .categories-wrapper {
   display: inline-flex;
   align-items: center;
@@ -348,7 +346,9 @@ html body .VPDocAside .content {
   transform: rotate(180deg);
 }
 
-/* Выпадающее меню - горизонтальное, на всю ширину */
+/* ==========================================================================
+   10. ВЫПАДАЮЩЕЕ МЕНЮ (ГОРИЗОНТАЛЬНОЕ)
+   ========================================================================== */
 .categories-dropdown {
   position: absolute !important;
   top: 44px !important;
@@ -381,7 +381,6 @@ html body .VPDocAside .content {
   pointer-events: auto !important;
 }
 
-/* Пункты меню */
 .category-item {
   display: flex !important;
   align-items: center !important;
@@ -393,6 +392,7 @@ html body .VPDocAside .content {
   font-size: 13px !important;
   white-space: nowrap !important;
   transition: background 0.15s ease !important;
+  flex: 0 0 auto !important;
 }
 
 .category-item:hover {
@@ -425,7 +425,7 @@ html body .VPDocAside .content {
 }
 
 /* ==========================================================================
-   10. АДАПТИВНОСТЬ
+   11. АДАПТИВНОСТЬ
    ========================================================================== */
 @media (max-width: 960px) {
   .VPDoc .content {
