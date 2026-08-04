@@ -110,7 +110,7 @@ body,
   height: 36px !important;
   box-shadow: none !important;
   position: relative !important;
-  margin: 25px 0px 0px 0px !important;
+  margin: 0px 0px 0px 25px !important;
 }
 
 .DocSearch-Button .DocSearch-Button-Placeholder,
