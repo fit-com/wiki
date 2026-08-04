@@ -90,14 +90,14 @@ body,
 }
 
 /* ==========================================================================
-   4. РАСКЛАДКА ШАПКИ
+   4. РАСКЛАДКА ШАПКИ - ПОИСК НА УРОВНЕ СТАТЬИ
    ========================================================================== */
 .VPNavBar .content-body {
   display: flex !important;
   align-items: center !important;
   width: 100% !important;
   gap: 20px !important;
-  padding-left: calc(20vw + 35px) !important;
+  padding-left: calc(20vw + 40px) !important;
   padding-right: 20px !important;
   box-sizing: border-box !important;
 }
