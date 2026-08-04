@@ -11,8 +11,10 @@ onMounted(() => {
     const searchButton = document.querySelector('.DocSearch-Button')
     if (!searchButton) return
 
-    // Убедимся, что у кнопки поиска есть position: relative
+    // Убедимся, что у кнопки поиска есть position: relative и правильные отступы
     searchButton.style.position = 'relative'
+    searchButton.style.padding = '0 4px 0 12px'
+    searchButton.style.boxSizing = 'border-box'
 
     // Создаем контейнер для кнопки категорий
     const wrapper = document.createElement('div')
