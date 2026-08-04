@@ -1,26 +1,16 @@
 /* ==========================================================================
-   1. ПЕРЕМЕННЫЕ ЦВЕТОВ (Светлая / Темная темы с прозрачностью для статьи)
+   1. ПЕРЕМЕННЫЕ ЦВЕТОВ (ТОЛЬКО ТЕМНАЯ ТЕМА)
    ========================================================================== */
 :root {
   --bg-image-url: url('@theme/bg.png');
-  
-  /* ИСПРАВЛЕНО: Центральная карточка статьи теперь полупрозрачная (белое матовое стекло) */
-  --vp-c-bg: rgba(255, 255, 255, 0.85) !important; 
-  --glass-bg: rgba(255, 255, 255, 0.65); 
-  --glass-border: rgba(0, 0, 0, 0.08); 
-  --text-color: #2c2c2e; 
-}
-
-.dark {
-  /* ИСПРАВЛЕНО: Центральная карточка статьи ночью становится темным стеклом */
-  --vp-c-bg: rgba(30, 30, 32, 0.85) !important; 
-  --glass-bg: rgba(30, 30, 32, 0.6); 
-  --glass-border: rgba(255, 255, 255, 0.08); 
-  --text-color: #ffffff; 
+  --vp-c-bg: rgba(30, 30, 32, 0.85) !important;
+  --glass-bg: rgba(30, 30, 32, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --text-color: #ffffff;
 }
 
 /* ==========================================================================
-   2. ГЛОБАЛЬНЫЙ ФОН И СКВОЗНАЯ ПРОЗРАЧНОСТЬ
+   2. ГЛОБАЛЬНЫЙ ФОН И ПРОЗРАЧНОСТЬ
    ========================================================================== */
 html {
   background-image: var(--bg-image-url) !important;
@@ -32,17 +22,24 @@ html {
   padding-top: 1px !important;
 }
 
-body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDoc, .VPDoc .container {
+body,
+#app,
+.VPApp,
+.VPLayout,
+.Layout,
+.VPContent,
+.VPContent .container,
+.VPDoc,
+.VPDoc .container {
   background: transparent !important;
   background-color: transparent !important;
 }
 
 /* ==========================================================================
-   3. ВСЕГДА ЧЕРНАЯ ШАПКА (ИСПРАВЛЕНО: Добиваем белую полосу и возвращаем инпут поиска)
+   3. ШАПКА (ВСЕГДА ТЕМНАЯ)
    ========================================================================== */
-/* Жестко зачищаем ВСЕ возможные бордюры и тени, которые плодили белую полосу */
-.VPNav, 
-.VPNavBar, 
+.VPNav,
+.VPNavBar,
 .VPNavBar .wrapper,
 .VPNavBar .container,
 .VPNavBar .content,
@@ -52,10 +49,9 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   background-image: none !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  /* ИСПРАВЛЕНО: Тотальное уничтожение белой линии-тени на стыке */
   border: none !important;
   border-bottom: none !important;
-  box-shadow: none !important; 
+  box-shadow: none !important;
   margin: 0 !important;
 }
 
@@ -72,8 +68,13 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   border-bottom: none !important;
 }
 
-/* Красим элементы шапки в белый */
-.VPNavBar .title, .VPNavBar .link, .VPNavBarItem, .VPNavBarHamburger, .VPNavBarMenuLink, .VPNavBar .text, .VPNavBar .icon {
+.VPNavBar .title,
+.VPNavBar .link,
+.VPNavBarItem,
+.VPNavBarHamburger,
+.VPNavBarMenuLink,
+.VPNavBar .text,
+.VPNavBar .icon {
   color: #ffffff !important;
   fill: #ffffff !important;
 }
@@ -83,22 +84,26 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   width: 100% !important;
   padding: 0 !important;
 }
-.VPNavBar .title { padding-left: 12px !important; }
 
-/* 🔍 НАСТРОЙКА КНОПКИ ПОИСКА (ИСПРАВЛЕНО: Стерли серую плашку вокруг) */
-.VPNavBarSearch, 
-.VPNavBarSearch .search-box, 
+.VPNavBar .title {
+  padding-left: 12px !important;
+}
+
+/* ==========================================================================
+   4. КНОПКА ПОИСКА
+   ========================================================================== */
+.VPNavBarSearch,
+.VPNavBarSearch .search-box,
 .VPNavBarSearch .VPSearchButton,
 .DocSearch-Button-Container {
-  background: transparent !important; /* Убираем внешнюю сосиску-подложку */
+  background: transparent !important;
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
 }
 
-/* Возвращаем красивую, залитую серым цветом саму кнопку Search */
 .DocSearch-Button {
-  background-color: #2c2c2e !important; 
+  background-color: #2c2c2e !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 8px !important;
   padding: 0 12px !important;
@@ -106,177 +111,50 @@ body, #app, .VPApp, .VPLayout, .Layout, .VPContent, .VPContent .container, .VPDo
   box-shadow: none !important;
 }
 
-.DocSearch-Button .DocSearch-Button-Placeholder, .DocSearch-Button .DocSearch-Button-Keys, .DocSearch-Button .DocSearch-Button-Key, .DocSearch-Button-Container .DocSearch-Search-Icon, .DocSearch-Button-Container svg {
-  color: rgba(255, 255, 255, 0.8) !important; fill: rgba(255, 255, 255, 0.8) !important;
+.DocSearch-Button .DocSearch-Button-Placeholder,
+.DocSearch-Button .DocSearch-Button-Keys,
+.DocSearch-Button .DocSearch-Button-Key,
+.DocSearch-Button-Container .DocSearch-Search-Icon,
+.DocSearch-Button-Container svg {
+  color: rgba(255, 255, 255, 0.8) !important;
+  fill: rgba(255, 255, 255, 0.8) !important;
 }
 
-/* ================================================================
-   ТВОИ ПРАВКИ (35px и flex-раскладка)
-   ================================================================ */
+.DocSearch-Button .DocSearch-Button-Placeholder {
+  font-size: 14px;
+  color: #ffffff !important;
+}
+
+.DocSearch-Button .DocSearch-Button-Keys {
+  display: none !important;
+}
+
+/* ==========================================================================
+   5. РАСКЛАДКА ШАПКИ
+   ========================================================================== */
 .VPNavBar .content-body {
   display: flex !important;
   align-items: center !important;
   width: 100% !important;
   gap: 20px !important;
 }
+
 .VPNavBarTitle {
-  padding-left: 35px !important; /* Твоя просьба */
-}
-.VPNavBarSearch {
-  width: calc(100vw - (20vw * 2)) !important;
-}
-.DocSearch-Button {
-  width: 100% !important;
+  padding-left: 35px !important;
 }
 
-/* ================================================================
-   ФИНАЛЬНАЯ ПРАВКА ПОИСКА (Убираем вшитый padding, меняем 80 на 38)
-   ================================================================ */
 .VPNavBarSearch {
+  width: calc(100vw - (20vw * 2)) !important;
   padding-left: 0 !important;
 }
+
 .DocSearch-Button {
-  /* ЗАМЕНИЛИ 80 НА 38 ПО ТВОЕЙ ПРОСЬБЕ */
   width: calc(100vw - (20vw * 2) - 38px) !important;
   max-width: 95% !important;
   margin: 0 auto !important;
 }
 
-/* ==========================================================================
-   4. ЛЕВОЕ МЕНЮ (ИСПРАВЛЕНО: Процент изменен на 20vw)
-   ========================================================================== */
-
-.VPSidebar, .VPLayout .VPSidebar, html body .VPSidebar {
-  top: var(--vp-nav-height) !important;
-  background: transparent !important;
-  background-color: transparent !important;
-  border-right: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  width: 20vw !important; 
-  max-width: 20vw !important;
-  min-width: 20vw !important;
-  overflow-y: hidden !important;
-}
-
-.VPSidebarNav { width: 100% !important; padding: 0 !important; }
-
-/* Стеклянные плашки левого меню */
-.VPSidebar .group {
-  background-color: var(--glass-bg) !important; 
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border: 1px solid var(--glass-border) !important;
-  border-radius: 12px !important; 
-  margin: 20px 20px 0 20px !important; 
-  width: calc(100% - 40px) !important; 
-  box-sizing: border-box !important;
-  padding: 15px 20px !important; 
-}
-
-/* Чистка пустых строк */
-.VPSidebar .group .title, .VPSidebar .group .items, .VPSidebarItem, .VPSidebarNav .group, .VPSidebarNav .group div, .VPSidebarNav .group nav {
-  margin-bottom: 0 !important; padding-bottom: 0 !important; gap: 0 !important;
-}
-.VPSidebar .group .items::after, .VPSidebarNav::after, .VPSidebarItem::after { content: none !important; }
-.VPSidebarItem .link { padding: 6px 0 !important; color: var(--text-color) !important; }
-
-/* ==========================================================================
-   5. ПРАВОЕ МЕНЮ (ИСПРАВЛЕНО: Процент 20vw и идеальная симметрия)
-   ========================================================================== */
-.VPDoc .container {
-  display: block !important;
-  max-width: 100% !important;
-}
-
-body .VPDocAside, 
-html body .VPLayout .VPDocAside {
-  position: fixed !important;
-  top: calc(var(--vp-nav-height) + 20px) !important; 
-  left: auto !important;
-  right: 20px !important; 
-  width: 20vw !important; 
-  max-width: 20vw !important;
-  min-width: 20vw !important;
-  display: block !important;
-  z-index: 100 !important;
-  background: transparent !important;
-}
-
-/* Стеклянный контейнер правого меню */
-body .VPDocAside .aside-container, 
-body .VPDocAside .content,
-html body .VPDocAside .content {
-  background-color: var(--glass-bg) !important; 
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border: 1px solid var(--glass-border) !important;
-  border-radius: 12px !important;
-  margin: 0 20px 0 20px !important; 
-  width: calc(100% - 40px) !important;
-  box-sizing: border-box !important;
-  padding: 15px 20px !important; 
-  height: auto !important;
-}
-
-/* Убираем любые рамки у правого меню */
-.VPDocAside .aside-container,
-.VPDocAside .content {
-  border: none !important;
-  border-left: none !important;
-  box-shadow: none !important;
-}
-
-.VPDocAside .outline-link { padding: 6px 0 !important; white-space: normal !important; color: var(--text-color) !important; }
-.VPDocAside .aside-curtain, .VPDocAside .meta { display: none !important; }
-
-/* ==========================================================================
-   6. ЖЕСТКОЕ МАТЕМАТИЧЕСКОЕ ЦЕНТРИРОВАНИЕ ОСНОВНОЙ КАРТОЧКИ (Стеклянная подложка)
-   ========================================================================== */
-.VPDoc .content {
-  /* Пересчитано под 20vw по бокам */
-  width: calc(100vw - (20vw * 2) - 80px) !important; 
-  max-width: 95% !important;
-  position: absolute !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important; 
-  margin: 40px 0 !important;
-  
-  /* Подключаем прозрачный фон и размытие для эффекта матового стекла у самой статьи */
-  background-color: var(--vp-c-bg) !important; 
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
-  
-  padding: 40px 30px !important; 
-  border-radius: 12px !important;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2) !important;
-}
-
-/* ==========================================================================
-   7. АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ
-   ========================================================================== */
-@media (max-width: 960px) {
-  .VPDoc .content { width: 90vw !important; position: relative !important; left: 0 !important; transform: none !important; margin: 20px auto !important; padding: 20px !important; }
-  .VPSidebar { width: 100% !important; max-width: 100% !important; top: 0 !important; }
-  .VPSidebar .group { margin: 10px !important; width: calc(100% - 20px) !important; }
-  .VPDocAside { display: none !important; }
-}
-
-/* ===== ИСПРАВЛЕНИЕ (Без костылей, только CSS) ===== */
-
-/* 1. Убираем нижний засвет: именно этот селектор контролирует белый отступ снизу */
-.VPDoc .container > div:last-child {
-  padding-bottom: 0 !important;
-  margin-bottom: 0 !important;
-}
-
-/* 2. Прижимаем статью вверх (убираем отступ 40px) */
-.VPDoc .content {
-  margin-top: 0 !important;
-}
-
-/* 3. Кнопка темы ровно на 20px от правого края */
+/* Кнопка темы */
 .VPNavBarAppearance {
   position: absolute !important;
   right: 20px !important;
@@ -285,437 +163,146 @@ html body .VPDocAside .content {
 }
 
 /* ==========================================================================
-   КНОПКА КАТЕГОРИЙ ВНУТРИ ПОИСКА
+   6. ЛЕВОЕ МЕНЮ (СТЕКЛЯННОЕ)
    ========================================================================== */
-
-/* Контейнер для кнопки категорий внутри поиска */
-.categories-wrapper {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  flex-shrink: 0;
-  margin-left: auto;
+.VPSidebar,
+.VPLayout .VPSidebar,
+html body .VPSidebar {
+  top: var(--vp-nav-height) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border-right: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 20vw !important;
+  max-width: 20vw !important;
+  min-width: 20vw !important;
+  overflow-y: hidden !important;
 }
 
-/* Кнопка категорий - цвет #2c2c2e, как у поиска */
-.categories-button {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0 10px;
-  height: 30px;
-  background: #2c2c2e !important;
-  border: none !important;
-  border-radius: 6px !important;
-  color: rgba(255, 255, 255, 0.8) !important;
-  font-size: 13px;
-  font-weight: 400;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-  user-select: none;
-  margin-left: 4px;
+.VPSidebarNav {
+  width: 100% !important;
+  padding: 0 !important;
 }
 
-.categories-button:hover {
-  background: #3c3c3e !important;
-  color: #ffffff !important;
+.VPSidebar .group {
+  background-color: var(--glass-bg) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 12px !important;
+  margin: 20px 20px 0 20px !important;
+  width: calc(100% - 40px) !important;
+  box-sizing: border-box !important;
+  padding: 15px 20px !important;
 }
 
-.categories-icon {
-  font-size: 14px;
+.VPSidebar .group .title,
+.VPSidebar .group .items,
+.VPSidebarItem,
+.VPSidebarNav .group,
+.VPSidebarNav .group div,
+.VPSidebarNav .group nav {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  gap: 0 !important;
 }
 
-.arrow {
-  font-size: 9px;
-  transition: transform 0.2s ease;
-  margin-left: 2px;
-  opacity: 0.6;
+.VPSidebar .group .items::after,
+.VPSidebarNav::after,
+.VPSidebarItem::after {
+  content: none !important;
 }
 
-.arrow.open {
-  transform: rotate(180deg);
+.VPSidebarItem .link {
+  padding: 6px 0 !important;
+  color: var(--text-color) !important;
 }
 
 /* ==========================================================================
-   КНОПКА КАТЕГОРИЙ ВНУТРИ ПОИСКА
+   7. ПРАВОЕ МЕНЮ (СТЕКЛЯННОЕ)
    ========================================================================== */
-
-/* Контейнер для кнопки категорий внутри поиска */
-.categories-wrapper {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  flex-shrink: 0;
-  margin-left: auto; /* Прижимаем к правому краю */
+.VPDoc .container {
+  display: block !important;
+  max-width: 100% !important;
 }
 
-/* Кнопка категорий внутри поиска */
-.categories-button {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0 8px;
-  height: 28px;
+body .VPDocAside,
+html body .VPLayout .VPDocAside {
+  position: fixed !important;
+  top: calc(var(--vp-nav-height) + 20px) !important;
+  left: auto !important;
+  right: 20px !important;
+  width: 20vw !important;
+  max-width: 20vw !important;
+  min-width: 20vw !important;
+  display: block !important;
+  z-index: 100 !important;
   background: transparent !important;
+}
+
+body .VPDocAside .aside-container,
+body .VPDocAside .content,
+html body .VPDocAside .content {
+  background-color: var(--glass-bg) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 12px !important;
+  margin: 0 20px 0 20px !important;
+  width: calc(100% - 40px) !important;
+  box-sizing: border-box !important;
+  padding: 15px 20px !important;
+  height: auto !important;
+}
+
+.VPDocAside .aside-container,
+.VPDocAside .content {
   border: none !important;
-  border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
-  border-radius: 0 !important;
-  color: rgba(255, 255, 255, 0.7) !important;
-  font-size: 13px;
-  font-weight: 400;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-  user-select: none;
-  margin-left: 4px;
-}
-
-.categories-button:hover {
-  color: #ffffff !important;
-  background: transparent !important;
-}
-
-.categories-icon {
-  font-size: 14px;
-}
-
-.arrow {
-  font-size: 9px;
-  transition: transform 0.2s ease;
-  margin-left: 2px;
-  opacity: 0.5;
-}
-
-.arrow.open {
-  transform: rotate(180deg);
-}
-
-/* ================================================================
-   НАСТРОЙКА КНОПКИ ПОИСКА
-   ================================================================ */
-
-/* Меняем текст Search на Поиск */
-.DocSearch-Button .DocSearch-Button-Placeholder {
-  font-size: 14px;
-   color: rgba(255, 255, 255, 0.8) !important;
-}
-
-/* Скрываем Ctrl+K */
-.DocSearch-Button .DocSearch-Button-Keys {
-  display: none !important;
-}
-
-/* Делаем кнопку поиска flex-контейнером для размещения кнопки категорий */
-.DocSearch-Button {
-  display: flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  background-color: #2c2c2e !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 8px !important;
-  padding: 0 4px 0 12px !important;
-  height: 36px !important;
+  border-left: none !important;
   box-shadow: none !important;
 }
 
-/* Отступ для иконки поиска и текста */
-.DocSearch-Button-Container {
-  display: flex !important;
-  align-items: center !important;
-  gap: 8px !important;
+.VPDocAside .outline-link {
+  padding: 6px 0 !important;
+  white-space: normal !important;
+  color: var(--text-color) !important;
 }
 
-/* ================================================================
-   ВЫПАДАЮЩЕЕ МЕНЮ - полная поддержка темной и светлой темы
-   ================================================================ */
-
-.categories-dropdown {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  min-width: 220px;
-  border-radius: 12px;
-  padding: 8px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-  z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-8px) scale(0.98);
-  transition: all 0.2s ease;
-}
-
-.categories-dropdown.open {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0) scale(1);
-}
-
-/* ----- ТЕМНАЯ ТЕМА (по умолчанию) ----- */
-.categories-dropdown {
-  background: rgba(30, 30, 32, 0.95) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-}
-
-.category-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 14px;
-  color: rgba(255, 255, 255, 0.85) !important;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: all 0.15s ease;
-  font-size: 14px;
-}
-
-.category-item:hover {
-  background: rgba(255, 255, 255, 0.08) !important;
-  color: #ffffff !important;
-}
-
-.category-icon {
-  font-size: 18px;
-  width: 24px;
-  text-align: center;
-}
-
-.dropdown-divider {
-  height: 1px;
-  margin: 6px 8px;
-}
-
-/* Темная тема - разделитель */
-.categories-dropdown .dropdown-divider {
-  background: rgba(255, 255, 255, 0.08) !important;
-}
-
-/* Темная тема - добавить контент */
-.categories-dropdown .add-content {
-  color: rgba(255, 255, 255, 0.6) !important;
-}
-
-.categories-dropdown .add-content:hover {
-  color: #ffffff !important;
-  background: rgba(100, 200, 255, 0.1) !important;
-}
-
-/* ----- СВЕТЛАЯ ТЕМА ----- */
-:root .categories-dropdown {
-  background: rgba(255, 255, 255, 0.98) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(0, 0, 0, 0.08) !important;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15) !important;
-}
-
-:root .category-item {
-  color: rgba(0, 0, 0, 0.75) !important;
-}
-
-:root .category-item:hover {
-  background: rgba(0, 0, 0, 0.05) !important;
-  color: #000000 !important;
-}
-
-:root .categories-dropdown .dropdown-divider {
-  background: rgba(0, 0, 0, 0.08) !important;
-}
-
-:root .categories-dropdown .add-content {
-  color: rgba(0, 0, 0, 0.5) !important;
-}
-
-:root .categories-dropdown .add-content:hover {
-  color: #000000 !important;
-  background: rgba(0, 100, 200, 0.05) !important;
-}
-
-/* Светлая тема для кнопки категорий внутри поиска */
-:root .categories-button {
-  border-left: 1px solid rgba(0, 0, 0, 0.1) !important;
-  color: rgba(0, 0, 0, 0.6) !important;
-}
-
-:root .categories-button:hover {
-  color: #000000 !important;
-}
-
-/* ================================================================
-   МОБИЛЬНАЯ АДАПТАЦИЯ
-   ================================================================ */
-
-@media (max-width: 768px) {
-  .categories-button {
-    padding: 0 6px;
-    font-size: 12px;
-  }
-  
-  .categories-button .categories-text {
-    display: none;
-  }
-  
-  .categories-dropdown {
-    position: fixed;
-    top: 60px;
-    right: 10px;
-    left: 10px;
-    min-width: unset;
-    width: auto;
-  }
-  
-  .DocSearch-Button {
-    padding: 0 4px 0 8px !important;
-  }
-}
-
-.DocSearch-Button .DocSearch-Button-Placeholder {
-  color: #ffffff !important;
-  opacity: 1 !important;
-}
-
-/* Также для иконки поиска */
-.DocSearch-Button .DocSearch-Search-Icon {
-  color: #ffffff !important;
-  fill: #ffffff !important;
-}
-
-/* Для всех элементов внутри кнопки поиска */
-.DocSearch-Button * {
-  color: #ffffff !important;
+.VPDocAside .aside-curtain,
+.VPDocAside .meta {
+  display: none !important;
 }
 
 /* ==========================================================================
-   ВЫПАДАЮЩЕЕ МЕНЮ - ТОЛЬКО ТЕМНАЯ ТЕМА
+   8. ОСНОВНАЯ КАРТОЧКА СТАТЬИ (СТЕКЛЯННАЯ)
    ========================================================================== */
-
-.categories-dropdown {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  min-width: 220px;
-  background: #2c2c2e !important; /* Цвет как у кнопки поиска */
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+.VPDoc .content {
+  width: calc(100vw - (20vw * 2) - 80px) !important;
+  max-width: 95% !important;
+  position: absolute !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  margin: 0 !important;
+  background-color: var(--vp-c-bg) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  padding: 40px 30px !important;
   border-radius: 12px !important;
-  padding: 8px !important;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6) !important;
-  z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-8px) scale(0.98);
-  transition: all 0.2s ease;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2) !important;
 }
 
-.categories-dropdown.open {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0) scale(1);
-}
-
-/* Пункты меню */
-.category-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 14px;
-  color: rgba(255, 255, 255, 0.85) !important;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: all 0.15s ease;
-  font-size: 14px;
-}
-
-.category-item:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #ffffff !important;
-}
-
-.category-icon {
-  font-size: 18px;
-  width: 24px;
-  text-align: center;
-}
-
-.dropdown-divider {
-  height: 1px;
-  background: rgba(255, 255, 255, 0.1) !important;
-  margin: 6px 8px;
-}
-
-.add-content {
-  color: rgba(255, 255, 255, 0.6) !important;
-}
-
-.add-content:hover {
-  color: #ffffff !important;
-  background: rgba(100, 200, 255, 0.15) !important;
+.VPDoc .container > div:last-child {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 /* ==========================================================================
-   УБИРАЕМ ВСЕ СВЕТЛЫЕ ТЕМЫ
+   9. КНОПКА КАТЕГОРИЙ ВНУТРИ ПОИСКА
    ========================================================================== */
-
-/* Удаляем все :root стили для светлой темы */
-:root .categories-dropdown,
-:root .category-item,
-:root .dropdown-divider,
-:root .add-content {
-  /* Переопределяем обратно в темную тему */
-  background: #2c2c2e !important;
-  color: rgba(255, 255, 255, 0.85) !important;
-}
-
-:root .category-item:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #ffffff !important;
-}
-
-:root .dropdown-divider {
-  background: rgba(255, 255, 255, 0.1) !important;
-}
-
-:root .add-content {
-  color: rgba(255, 255, 255, 0.6) !important;
-}
-
-:root .add-content:hover {
-  color: #ffffff !important;
-  background: rgba(100, 200, 255, 0.15) !important;
-}
-
-/* Убираем светлую тему для кнопки категорий */
-:root .categories-button {
-  border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
-  color: rgba(255, 255, 255, 0.7) !important;
-}
-
-:root .categories-button:hover {
-  color: #ffffff !important;
-}
-
-/* Убираем светлую тему для текста поиска */
-:root .DocSearch-Button .DocSearch-Button-Placeholder {
-  color: rgba(255, 255, 255, 0.8) !important;
-}
-
-:root .DocSearch-Button .DocSearch-Search-Icon {
-  color: rgba(255, 255, 255, 0.6) !important;
-  fill: rgba(255, 255, 255, 0.6) !important;
-}
-
-/* ==========================================================================
-   ГОРИЗОНТАЛЬНОЕ ВЫПАДАЮЩЕЕ МЕНЮ ПОД КНОПКОЙ ПОИСКА
-   ========================================================================== */
-
-/* Родительский контейнер - вся кнопка поиска */
-.DocSearch-Button {
-  position: relative !important;
-}
-
 .categories-wrapper {
-  position: static !important;
+  position: relative;
   display: inline-flex;
   align-items: center;
   flex-shrink: 0;
@@ -723,7 +310,6 @@ html body .VPDocAside .content {
   height: 100%;
 }
 
-/* Кнопка категорий */
 .categories-button {
   display: flex;
   align-items: center;
@@ -764,7 +350,13 @@ html body .VPDocAside .content {
   transform: rotate(180deg);
 }
 
-/* ВЫПАДАЮЩЕЕ МЕНЮ - ПОД КНОПКОЙ ПОИСКА */
+/* ==========================================================================
+   10. ВЫПАДАЮЩЕЕ МЕНЮ КАТЕГОРИЙ (ГОРИЗОНТАЛЬНОЕ)
+   ========================================================================== */
+.DocSearch-Button {
+  position: relative !important;
+}
+
 .categories-dropdown {
   position: absolute !important;
   top: calc(100% + 8px) !important;
@@ -773,7 +365,7 @@ html body .VPDocAside .content {
   width: 100% !important;
   min-width: unset !important;
   background: #2c2c2e !important;
-  border: 2px solid rgba(255, 255, 255, 0.15) !important; /* ЯРКАЯ РАМКА */
+  border: 2px solid rgba(255, 255, 255, 0.15) !important;
   border-radius: 12px !important;
   padding: 8px 12px !important;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6) !important;
@@ -797,7 +389,6 @@ html body .VPDocAside .content {
   transform: translateY(0);
 }
 
-/* Пункты меню - горизонтально, слева направо */
 .category-item {
   display: flex !important;
   align-items: center !important;
@@ -840,9 +431,34 @@ html body .VPDocAside .content {
   background: rgba(100, 200, 255, 0.15) !important;
 }
 
-/* ================================================================
-   МОБИЛЬНАЯ АДАПТАЦИЯ
-   ================================================================ */
+/* ==========================================================================
+   11. АДАПТИВНОСТЬ
+   ========================================================================== */
+@media (max-width: 960px) {
+  .VPDoc .content {
+    width: 90vw !important;
+    position: relative !important;
+    left: 0 !important;
+    transform: none !important;
+    margin: 20px auto !important;
+    padding: 20px !important;
+  }
+
+  .VPSidebar {
+    width: 100% !important;
+    max-width: 100% !important;
+    top: 0 !important;
+  }
+
+  .VPSidebar .group {
+    margin: 10px !important;
+    width: calc(100% - 20px) !important;
+  }
+
+  .VPDocAside {
+    display: none !important;
+  }
+}
 
 @media (max-width: 768px) {
   .categories-button {
@@ -850,11 +466,11 @@ html body .VPDocAside .content {
     font-size: 12px;
     height: 26px;
   }
-  
+
   .categories-button .categories-text {
     display: none;
   }
-  
+
   .categories-dropdown {
     position: fixed !important;
     top: 60px !important;
@@ -866,14 +482,18 @@ html body .VPDocAside .content {
     padding: 8px !important;
     border: 2px solid rgba(255, 255, 255, 0.15) !important;
   }
-  
+
   .category-item {
     font-size: 12px !important;
     padding: 6px 10px !important;
     flex: 0 0 auto !important;
   }
-  
+
   .dropdown-divider {
     display: none !important;
+  }
+
+  .DocSearch-Button {
+    padding: 0 4px 0 8px !important;
   }
 }
