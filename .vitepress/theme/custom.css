@@ -145,14 +145,16 @@ body,
 }
 
 .VPNavBarSearch {
-  width: calc(100vw - (20vw * 2)) !important;
+  width: calc(100vw - (20vw * 2) - 80px) !important;
+  max-width: 95% !important;
   padding-left: 0 !important;
+  flex: 0 0 auto !important;
 }
 
 .DocSearch-Button {
-  width: calc(100vw - (20vw * 2) - 38px) !important;
-  max-width: 95% !important;
-  margin: 0 auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
 }
 
 /* Кнопка темы */
@@ -292,11 +294,6 @@ html body .VPDocAside .content {
   padding: 40px 30px !important;
   border-radius: 12px !important;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2) !important;
-}
-
-.VPDoc .container > div:last-child {
-  padding-bottom: 0 !important;
-  margin-bottom: 0 !important;
 }
 
 /* ==========================================================================
