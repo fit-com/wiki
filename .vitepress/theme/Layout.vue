@@ -8,13 +8,13 @@ onMounted(() => {
   nextTick(() => {
     if (document.querySelector('.categories-wrapper')) return
 
-    // Находим кнопку поиска
     const searchButton = document.querySelector('.DocSearch-Button')
     if (!searchButton) return
 
     // Создаем контейнер для кнопки категорий
     const wrapper = document.createElement('div')
     wrapper.className = 'categories-wrapper'
+    wrapper.style.position = 'relative' // Важно для позиционирования
     wrapper.innerHTML = `
       <div class="categories-button" id="categoriesToggle">
         <span class="categories-icon">📂</span>
@@ -41,7 +41,7 @@ onMounted(() => {
       </div>
     `
 
-    // Вставляем кнопку категорий внутрь кнопки поиска (в конец)
+    // Вставляем кнопку категорий внутрь кнопки поиска
     searchButton.appendChild(wrapper)
 
     // Меняем текст Search на Поиск
