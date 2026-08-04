@@ -150,7 +150,7 @@ body,
 }
 
 .DocSearch-Button {
-  width: calc(100vw - (20vw * 2) - 38px) !important;
+  width: calc(100vw - (20vw * 2) - 80px) !important;
   max-width: 95% !important;
   margin: 0 auto !important;
 }
@@ -161,64 +161,6 @@ body,
   right: 20px !important;
   top: 50% !important;
   transform: translateY(-50%) !important;
-}
-
-/* ==========================================================================
-   6. ЛЕВОЕ МЕНЮ (СТЕКЛЯННОЕ)
-   ========================================================================== */
-.VPSidebar,
-.VPLayout .VPSidebar,
-html body .VPSidebar {
-  top: var(--vp-nav-height) !important;
-  background: transparent !important;
-  background-color: transparent !important;
-  border-right: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  width: 20vw !important;
-  max-width: 20vw !important;
-  min-width: 20vw !important;
-  overflow-y: hidden !important;
-}
-
-.VPSidebarNav {
-  width: 100% !important;
-  padding: 0 !important;
-}
-
-.VPSidebar .group {
-  background-color: var(--glass-bg) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border: 1px solid var(--glass-border) !important;
-  border-radius: 12px !important;
-  margin: 20px 20px 0 20px !important;
-  width: calc(100% - 40px) !important;
-  box-sizing: border-box !important;
-  padding: 15px 20px !important;
-}
-
-.VPSidebar .group .title,
-.VPSidebar .group .items,
-.VPSidebarItem,
-.VPSidebarNav .group,
-.VPSidebarNav .group div,
-.VPSidebarNav .group nav {
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
-  gap: 0 !important;
-}
-
-.VPSidebar .group .items::after,
-.VPSidebarNav::after,
-.VPSidebarItem::after {
-  content: none !important;
-}
-
-.VPSidebarItem .link {
-  padding: 6px 0 !important;
-  color: var(--text-color) !important;
 }
 
 /* ==========================================================================
