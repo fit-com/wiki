@@ -586,3 +586,121 @@ html body .VPDocAside .content {
 .DocSearch-Button * {
   color: #ffffff !important;
 }
+
+/* ==========================================================================
+   ВЫПАДАЮЩЕЕ МЕНЮ - ТОЛЬКО ТЕМНАЯ ТЕМА
+   ========================================================================== */
+
+.categories-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 220px;
+  background: #2c2c2e !important; /* Цвет как у кнопки поиска */
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 8px !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6) !important;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px) scale(0.98);
+  transition: all 0.2s ease;
+}
+
+.categories-dropdown.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+/* Пункты меню */
+.category-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.15s ease;
+  font-size: 14px;
+}
+
+.category-item:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+.category-icon {
+  font-size: 18px;
+  width: 24px;
+  text-align: center;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1) !important;
+  margin: 6px 8px;
+}
+
+.add-content {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.add-content:hover {
+  color: #ffffff !important;
+  background: rgba(100, 200, 255, 0.15) !important;
+}
+
+/* ==========================================================================
+   УБИРАЕМ ВСЕ СВЕТЛЫЕ ТЕМЫ
+   ========================================================================== */
+
+/* Удаляем все :root стили для светлой темы */
+:root .categories-dropdown,
+:root .category-item,
+:root .dropdown-divider,
+:root .add-content {
+  /* Переопределяем обратно в темную тему */
+  background: #2c2c2e !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+:root .category-item:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+:root .dropdown-divider {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+:root .add-content {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+:root .add-content:hover {
+  color: #ffffff !important;
+  background: rgba(100, 200, 255, 0.15) !important;
+}
+
+/* Убираем светлую тему для кнопки категорий */
+:root .categories-button {
+  border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+:root .categories-button:hover {
+  color: #ffffff !important;
+}
+
+/* Убираем светлую тему для текста поиска */
+:root .DocSearch-Button .DocSearch-Button-Placeholder {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+:root .DocSearch-Button .DocSearch-Search-Icon {
+  color: rgba(255, 255, 255, 0.6) !important;
+  fill: rgba(255, 255, 255, 0.6) !important;
+}
