@@ -6,25 +6,17 @@ const { Layout } = DefaultTheme
 
 onMounted(() => {
   nextTick(() => {
-    if (document.querySelector('.categories-wrapper')) return
+    // Удаляем старую кнопку если есть
+    const oldWrapper = document.querySelector('.categories-wrapper')
+    if (oldWrapper) return
 
     const searchButton = document.querySelector('.DocSearch-Button')
     if (!searchButton) return
 
-    // Убедимся, что у кнопки поиска есть position: relative и правильные отступы
-    searchButton.style.position = 'relative'
-    searchButton.style.padding = '0 4px 0 12px'
-    searchButton.style.boxSizing = 'border-box'
-
-    // Создаем контейнер для кнопки категорий
+    // Создаем wrapper
     const wrapper = document.createElement('div')
     wrapper.className = 'categories-wrapper'
-    wrapper.style.display = 'inline-flex'
-    wrapper.style.alignItems = 'center'
-    wrapper.style.flexShrink = '0'
-    wrapper.style.marginLeft = 'auto'
-    wrapper.style.height = '100%'
-    wrapper.style.position = 'static'
+    wrapper.setAttribute('data-categories', 'true')
     
     wrapper.innerHTML = `
       <div class="categories-button" id="categoriesToggle">
@@ -52,9 +44,10 @@ onMounted(() => {
       </div>
     `
 
+    // Вставляем в конец кнопки поиска
     searchButton.appendChild(wrapper)
 
-    // Меняем текст Search на Поиск
+    // Меняем текст
     const placeholder = searchButton.querySelector('.DocSearch-Button-Placeholder')
     if (placeholder) {
       placeholder.textContent = 'Поиск'
@@ -81,7 +74,7 @@ onMounted(() => {
       })
 
       document.addEventListener('click', (e) => {
-        if (!wrapper.contains(e.target) && !dropdown.contains(e.target)) {
+        if (!wrapper.contains(e.target)) {
           close()
         }
       })
