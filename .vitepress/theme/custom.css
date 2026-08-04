@@ -363,6 +363,7 @@ html body .VPDocAside .content {
   right: 0 !important;
   width: 100% !important;
   min-width: unset !important;
+  max-width: 100% !important;
   background: #2c2c2e !important;
   border: 2px solid rgba(255, 255, 255, 0.2) !important;
   border-radius: 12px !important;
@@ -381,56 +382,6 @@ html body .VPDocAside .content {
   box-sizing: border-box !important;
   margin: 0 !important;
   pointer-events: none;
-}
-
-.categories-dropdown.open {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.category-item {
-  display: flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  padding: 8px 14px !important;
-  color: #ffffff !important;
-  text-decoration: none !important;
-  border-radius: 8px !important;
-  transition: all 0.15s ease !important;
-  font-size: 13px !important;
-  white-space: nowrap !important;
-  flex: 0 0 auto !important;
-}
-
-.category-item:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #ffffff !important;
-}
-
-.category-icon {
-  font-size: 16px;
-  width: 20px;
-  text-align: center;
-  color: #ffffff !important;
-}
-
-.dropdown-divider {
-  width: 1px !important;
-  height: 28px !important;
-  background: rgba(255, 255, 255, 0.15) !important;
-  margin: 4px 4px !important;
-  flex-shrink: 0 !important;
-}
-
-.add-content {
-  color: rgba(255, 255, 255, 0.6) !important;
-}
-
-.add-content:hover {
-  color: #ffffff !important;
-  background: rgba(100, 200, 255, 0.15) !important;
 }
 
 /* ==========================================================================
@@ -669,4 +620,17 @@ html body .VPDocAside .content {
   .dropdown-divider {
     display: none !important;
   }
+}
+
+/* ==========================================================================
+   12. ПРИНУДИТЕЛЬНОЕ ВЫРАВНИВАНИЕ МЕНЮ
+   ========================================================================== */
+#categoriesDropdown {
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 8px 12px !important;
+  box-sizing: border-box !important;
 }
