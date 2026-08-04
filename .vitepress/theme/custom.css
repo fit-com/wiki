@@ -711,11 +711,11 @@ html body .VPDocAside .content {
 
 /* Родительский контейнер - вся кнопка поиска */
 .DocSearch-Button {
-  position: relative !important; /* Важно для позиционирования меню */
+  position: relative !important;
 }
 
 .categories-wrapper {
-  position: static !important; /* Не позиционируем относительно wrapper */
+  position: static !important;
   display: inline-flex;
   align-items: center;
   flex-shrink: 0;
@@ -773,7 +773,7 @@ html body .VPDocAside .content {
   width: 100% !important;
   min-width: unset !important;
   background: #2c2c2e !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border: 2px solid rgba(255, 255, 255, 0.15) !important; /* ЯРКАЯ РАМКА */
   border-radius: 12px !important;
   padding: 8px 12px !important;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6) !important;
@@ -783,11 +783,12 @@ html body .VPDocAside .content {
   transform: translateY(-8px);
   transition: all 0.2s ease;
   display: flex !important;
-  flex-direction: row !important; /* Элементы слева направо */
+  flex-direction: row !important;
   flex-wrap: wrap !important;
   align-items: center !important;
   gap: 4px !important;
   box-sizing: border-box !important;
+  margin: 0 !important;
 }
 
 .categories-dropdown.open {
@@ -825,7 +826,7 @@ html body .VPDocAside .content {
 .dropdown-divider {
   width: 1px !important;
   height: 28px !important;
-  background: rgba(255, 255, 255, 0.1) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
   margin: 4px 4px !important;
   flex-shrink: 0 !important;
 }
@@ -863,6 +864,7 @@ html body .VPDocAside .content {
     flex-direction: row !important;
     flex-wrap: wrap !important;
     padding: 8px !important;
+    border: 2px solid rgba(255, 255, 255, 0.15) !important;
   }
   
   .category-item {
