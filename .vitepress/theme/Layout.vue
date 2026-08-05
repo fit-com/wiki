@@ -6,12 +6,14 @@ const { Layout } = DefaultTheme
 
 onMounted(() => {
   nextTick(() => {
+    // ============================================
+    // 1. СУЩЕСТВУЮЩИЙ КОД ДЛЯ КАТЕГОРИЙ
+    // ============================================
     if (document.querySelector('.categories-wrapper')) return
 
     const searchButton = document.querySelector('.DocSearch-Button')
     if (!searchButton) return
 
-    // Убедимся, что кнопка имеет position: relative и правильные отступы
     searchButton.style.position = 'relative'
     searchButton.style.padding = '0 4px 0 12px'
     searchButton.style.boxSizing = 'border-box'
@@ -85,6 +87,25 @@ onMounted(() => {
       dropdown.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', close)
       })
+    }
+
+    // ============================================
+    // 2. НОВЫЙ КОД ДЛЯ ПЕРЕМЕЩЕНИЯ ОГЛАВЛЕНИЯ
+    // ============================================
+    const outline = document.querySelector('.VPDocAsideOutline')
+    if (!outline) return
+    
+    const firstHeading = document.querySelector('.vp-doc h1')
+    if (!firstHeading) return
+    
+    const outlineClone = outline.cloneNode(true)
+    firstHeading.parentNode.insertBefore(outlineClone, firstHeading.nextSibling)
+    outlineClone.classList.add('inline-outline')
+    outline.style.display = 'none'
+    
+    const aside = document.querySelector('.VPDoc .aside')
+    if (aside) {
+      aside.style.display = 'none'
     }
   })
 })
