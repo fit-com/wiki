@@ -95,12 +95,27 @@ onMounted(() => {
     const outline = document.querySelector('.VPDocAsideOutline')
     if (!outline) return
     
+    // Находим первый абзац после h1
     const firstHeading = document.querySelector('.vp-doc h1')
     if (!firstHeading) return
     
+    // Находим следующий элемент после h1 (это может быть абзац или div)
+    let nextElement = firstHeading.nextElementSibling
+    // Пропускаем пустые элементы и ищем первый абзац с текстом
+    while (nextElement && !nextElement.textContent.trim()) {
+      nextElement = nextElement.nextElementSibling
+    }
+    
+    // Если есть следующий элемент - вставляем после него, иначе после h1
+    const insertTarget = nextElement || firstHeading
+    
     const outlineClone = outline.cloneNode(true)
-    firstHeading.parentNode.insertBefore(outlineClone, firstHeading.nextSibling)
     outlineClone.classList.add('inline-outline')
+    
+    // Вставляем после найденного элемента
+    insertTarget.parentNode.insertBefore(outlineClone, insertTarget.nextSibling)
+    
+    // Скрываем оригинал
     outline.style.display = 'none'
     
     const aside = document.querySelector('.VPDoc .aside')
