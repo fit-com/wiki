@@ -532,3 +532,86 @@ body,
   padding: 8px 12px !important;
   box-sizing: border-box !important;
 }
+
+/* ==========================================================================
+   ОГЛАВЛЕНИЕ (TOC) С ОБТЕКАНИЕМ
+   ========================================================================== */
+
+/* Контейнер оглавления */
+.VPDoc .content .container .main .vp-doc .VPDocOutlineDropdown,
+.VPDocOutlineDropdown {
+  float: right !important;
+  margin: 0 0 16px 20px !important;
+  max-width: 280px !important;
+  width: auto !important;
+  background: rgba(30, 30, 32, 0.6) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 10px !important;
+  padding: 12px 16px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  position: relative !important;
+  clear: none !important;
+}
+
+/* Заголовок оглавления */
+.VPDocOutlineDropdown .outline-title {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  margin-bottom: 8px !important;
+  padding-bottom: 6px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Список пунктов оглавления */
+.VPDocOutlineDropdown .outline-badge,
+.VPDocOutlineDropdown .outline-marker {
+  display: none !important;
+}
+
+.VPDocOutlineDropdown .outline-items {
+  display: block !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.VPDocOutlineDropdown .outline-item {
+  display: block !important;
+  padding: 4px 0 !important;
+}
+
+.VPDocOutlineDropdown .outline-item a {
+  color: rgba(255, 255, 255, 0.7) !important;
+  text-decoration: none !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  transition: color 0.2s ease !important;
+}
+
+.VPDocOutlineDropdown .outline-item a:hover {
+  color: #ffffff !important;
+}
+
+/* Вложенные пункты (h3, h4...) */
+.VPDocOutlineDropdown .outline-item .outline-item {
+  padding-left: 12px !important;
+}
+
+/* Очистка float после оглавления */
+.VPDocOutlineDropdown:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+  .VPDocOutlineDropdown {
+    float: none !important;
+    margin: 0 0 20px 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
