@@ -607,3 +607,71 @@ body,
     margin: 0 0 20px 0 !important;
   }
 }
+
+/* ==========================================================================
+   ИСПРАВЛЕНИЕ НАЛОЖЕНИЯ КОНТЕНТА
+   ========================================================================== */
+
+/* Контейнер статьи должен обтекать оглавление */
+.vp-doc {
+  overflow: hidden !important;
+}
+
+/* Все блоки внутри статьи обтекают */
+.vp-doc > div {
+  overflow: visible !important;
+}
+
+/* Принудительно очищаем обтекание после оглавления */
+.inline-outline {
+  float: right !important;
+  width: 280px !important;
+  margin: 0 0 20px 24px !important;
+  background: rgba(30, 30, 32, 0.7) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 16px 20px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+  position: relative !important;
+  clear: none !important;
+}
+
+/* Добавляем обертку для контента, чтобы он не наезжал */
+.VPDoc .content-container {
+  overflow: hidden !important;
+}
+
+/* Все заголовки и абзацы обтекают */
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4,
+.vp-doc p,
+.vp-doc ul,
+.vp-doc ol,
+.vp-doc table,
+.vp-doc blockquote {
+  overflow: hidden !important;
+  clear: none !important;
+}
+
+/* Особенно важно для flex-контейнеров с карточками */
+.vp-doc div[style*="display:flex"] {
+  clear: none !important;
+  overflow: hidden !important;
+}
+
+/* Для мобильных */
+@media (max-width: 768px) {
+  .inline-outline {
+    float: none !important;
+    width: 100% !important;
+    margin: 0 0 20px 0 !important;
+  }
+  
+  .vp-doc {
+    overflow: visible !important;
+  }
+}
