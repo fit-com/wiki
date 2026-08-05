@@ -533,38 +533,20 @@ body,
   box-sizing: border-box !important;
 }
 
-/* ==========================================================================
-   ОГЛАВЛЕНИЕ (TOC) - УНИВЕРСАЛЬНЫЙ ВАРИАНТ
-   ========================================================================== */
-
-/* Любой элемент, который содержит оглавление */
-.vp-doc .outline,
-.vp-doc .VPDocOutlineDropdown,
-.vp-doc .table-of-contents,
-.vp-doc [class*="outline"] {
-  float: right !important;
-  margin: 0 0 16px 20px !important;
-  max-width: 280px !important;
-  width: auto !important;
-  background: rgba(30, 30, 32, 0.6) !important;
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-radius: 10px !important;
-  padding: 12px 16px !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
-  position: relative !important;
-  clear: none !important;
-}
-
-/* Очистка для контента после оглавления */
-.vp-doc h2:first-of-type {
-  clear: none !important;
-}
-
-/* Чтобы текст не налезал на оглавление */
-.vp-doc p,
-.vp-doc ul,
-.vp-doc ol {
-  overflow: hidden !important;
+/* Принудительный float для оглавления */
+@media (min-width: 769px) {
+  .vp-doc > .outline,
+  .vp-doc > div > .outline,
+  .vp-doc .VPDocOutlineDropdown {
+    float: right !important;
+    margin: 0 0 20px 24px !important;
+    width: 260px !important;
+  }
+  
+  /* Очистка для заголовков, чтобы они не наезжали */
+  .vp-doc h1,
+  .vp-doc h2,
+  .vp-doc h3 {
+    clear: none !important;
+  }
 }
