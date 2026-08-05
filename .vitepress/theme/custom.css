@@ -175,49 +175,28 @@ body,
 }
 
 /* ==========================================================================
-   7. ПРАВОЕ МЕНЮ (ТЕПЕРЬ ВНУТРИ СТАТЬИ)
+   7. ПЕРЕНОСИМ ОГЛАВЛЕНИЕ ВНУТРЬ КАРТОЧКИ
    ========================================================================== */
-.VPDoc .container {
-  display: block !important;
-  max-width: 100% !important;
-}
-
-/* Убираем фиксацию и делаем меню частью потока */
-body .VPDocAside,
-html body .VPLayout .VPDocAside {
-  position: relative !important;
-  top: auto !important;
-  left: auto !important;
-  right: auto !important;
+/* Убираем фиксированное позиционирование и делаем оглавление частью потока */
+.VPDocAside {
+  position: static !important;
   width: 100% !important;
   max-width: 100% !important;
-  min-width: unset !important;
-  display: block !important;
-  z-index: auto !important;
-  background: transparent !important;
-  margin: 0 0 24px 0 !important;
+  float: right !important;
+  margin: 0 0 20px 20px !important;
+  clear: none !important;
 }
 
-body .VPDocAside .aside-container,
-body .VPDocAside .content,
-html body .VPDocAside .content {
+.VPDocAside .aside-container,
+.VPDocAside .content {
   background-color: var(--glass-bg) !important;
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   border: 1px solid var(--glass-border) !important;
   border-radius: 12px !important;
-  margin: 0 !important;
+  padding: 15px 20px !important;
   width: 100% !important;
   box-sizing: border-box !important;
-  padding: 15px 20px !important;
-  height: auto !important;
-}
-
-.VPDocAside .aside-container,
-.VPDocAside .content {
-  border: none !important;
-  border-left: none !important;
-  box-shadow: none !important;
 }
 
 .VPDocAside .outline-link {
@@ -229,6 +208,21 @@ html body .VPDocAside .content {
 .VPDocAside .aside-curtain,
 .VPDocAside .meta {
   display: none !important;
+}
+
+/* Убираем лишние контейнеры */
+.VPDoc .container {
+  display: block !important;
+  max-width: 100% !important;
+}
+
+.VPDoc .content {
+  overflow: hidden !important; /* Чтобы float не вылезал */
+}
+
+/* Убираем отступы у контейнера оглавления */
+.VPDocAside .outline {
+  padding: 0 !important;
 }
 
 /* ==========================================================================
@@ -247,6 +241,7 @@ html body .VPDocAside .content {
   padding: 40px 30px !important;
   border-radius: 12px !important;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2) !important;
+  overflow: hidden !important;
 }
 
 .VPDoc .container > div:last-child {
@@ -364,7 +359,9 @@ html body .VPDocAside .content {
   }
 
   .VPDocAside {
-    display: none !important;
+    float: none !important;
+    margin: 0 0 20px 0 !important;
+    width: 100% !important;
   }
 }
 
