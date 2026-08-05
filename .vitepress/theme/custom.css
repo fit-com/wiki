@@ -675,20 +675,3 @@ body,
     overflow: visible !important;
   }
 }
-
-/* Принудительно растягиваем контейнер */
-.VPDoc .content {
-  display: block !important;
-  overflow: hidden !important;
-  width: 100% !important;
-}
-
-.VPDoc .container {
-  display: block !important;
-  overflow: visible !important;
-}
-
-/* Обертка основного контента */
-.VPDoc .main {
-  overflow: hidden !important;
-}
