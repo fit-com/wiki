@@ -776,3 +776,43 @@ body,
     overflow: visible !important;
   }
 }
+
+
+/* ПРИНУДИТЕЛЬНОЕ ОБТЕКАНИЕ */
+.VPDoc .content-container {
+  display: block !important;
+  overflow: hidden !important;
+  width: 100% !important;
+}
+
+.vp-doc {
+  overflow: hidden !important;
+}
+
+.vp-doc > div {
+  overflow: visible !important;
+}
+
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc p,
+.vp-doc div:not(.inline-outline) {
+  clear: none !important;
+}
+
+.inline-outline {
+  float: right !important;
+  width: 280px !important;
+  margin: 0 0 20px 24px !important;
+  background: rgba(30, 30, 32, 0.7) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 16px 20px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+  position: relative !important;
+  clear: none !important;
+  display: block !important;
+}
