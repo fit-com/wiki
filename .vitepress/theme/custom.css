@@ -36,32 +36,6 @@ body,
 }
 
 /* ==========================================================================
-   2.1. ПОЛНАЯ ПЕРЕОПРЕДЕЛЕНИЕ ГРИД-СИСТЕМЫ
-   ========================================================================== */
-/* Убираем влияние сайдбара на грид */
-.VPApp .VPLayout {
-  display: block !important;
-  grid-template-columns: unset !important;
-  grid-template-areas: unset !important;
-}
-
-.VPContent {
-  display: block !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-.VPContent .VPDoc {
-  display: block !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-/* ==========================================================================
    3. ШАПКА (ВСЕГДА ТЕМНАЯ)
    ========================================================================== */
 .VPNav,
@@ -137,9 +111,6 @@ body,
   box-shadow: none !important;
   position: relative !important;
   margin: 0px 0px 0px 20px !important;
-  width: auto !important;
-  min-width: 200px !important;
-  flex: 1 1 auto !important;
 }
 
 .DocSearch-Button .DocSearch-Button-Placeholder,
@@ -161,79 +132,54 @@ body,
 }
 
 /* ==========================================================================
-   5. РАСКЛАДКА ШАПКИ - ФИКСИРОВАННАЯ
+   5. РАСКЛАДКА ШАПКИ
    ========================================================================== */
 .VPNavBar .content-body {
   display: flex !important;
   align-items: center !important;
-  justify-content: flex-start !important;
   width: 100% !important;
-  gap: 0 !important;
-  padding: 0 20px !important;
+  gap: 20px !important;
 }
 
 .VPNavBarTitle {
-  flex: 0 0 auto !important;
   padding-left: 35px !important;
-  margin-right: 20px !important;
 }
 
 .VPNavBarSearch {
-  flex: 1 1 auto !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  padding: 0 !important;
+  width: calc(100vw - (20vw * 2)) !important;
+  padding-left: 0 !important;
 }
 
 .DocSearch-Button {
+  width: calc(100vw - (20vw * 2) - 80px) !important;
   max-width: 100% !important;
-  width: 100% !important;
 }
 
 /* ==========================================================================
-   6. ПОЛНОСТЬЮ УДАЛЯЕМ САЙДБАР И ВСЕ СВЯЗАННЫЕ С НИМ ЭЛЕМЕНТЫ
+   6. СКРЫТОЕ ЛЕВОЕ МЕНЮ
    ========================================================================== */
+/* Скрываем переключатель сайдбара и мобильное меню в шапке */
 .VPNavBarSidebarToggle,
-.VPNavScreen,
-.VPSidebar,
-.VPSidebar .group,
-.VPSidebar .item,
-.sidebar,
-.vp-sidebar {
-  display: none !important;
-  visibility: hidden !important;
-  width: 0 !important;
-  height: 0 !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  position: absolute !important;
-  left: -9999px !important;
+.VPNavScreen {
+    display: none !important;
 }
 
-/* Убираем все отступы, которые могут быть связаны с сайдбаром */
+/* Скрываем сам сайдбар, если он вылезает на десктопе */
+.VPSidebar {
+    display: none !important;
+}
+
+/* Возвращаем основному контенту нормальное отображение без отступов под сайдбар */
 .VPContent {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-
-.VPContent .VPDoc {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
+    padding-left: 0 !important;
 }
 
 /* ==========================================================================
-   7. ПРАВОЕ МЕНЮ (СТЕКЛЯННОЕ) - ФИКСИРОВАННОЕ
+   7. ПРАВОЕ МЕНЮ (СТЕКЛЯННОЕ)
    ========================================================================== */
 .VPDoc .container {
   display: block !important;
   max-width: 100% !important;
-  width: 100% !important;
-  padding: 0 !important;
-  margin: 0 !important;
 }
 
 body .VPDocAside,
@@ -258,8 +204,8 @@ html body .VPDocAside .content {
   -webkit-backdrop-filter: blur(10px) !important;
   border: 1px solid var(--glass-border) !important;
   border-radius: 12px !important;
-  margin: 0 !important;
-  width: 100% !important;
+  margin: 0 20px 0 20px !important;
+  width: calc(100% - 40px) !important;
   box-sizing: border-box !important;
   padding: 15px 20px !important;
   height: auto !important;
@@ -284,14 +230,11 @@ html body .VPDocAside .content {
 }
 
 /* ==========================================================================
-   8. ОСНОВНАЯ КАРТОЧКА СТАТЬИ (СТЕКЛЯННАЯ) - ФИКСИРОВАННАЯ
+   8. ОСНОВНАЯ КАРТОЧКА СТАТЬИ (СТЕКЛЯННАЯ)
    ========================================================================== */
 .VPDoc .content {
   width: calc(100vw - (20vw * 2) - 80px) !important;
-  max-width: 100% !important;
-  position: relative !important;
-  left: auto !important;
-  transform: none !important;
+  max-width: 95% !important;
   margin: 20px auto !important;
   background-color: var(--vp-c-bg) !important;
   backdrop-filter: blur(8px) !important;
@@ -299,7 +242,6 @@ html body .VPDocAside .content {
   padding: 40px 30px !important;
   border-radius: 12px !important;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2) !important;
-  box-sizing: border-box !important;
 }
 
 .VPDoc .container > div:last-child {
@@ -362,7 +304,7 @@ html body .VPDocAside .content {
 }
 
 /* ==========================================================================
-   10. ВЫПАДАЮЩЕЕ МЕНЮ КАТЕГОРИЙ
+   10. ВЫПАДАЮЩЕЕ МЕНЮ КАТЕГОРИЙ (ГОРИЗОНТАЛЬНОЕ, ПОД КНОПКОЙ ПОИСКА)
    ========================================================================== */
 .categories-dropdown {
   position: absolute !important;
@@ -390,55 +332,6 @@ html body .VPDocAside .content {
   box-sizing: border-box !important;
   margin: 0 !important;
   pointer-events: none;
-}
-
-.categories-dropdown.open {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.category-item {
-  display: flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  padding: 8px 14px !important;
-  color: rgba(255, 255, 255, 0.85) !important;
-  text-decoration: none !important;
-  border-radius: 8px !important;
-  transition: all 0.15s ease !important;
-  font-size: 13px !important;
-  white-space: nowrap !important;
-  flex: 0 0 auto !important;
-}
-
-.category-item:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #ffffff !important;
-}
-
-.category-icon {
-  font-size: 16px;
-  width: 20px;
-  text-align: center;
-}
-
-.dropdown-divider {
-  width: 1px !important;
-  height: 28px !important;
-  background: rgba(255, 255, 255, 0.1) !important;
-  margin: 4px 4px !important;
-  flex-shrink: 0 !important;
-}
-
-.add-content {
-  color: rgba(255, 255, 255, 0.6) !important;
-}
-
-.add-content:hover {
-  color: #ffffff !important;
-  background: rgba(100, 200, 255, 0.15) !important;
 }
 
 /* ==========================================================================
@@ -506,4 +399,188 @@ html body .VPDocAside .content {
   .DocSearch-Button {
     padding: 0 4px 0 8px !important;
   }
+}
+
+/* ==========================================================================
+   ГОРИЗОНТАЛЬНОЕ ВЫПАДАЮЩЕЕ МЕНЮ ПОД КНОПКОЙ ПОИСКА
+   ========================================================================== */
+
+/* Родительский контейнер - вся кнопка поиска */
+.DocSearch-Button {
+  position: relative !important; /* Важно для позиционирования меню */
+}
+
+.categories-wrapper {
+  position: static !important; /* Не позиционируем относительно wrapper */
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: auto;
+  height: 100%;
+}
+
+/* Кнопка категорий */
+.categories-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px;
+  height: 30px;
+  background: transparent !important;
+  border: none !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 0 !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  user-select: none;
+  margin-left: 4px;
+}
+
+.categories-button:hover {
+  color: #ffffff !important;
+  background: transparent !important;
+}
+
+.categories-icon {
+  font-size: 14px;
+}
+
+.arrow {
+  font-size: 9px;
+  transition: transform 0.2s ease;
+  margin-left: 2px;
+  opacity: 0.5;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+/* ВЫПАДАЮЩЕЕ МЕНЮ - ПОД КНОПКОЙ ПОИСКА */
+.categories-dropdown {
+  position: absolute !important;
+  top: calc(100% + 8px) !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  min-width: unset !important;
+  background: #2c2c2e !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 8px 12px !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6) !important;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.2s ease;
+  display: flex !important;
+  flex-direction: row !important; /* Элементы слева направо */
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 4px !important;
+  box-sizing: border-box !important;
+}
+
+.categories-dropdown.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Пункты меню - горизонтально, слева направо */
+.category-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 14px !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-decoration: none !important;
+  border-radius: 8px !important;
+  transition: all 0.15s ease !important;
+  font-size: 13px !important;
+  white-space: nowrap !important;
+  flex: 0 0 auto !important;
+}
+
+.category-item:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+.category-icon {
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+}
+
+.dropdown-divider {
+  width: 1px !important;
+  height: 28px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  margin: 4px 4px !important;
+  flex-shrink: 0 !important;
+}
+
+.add-content {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.add-content:hover {
+  color: #ffffff !important;
+  background: rgba(100, 200, 255, 0.15) !important;
+}
+
+/* ================================================================
+   МОБИЛЬНАЯ АДАПТАЦИЯ
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .categories-button {
+    padding: 0 6px;
+    font-size: 12px;
+    height: 26px;
+  }
+  
+  .categories-button .categories-text {
+    display: none;
+  }
+  
+  .categories-dropdown {
+    position: fixed !important;
+    top: 60px !important;
+    left: 10px !important;
+    right: 10px !important;
+    width: auto !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    padding: 8px !important;
+  }
+  
+  .category-item {
+    font-size: 12px !important;
+    padding: 6px 10px !important;
+    flex: 0 0 auto !important;
+  }
+  
+  .dropdown-divider {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   12. ПРИНУДИТЕЛЬНОЕ ВЫРАВНИВАНИЕ МЕНЮ
+   ========================================================================== */
+#categoriesDropdown {
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 8px 12px !important;
+  box-sizing: border-box !important;
 }
