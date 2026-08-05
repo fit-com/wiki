@@ -175,57 +175,6 @@ body,
 }
 
 /* ==========================================================================
-   7. ПЕРЕНОСИМ ОГЛАВЛЕНИЕ ВНУТРЬ КАРТОЧКИ
-   ========================================================================== */
-/* Убираем фиксированное позиционирование и делаем оглавление частью потока */
-.VPDocAside {
-  position: static !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  float: right !important;
-  margin: 0 0 20px 20px !important;
-  clear: none !important;
-}
-
-.VPDocAside .aside-container,
-.VPDocAside .content {
-  background-color: var(--glass-bg) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border: 1px solid var(--glass-border) !important;
-  border-radius: 12px !important;
-  padding: 15px 20px !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-.VPDocAside .outline-link {
-  padding: 6px 0 !important;
-  white-space: normal !important;
-  color: var(--text-color) !important;
-}
-
-.VPDocAside .aside-curtain,
-.VPDocAside .meta {
-  display: none !important;
-}
-
-/* Убираем лишние контейнеры */
-.VPDoc .container {
-  display: block !important;
-  max-width: 100% !important;
-}
-
-.VPDoc .content {
-  overflow: hidden !important; /* Чтобы float не вылезал */
-}
-
-/* Убираем отступы у контейнера оглавления */
-.VPDocAside .outline {
-  padding: 0 !important;
-}
-
-/* ==========================================================================
    8. ОСНОВНАЯ КАРТОЧКА СТАТЬИ (СТЕКЛЯННАЯ)
    ========================================================================== */
 .VPDoc .content {
@@ -241,7 +190,6 @@ body,
   padding: 40px 30px !important;
   border-radius: 12px !important;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2) !important;
-  overflow: hidden !important;
 }
 
 .VPDoc .container > div:last-child {
@@ -359,9 +307,7 @@ body,
   }
 
   .VPDocAside {
-    float: none !important;
-    margin: 0 0 20px 0 !important;
-    width: 100% !important;
+    display: none !important;
   }
 }
 
