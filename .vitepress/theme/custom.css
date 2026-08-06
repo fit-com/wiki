@@ -538,8 +538,9 @@ body,
    ========================================================================== */
 
 .inline-outline {
-  float: right !important;
-  width: 280px !important;
+  float: left !important;
+  max-width: 350px !important;
+  width: fit-content !important;
   margin: 0 0 20px 24px !important;
   background: rgba(30, 30, 32, 0.7) !important;
   backdrop-filter: blur(10px) !important;
