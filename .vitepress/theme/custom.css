@@ -158,44 +158,41 @@ body,
 /* ==========================================================================
    6. СКРЫТОЕ ЛЕВОЕ МЕНЮ
    ========================================================================== */
+/* Скрываем переключатель сайдбара и мобильное меню в шапке */
 .VPNavBarSidebarToggle,
 .VPNavScreen {
-  display: none !important;
+    display: none !important;
 }
 
+/* Скрываем сам сайдбар, если он вылезает на десктопе */
 .VPSidebar {
-  display: none !important;
+    display: none !important;
 }
 
+/* Возвращаем основному контенту нормальное отображение без отступов под сайдбар */
 .VPContent {
-  padding-left: 0 !important;
+    padding-left: 0 !important;
 }
 
 /* ==========================================================================
-   7. ОСНОВНАЯ КАРТОЧКА СТАТЬИ (СТЕКЛЯННАЯ) - С ABSOLUTE ДЛЯ ЦЕНТРИРОВАНИЯ
+   8. ОСНОВНАЯ КАРТОЧКА СТАТЬИ (СТЕКЛЯННАЯ)
    ========================================================================== */
-.VPDoc .container {
-  position: relative !important;
-  display: block !important;
-  max-width: 100% !important;
-  padding: 0 !important;
-  min-height: 100vh !important;
-}
-
+/* ==========================================================================
+   8. ОСНОВНАЯ КАРТОЧКА СТАТЬИ (СТЕКЛЯННАЯ)
+   ========================================================================== */
 .VPDoc .content {
   width: calc(100vw - (20vw * 2) - 80px) !important;
   max-width: 95% !important;
-  position: absolute !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  top: 40px !important;
-  margin: 0 !important;
+  margin: 40px auto !important; /* Центрируем через margin */
   background-color: var(--vp-c-bg) !important;
   backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
   padding: 40px 30px !important;
   border-radius: 12px !important;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2) !important;
+  position: relative !important; /* Убираем absolute */
+  left: auto !important;
+  transform: none !important;
 }
 
 .VPDoc .container > div:last-child {
@@ -203,8 +200,14 @@ body,
   margin-bottom: 0 !important;
 }
 
+.VPDoc .container {
+  display: block !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
 /* ==========================================================================
-   8. КНОПКА КАТЕГОРИЙ ВНУТРИ ПОИСКА
+   9. КНОПКА КАТЕГОРИЙ ВНУТРИ ПОИСКА
    ========================================================================== */
 .categories-wrapper {
   position: relative;
@@ -258,7 +261,7 @@ body,
 }
 
 /* ==========================================================================
-   9. ВЫПАДАЮЩЕЕ МЕНЮ КАТЕГОРИЙ
+   10. ВЫПАДАЮЩЕЕ МЕНЮ КАТЕГОРИЙ (ГОРИЗОНТАЛЬНОЕ, ПОД КНОПКОЙ ПОИСКА)
    ========================================================================== */
 .categories-dropdown {
   position: absolute !important;
@@ -288,149 +291,16 @@ body,
   pointer-events: none;
 }
 
-.categories-dropdown.open {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  pointer-events: auto !important;
-}
-
-.category-item {
-  display: flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  padding: 8px 14px !important;
-  color: rgba(255, 255, 255, 0.85) !important;
-  text-decoration: none !important;
-  border-radius: 8px !important;
-  transition: all 0.15s ease !important;
-  font-size: 13px !important;
-  white-space: nowrap !important;
-  flex: 0 0 auto !important;
-}
-
-.category-item:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #ffffff !important;
-}
-
-.category-icon {
-  font-size: 16px;
-  width: 20px;
-  text-align: center;
-}
-
-.dropdown-divider {
-  width: 1px !important;
-  height: 28px !important;
-  background: rgba(255, 255, 255, 0.1) !important;
-  margin: 4px 4px !important;
-  flex-shrink: 0 !important;
-}
-
-.add-content {
-  color: rgba(255, 255, 255, 0.6) !important;
-}
-
-.add-content:hover {
-  color: #ffffff !important;
-  background: rgba(100, 200, 255, 0.15) !important;
-}
-
-/* ==========================================================================
-   10. ВСТРОЕННОЕ ОГЛАВЛЕНИЕ (ОБТЕКАЕТ ТЕКСТ)
-   ========================================================================== */
-
-/* Скрываем оригинальное оглавление справа */
-.VPDoc .aside {
-  display: none !important;
-}
-
-/* Оглавление внутри статьи */
-.inline-outline {
-  float: right !important;
-  width: 280px !important;
-  margin: 0 0 20px 24px !important;
-  background: rgba(30, 30, 32, 0.7) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 12px !important;
-  padding: 16px 20px !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
-  position: relative !important;
-  clear: none !important;
-  display: block !important;
-}
-
-.inline-outline .outline-title {
-  color: #ffffff !important;
-  font-size: 14px !important;
-  font-weight: 600 !important;
-  padding-bottom: 8px !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-  margin-bottom: 8px !important;
-}
-
-.inline-outline .outline-item {
-  padding: 3px 0 !important;
-}
-
-.inline-outline .outline-item a {
-  color: rgba(255, 255, 255, 0.75) !important;
-  font-size: 13px !important;
-  text-decoration: none !important;
-  transition: color 0.2s !important;
-}
-
-.inline-outline .outline-item a:hover {
-  color: #ffffff !important;
-}
-
-.inline-outline .outline-item .outline-item {
-  padding-left: 12px !important;
-}
-
-.inline-outline .content {
-  max-height: none !important;
-  overflow: visible !important;
-}
-
-/* Принудительное обтекание контентом */
-.vp-doc {
-  overflow: hidden !important;
-}
-
-.vp-doc > div {
-  overflow: visible !important;
-}
-
-.vp-doc h1,
-.vp-doc h2,
-.vp-doc h3,
-.vp-doc h4,
-.vp-doc p,
-.vp-doc ul,
-.vp-doc ol,
-.vp-doc table,
-.vp-doc blockquote,
-.vp-doc div:not(.inline-outline) {
-  clear: none !important;
-}
-
-/* Карточки преподавателей обтекают */
-.vp-doc div[style*="display:flex"] {
-  clear: none !important;
-  overflow: hidden !important;
-}
-
 /* ==========================================================================
    11. АДАПТИВНОСТЬ
    ========================================================================== */
 @media (max-width: 960px) {
   .VPDoc .content {
     width: 90vw !important;
-    top: 20px !important;
+    position: relative !important;
+    left: 0 !important;
+    transform: none !important;
+    margin: 20px auto !important;
     padding: 20px !important;
   }
 
@@ -486,39 +356,472 @@ body,
   .DocSearch-Button {
     padding: 0 4px 0 8px !important;
   }
+}
 
+/* ==========================================================================
+   ГОРИЗОНТАЛЬНОЕ ВЫПАДАЮЩЕЕ МЕНЮ ПОД КНОПКОЙ ПОИСКА
+   ========================================================================== */
+
+/* Родительский контейнер - вся кнопка поиска */
+.DocSearch-Button {
+  position: relative !important; /* Важно для позиционирования меню */
+}
+
+.categories-wrapper {
+  position: static !important; /* Не позиционируем относительно wrapper */
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: auto;
+  height: 100%;
+}
+
+/* Кнопка категорий */
+.categories-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px;
+  height: 30px;
+  background: transparent !important;
+  border: none !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 0 !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  user-select: none;
+  margin-left: 4px;
+}
+
+.categories-button:hover {
+  color: #ffffff !important;
+  background: transparent !important;
+}
+
+.categories-icon {
+  font-size: 14px;
+}
+
+.arrow {
+  font-size: 9px;
+  transition: transform 0.2s ease;
+  margin-left: 2px;
+  opacity: 0.5;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+/* ВЫПАДАЮЩЕЕ МЕНЮ - ПОД КНОПКОЙ ПОИСКА */
+.categories-dropdown {
+  position: absolute !important;
+  top: calc(100% + 8px) !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  min-width: unset !important;
+  background: #2c2c2e !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 8px 12px !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6) !important;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.2s ease;
+  display: flex !important;
+  flex-direction: row !important; /* Элементы слева направо */
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 4px !important;
+  box-sizing: border-box !important;
+}
+
+.categories-dropdown.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Пункты меню - горизонтально, слева направо */
+.category-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 14px !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-decoration: none !important;
+  border-radius: 8px !important;
+  transition: all 0.15s ease !important;
+  font-size: 13px !important;
+  white-space: nowrap !important;
+  flex: 0 0 auto !important;
+}
+
+.category-item:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+.category-icon {
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+}
+
+.dropdown-divider {
+  width: 1px !important;
+  height: 28px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  margin: 4px 4px !important;
+  flex-shrink: 0 !important;
+}
+
+.add-content {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.add-content:hover {
+  color: #ffffff !important;
+  background: rgba(100, 200, 255, 0.15) !important;
+}
+
+/* ================================================================
+   МОБИЛЬНАЯ АДАПТАЦИЯ
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .categories-button {
+    padding: 0 6px;
+    font-size: 12px;
+    height: 26px;
+  }
+  
+  .categories-button .categories-text {
+    display: none;
+  }
+  
+  .categories-dropdown {
+    position: fixed !important;
+    top: 60px !important;
+    left: 10px !important;
+    right: 10px !important;
+    width: auto !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    padding: 8px !important;
+  }
+  
+  .category-item {
+    font-size: 12px !important;
+    padding: 6px 10px !important;
+    flex: 0 0 auto !important;
+  }
+  
+  .dropdown-divider {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   12. ПРИНУДИТЕЛЬНОЕ ВЫРАВНИВАНИЕ МЕНЮ
+   ========================================================================== */
+#categoriesDropdown {
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 8px 12px !important;
+  box-sizing: border-box !important;
+}
+
+/* ==========================================================================
+   ВСТРОЕННОЕ ОГЛАВЛЕНИЕ
+   ========================================================================== */
+
+.inline-outline {
+  float: right !important;
+  width: 280px !important;
+  margin: 0 0 20px 24px !important;
+  background: rgba(30, 30, 32, 0.7) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 16px 20px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+}
+
+.inline-outline .outline-title {
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  padding-bottom: 8px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  margin-bottom: 8px !important;
+}
+
+.inline-outline .outline-item {
+  padding: 3px 0 !important;
+}
+
+.inline-outline .outline-item a {
+  color: rgba(255, 255, 255, 0.75) !important;
+  font-size: 13px !important;
+  text-decoration: none !important;
+}
+
+.inline-outline .outline-item a:hover {
+  color: #ffffff !important;
+}
+
+.inline-outline .outline-item .outline-item {
+  padding-left: 12px !important;
+}
+
+.inline-outline .content {
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.vp-doc {
+  overflow: visible !important;
+}
+
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc p,
+.vp-doc ul,
+.vp-doc ol,
+.vp-doc div:not(.inline-outline) {
+  clear: none !important;
+}
+
+.VPDoc .aside {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
   .inline-outline {
     float: none !important;
     width: 100% !important;
     margin: 0 0 20px 0 !important;
   }
+}
 
+/* ==========================================================================
+   ИСПРАВЛЕНИЕ НАЛОЖЕНИЯ КОНТЕНТА
+   ========================================================================== */
+
+/* Контейнер статьи должен обтекать оглавление */
+.vp-doc {
+  overflow: hidden !important;
+}
+
+/* Все блоки внутри статьи обтекают */
+.vp-doc > div {
+  overflow: visible !important;
+}
+
+/* Принудительно очищаем обтекание после оглавления */
+.inline-outline {
+  float: right !important;
+  width: 280px !important;
+  margin: 0 0 20px 24px !important;
+  background: rgba(30, 30, 32, 0.7) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 16px 20px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+  position: relative !important;
+  clear: none !important;
+}
+
+/* Добавляем обертку для контента, чтобы он не наезжал */
+.VPDoc .content-container {
+  overflow: hidden !important;
+}
+
+/* Все заголовки и абзацы обтекают */
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4,
+.vp-doc p,
+.vp-doc ul,
+.vp-doc ol,
+.vp-doc table,
+.vp-doc blockquote {
+  overflow: hidden !important;
+  clear: none !important;
+}
+
+/* Особенно важно для flex-контейнеров с карточками */
+.vp-doc div[style*="display:flex"] {
+  clear: none !important;
+  overflow: hidden !important;
+}
+
+/* Для мобильных */
+@media (max-width: 768px) {
+  .inline-outline {
+    float: none !important;
+    width: 100% !important;
+    margin: 0 0 20px 0 !important;
+  }
+  
+  .vp-doc {
+    overflow: visible !important;
+  }
+}
+
+/* ==========================================================================
+   ВСТРОЕННОЕ ОГЛАВЛЕНИЕ - ИСПРАВЛЕННАЯ ВЕРСИЯ
+   ========================================================================== */
+
+/* Скрываем оригинальное оглавление в правой колонке */
+.VPDoc .aside {
+  display: none !important;
+}
+
+/* Клон оглавления внутри статьи */
+.inline-outline {
+  float: right !important;
+  width: 280px !important;
+  margin: 0 0 20px 24px !important;
+  background: rgba(30, 30, 32, 0.7) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 16px 20px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+  position: relative !important;
+  clear: none !important;
+}
+
+/* КОНТЕЙНЕР СТАТЬИ должен обтекать float-элемент */
+.VPDoc .content-container {
+  display: block !important;
+  overflow: hidden !important; /* Это создает BFC и заставляет обтекать */
+}
+
+/* Или если .content-container не работает, пробуем .vp-doc */
+.vp-doc {
+  overflow: hidden !important; /* Это заставит обтекать все содержимое */
+}
+
+/* Все заголовки и текст обтекают */
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4,
+.vp-doc p,
+.vp-doc ul,
+.vp-doc ol,
+.vp-doc table,
+.vp-doc blockquote {
+  clear: none !important;
+}
+
+/* Карточки преподавателей - тоже обтекают */
+.vp-doc div[style*="display:flex"] {
+  clear: none !important;
+  overflow: hidden !important;
+}
+
+/* Стилизация пунктов оглавления */
+.inline-outline .outline-title {
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  padding-bottom: 8px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  margin-bottom: 8px !important;
+}
+
+.inline-outline .outline-item {
+  padding: 3px 0 !important;
+}
+
+.inline-outline .outline-item a {
+  color: rgba(255, 255, 255, 0.75) !important;
+  font-size: 13px !important;
+  text-decoration: none !important;
+}
+
+.inline-outline .outline-item a:hover {
+  color: #ffffff !important;
+}
+
+.inline-outline .outline-item .outline-item {
+  padding-left: 12px !important;
+}
+
+.inline-outline .content {
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* Для мобильных */
+@media (max-width: 768px) {
+  .inline-outline {
+    float: none !important;
+    width: 100% !important;
+    margin: 0 0 20px 0 !important;
+  }
+  
   .vp-doc {
     overflow: visible !important;
   }
 }
 
 
-/* ==========================================================================
-   ФИНАЛЬНОЕ ИСПРАВЛЕНИЕ: ЦЕНТРИРОВАНИЕ + МЕНЮ
-   ========================================================================== */
-
-/* 1. Центрируем статью */
-.VPDoc .content {
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  position: absolute !important;
-  top: 40px !important;
-  margin: 0 !important;
+/* ПРИНУДИТЕЛЬНОЕ ОБТЕКАНИЕ */
+.VPDoc .content-container {
+  display: block !important;
+  overflow: hidden !important;
+  width: 100% !important;
 }
 
-/* 2. Родительский контейнер для absolute */
-.VPDoc .container {
+.vp-doc {
+  overflow: hidden !important;
+}
+
+.vp-doc > div {
+  overflow: visible !important;
+}
+
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc p,
+.vp-doc div:not(.inline-outline) {
+  clear: none !important;
+}
+
+.inline-outline {
+  float: right !important;
+  width: 280px !important;
+  margin: 0 0 20px 24px !important;
+  background: rgba(30, 30, 32, 0.7) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 16px 20px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
   position: relative !important;
-  min-height: 100vh !important;
-}
-
-/* 3. Чиним выпадающее меню */
-.categories-dropdown {
-  pointer-events: auto !important;
+  clear: none !important;
+  display: block !important;
 }
