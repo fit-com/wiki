@@ -538,7 +538,7 @@ body,
    ========================================================================== */
 
 .inline-outline {
-  float: none !important;
+  float: left !important;
   max-width: 350px !important;
   width: 100% !important;
   height: 100% !important;
@@ -572,7 +572,7 @@ body,
 }
 
 .inline-outline .content {
-  overflow: visible !important;
+  overflow: hidden !important;
 }
 
 .vp-doc {
@@ -637,7 +637,7 @@ body,
   .inline-outline {
     float: none !important;
     width: 100% !important;
-    margin: 0 0 0px 0 !important;
+    margin: 0 0 0 0 !important;
   }
   
   .vp-doc {
