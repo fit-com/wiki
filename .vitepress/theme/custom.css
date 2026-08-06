@@ -177,33 +177,24 @@ body,
 /* ==========================================================================
    8. ОСНОВНАЯ КАРТОЧКА СТАТЬИ (СТЕКЛЯННАЯ)
    ========================================================================== */
-/* ==========================================================================
-   8. ОСНОВНАЯ КАРТОЧКА СТАТЬИ (СТЕКЛЯННАЯ)
-   ========================================================================== */
 .VPDoc .content {
   width: calc(100vw - (20vw * 2) - 80px) !important;
   max-width: 95% !important;
-  margin: 40px auto !important; /* Центрируем через margin */
+  position: absolute !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  margin: 0 !important;
   background-color: var(--vp-c-bg) !important;
   backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
   padding: 40px 30px !important;
   border-radius: 12px !important;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2) !important;
-  position: absolute !important; /* Убираем absolute */
-  left: auto !important;
-  transform: none !important;
 }
 
 .VPDoc .container > div:last-child {
   padding-bottom: 0 !important;
   margin-bottom: 0 !important;
-}
-
-.VPDoc .container {
-  display: block !important;
-  max-width: 100% !important;
-  padding: 0 !important;
 }
 
 /* ==========================================================================
@@ -683,145 +674,4 @@ body,
   .vp-doc {
     overflow: visible !important;
   }
-}
-
-/* ==========================================================================
-   ВСТРОЕННОЕ ОГЛАВЛЕНИЕ - ИСПРАВЛЕННАЯ ВЕРСИЯ
-   ========================================================================== */
-
-/* Скрываем оригинальное оглавление в правой колонке */
-.VPDoc .aside {
-  display: none !important;
-}
-
-/* Клон оглавления внутри статьи */
-.inline-outline {
-  float: right !important;
-  width: 280px !important;
-  margin: 0 0 20px 24px !important;
-  background: rgba(30, 30, 32, 0.7) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 12px !important;
-  padding: 16px 20px !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
-  position: relative !important;
-  clear: none !important;
-}
-
-/* КОНТЕЙНЕР СТАТЬИ должен обтекать float-элемент */
-.VPDoc .content-container {
-  display: block !important;
-  overflow: hidden !important; /* Это создает BFC и заставляет обтекать */
-}
-
-/* Или если .content-container не работает, пробуем .vp-doc */
-.vp-doc {
-  overflow: hidden !important; /* Это заставит обтекать все содержимое */
-}
-
-/* Все заголовки и текст обтекают */
-.vp-doc h1,
-.vp-doc h2,
-.vp-doc h3,
-.vp-doc h4,
-.vp-doc p,
-.vp-doc ul,
-.vp-doc ol,
-.vp-doc table,
-.vp-doc blockquote {
-  clear: none !important;
-}
-
-/* Карточки преподавателей - тоже обтекают */
-.vp-doc div[style*="display:flex"] {
-  clear: none !important;
-  overflow: hidden !important;
-}
-
-/* Стилизация пунктов оглавления */
-.inline-outline .outline-title {
-  color: #ffffff !important;
-  font-size: 14px !important;
-  font-weight: 600 !important;
-  padding-bottom: 8px !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-  margin-bottom: 8px !important;
-}
-
-.inline-outline .outline-item {
-  padding: 3px 0 !important;
-}
-
-.inline-outline .outline-item a {
-  color: rgba(255, 255, 255, 0.75) !important;
-  font-size: 13px !important;
-  text-decoration: none !important;
-}
-
-.inline-outline .outline-item a:hover {
-  color: #ffffff !important;
-}
-
-.inline-outline .outline-item .outline-item {
-  padding-left: 12px !important;
-}
-
-.inline-outline .content {
-  max-height: none !important;
-  overflow: visible !important;
-}
-
-/* Для мобильных */
-@media (max-width: 768px) {
-  .inline-outline {
-    float: none !important;
-    width: 100% !important;
-    margin: 0 0 20px 0 !important;
-  }
-  
-  .vp-doc {
-    overflow: visible !important;
-  }
-}
-
-
-/* ПРИНУДИТЕЛЬНОЕ ОБТЕКАНИЕ */
-.VPDoc .content-container {
-  display: block !important;
-  overflow: hidden !important;
-  width: 100% !important;
-}
-
-.vp-doc {
-  overflow: hidden !important;
-}
-
-.vp-doc > div {
-  overflow: visible !important;
-}
-
-.vp-doc h1,
-.vp-doc h2,
-.vp-doc h3,
-.vp-doc p,
-.vp-doc div:not(.inline-outline) {
-  clear: none !important;
-}
-
-.inline-outline {
-  float: right !important;
-  width: 280px !important;
-  margin: 0 0 20px 24px !important;
-  background: rgba(30, 30, 32, 0.7) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 12px !important;
-  padding: 16px 20px !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
-  position: relative !important;
-  clear: none !important;
-  display: block !important;
 }
