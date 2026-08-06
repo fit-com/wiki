@@ -538,7 +538,7 @@ body,
    ========================================================================== */
 
 .inline-outline {
-  float: left !important;
+  float: none !important;
   max-width: 350px !important;
   width: 100% !important;
   height: 100% !important;
