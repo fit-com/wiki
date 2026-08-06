@@ -39,7 +39,7 @@ onMounted(() => {
         <a href="/wiki/events/" class="category-item">
           <span class="category-icon">🎭</span> События
         </a>
-        <a href="/wiki/guides/" class="category-item">
+        <a href="/wiki/subjects/" class="category-item">
           <span class="category-icon">🛠️</span> Предметы
         </a>
         <a href="/wiki/buildings/" class="category-item">
