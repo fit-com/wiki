@@ -541,6 +541,7 @@ body,
   float: left !important;
   max-width: 350px !important;
   width: 100% !important;
+  height: 100% !important;
   margin: 0 0 0px 0px !important;
   background: rgba(30, 30, 32, 0.7) !important;
   backdrop-filter: blur(10px) !important;
@@ -571,7 +572,6 @@ body,
 }
 
 .inline-outline .content {
-  max-height: none !important;
   overflow: visible !important;
 }
 
