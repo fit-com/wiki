@@ -39,11 +39,17 @@ onMounted(() => {
         <a href="/wiki/events/" class="category-item">
           <span class="category-icon">🎭</span> События
         </a>
-        <a href="/wiki/subjects/" class="category-item">
-          <span class="category-icon">🛠️</span> Предметы
+        <a href="/wiki/guides/" class="category-item">
+          <span class="category-icon">🛠️</span> Гайды и отзывы
         </a>
         <a href="/wiki/buildings/" class="category-item">
           <span class="category-icon">🏢</span> Корпуса и аудитории
+        </a>
+        <a href="/wiki/structure/" class="category-item">
+          <span class="category-icon">💼</span>Структура
+        </a>
+        <a href="/wiki/communities/" class="category-item">
+          <span class="category-icon">🧑‍🤝‍🧑</span> Сообщества
         </a>
         <div class="dropdown-divider"></div>
         <a href="https://github.com/fit-com/wiki/new/main" class="category-item add-content">
