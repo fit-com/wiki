@@ -540,9 +540,8 @@ body,
 .inline-outline {
   float: left !important;
   max-width: 350px !important;
-  width: fit-content !important;
-  height: fit-content !important;
-  margin: 0 0 20px 24px !important;
+  width: 100% !important;
+  margin: 0 0 0px 0px !important;
   background: rgba(30, 30, 32, 0.7) !important;
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
@@ -592,12 +591,6 @@ body,
 
 .VPDoc .aside {
   display: none !important;
-}
-
-.inline-outline {
-  float: none !important;
-  width: 100% !important;
-  margin: 0 0 0px 0 !important;
 }
 
 /* ==========================================================================
