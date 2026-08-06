@@ -594,12 +594,10 @@ body,
   display: none !important;
 }
 
-@media (max-width: 768px) {
-  .inline-outline {
-    float: none !important;
-    width: 100% !important;
-    margin: 0 0 0px 0 !important;
-  }
+.inline-outline {
+  float: none !important;
+  width: 100% !important;
+  margin: 0 0 0px 0 !important;
 }
 
 /* ==========================================================================
@@ -646,7 +644,7 @@ body,
   .inline-outline {
     float: none !important;
     width: 100% !important;
-    margin: 0 0 20px 0 !important;
+    margin: 0 0 0px 0 !important;
   }
   
   .vp-doc {
