@@ -497,3 +497,28 @@ body,
     overflow: visible !important;
   }
 }
+
+
+/* ==========================================================================
+   ФИНАЛЬНОЕ ИСПРАВЛЕНИЕ: ЦЕНТРИРОВАНИЕ + МЕНЮ
+   ========================================================================== */
+
+/* 1. Центрируем статью */
+.VPDoc .content {
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  position: absolute !important;
+  top: 40px !important;
+  margin: 0 !important;
+}
+
+/* 2. Родительский контейнер для absolute */
+.VPDoc .container {
+  position: relative !important;
+  min-height: 100vh !important;
+}
+
+/* 3. Чиним выпадающее меню */
+.categories-dropdown {
+  pointer-events: auto !important;
+}
