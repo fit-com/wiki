@@ -533,50 +533,6 @@ body,
   box-sizing: border-box !important;
 }
 
-/* ==========================================================================
-   ВСТРОЕННОЕ ОГЛАВЛЕНИЕ
-   ========================================================================== */
-
-.inline-outline {
-  float: left !important;
-  max-width: 350px !important;
-  width: 100% !important;
-  height: 100% !important;
-  margin: 0 0 0px 0px !important;
-  background: rgba(30, 30, 32, 0.7) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 12px !important;
-  padding: 0px 0px !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
-  display: contents !important;
-}
-
-.inline-outline .outline-title {
-  color: #ffffff !important;
-  font-size: 14px !important;
-  font-weight: 600 !important;
-  padding-bottom: 8px !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-  margin-bottom: 8px !important;
-}
-
-.inline-outline .outline-item a {
-  color: rgba(255, 255, 255, 0.75) !important;
-  font-size: 13px !important;
-  text-decoration: none !important;
-}
-
-.inline-outline .outline-item a:hover {
-  color: #ffffff !important;
-}
-
-.inline-outline .content {
-  overflow: hidden !important;
-  display: contents !important;
-}
-
 .vp-doc {
   overflow: visible !important;
 }
@@ -633,14 +589,6 @@ body,
   clear: none !important;
   overflow: hidden !important;
 }
-
-/* Для мобильных */
-@media (max-width: 768px) {
-  .inline-outline {
-    float: none !important;
-    width: 100% !important;
-    margin: 0 0 0 0 !important;
-  }
   
   .vp-doc {
     overflow: visible !important;
