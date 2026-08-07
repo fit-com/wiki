@@ -590,9 +590,8 @@ body,
   overflow: hidden !important;
 }
   
-  .vp-doc {
-    overflow: visible !important;
-  }
+.vp-doc {
+  overflow: visible !important;
 }
 
 /* ==========================================================================
