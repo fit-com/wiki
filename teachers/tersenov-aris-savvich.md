@@ -3,7 +3,7 @@
 <table style="float: right; margin-left: 20px; width: 40%;">
   <tr>
     <td colspan="2" align="center">
-      <img src="/empty-teacher.png" alt="Image">
+      <img src="/Aris01.jpg" alt="Image">
     <b>Терсенов А.С.</b>
     </td>
   </tr>
