@@ -4,7 +4,8 @@
   <tr>
     <td colspan="2" align="center">
       <img src="/Aris01.jpg" alt="Image">
-    <b>Терсенов А.С.</b>
+      <br>
+      <b>Терсенов А.С.</b>
     </td>
   </tr>
   <tr>
@@ -17,7 +18,7 @@
   </tr>
   <tr>
     <td>Предметы</td>
-    <td><a href="https://example.com">Математический Анализ</a> (лекции + семинары)
+    <td><a href="https://example.com">Математический Анализ</a> (лекции + семинары)</td>
   </tr>
 </table>
 
