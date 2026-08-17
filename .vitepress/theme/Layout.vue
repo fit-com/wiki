@@ -109,12 +109,14 @@ export default {
 
         if (document.querySelector('.add-button-wrapper')) return
 
+        // Создаем контейнер для кнопки
         const addButtonWrapper = document.createElement('div')
         addButtonWrapper.className = 'add-button-wrapper'
         addButtonWrapper.style.cssText = `
           display: flex;
           align-items: center;
           margin-left: 8px;
+          margin-right: 20px;
           flex-shrink: 0;
         `
 
@@ -150,6 +152,12 @@ export default {
 
         addButtonWrapper.appendChild(addButton)
         navBar.appendChild(addButtonWrapper)
+
+        // Дополнительно: убираем отступы у навбара, если они есть
+        const navBarContainer = document.querySelector('.VPNavBar .container')
+        if (navBarContainer) {
+          navBarContainer.style.paddingRight = '0'
+        }
 
         // ============================================
         // 3. ПЕРЕМЕЩЕНИЕ ОГЛАВЛЕНИЯ
