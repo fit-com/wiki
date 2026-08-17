@@ -16,6 +16,8 @@ export default {
       provider: 'local'
     },
 
+    mobileBreakpoint: 0,
+
     // Настраиваем левое меню (Sidebar)
     sidebar: [
       {
