@@ -158,18 +158,15 @@ body,
 /* ==========================================================================
    6. СКРЫТОЕ ЛЕВОЕ МЕНЮ
    ========================================================================== */
-/* Скрываем переключатель сайдбара и мобильное меню в шапке */
 .VPNavBarSidebarToggle,
 .VPNavScreen {
     display: none !important;
 }
 
-/* Скрываем сам сайдбар, если он вылезает на десктопе */
 .VPSidebar {
     display: none !important;
 }
 
-/* Возвращаем основному контенту нормальное отображение без отступов под сайдбар */
 .VPContent {
     padding-left: 0 !important;
 }
@@ -282,6 +279,55 @@ body,
   pointer-events: none;
 }
 
+.categories-dropdown.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.category-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 14px !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-decoration: none !important;
+  border-radius: 8px !important;
+  transition: all 0.15s ease !important;
+  font-size: 13px !important;
+  white-space: nowrap !important;
+  flex: 0 0 auto !important;
+}
+
+.category-item:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+.category-icon {
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+}
+
+.dropdown-divider {
+  width: 1px !important;
+  height: 28px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  margin: 4px 4px !important;
+  flex-shrink: 0 !important;
+}
+
+.add-content {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.add-content:hover {
+  color: #ffffff !important;
+  background: rgba(100, 200, 255, 0.15) !important;
+}
+
 /* ==========================================================================
    11. АДАПТИВНОСТЬ
    ========================================================================== */
@@ -350,177 +396,6 @@ body,
 }
 
 /* ==========================================================================
-   ГОРИЗОНТАЛЬНОЕ ВЫПАДАЮЩЕЕ МЕНЮ ПОД КНОПКОЙ ПОИСКА
-   ========================================================================== */
-
-/* Родительский контейнер - вся кнопка поиска */
-.DocSearch-Button {
-  position: relative !important; /* Важно для позиционирования меню */
-}
-
-.categories-wrapper {
-  position: static !important; /* Не позиционируем относительно wrapper */
-  display: inline-flex;
-  align-items: center;
-  flex-shrink: 0;
-  margin-left: auto;
-  height: 100%;
-}
-
-/* Кнопка категорий */
-.categories-button {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0 10px;
-  height: 30px;
-  background: transparent !important;
-  border: none !important;
-  border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
-  border-radius: 0 !important;
-  color: rgba(255, 255, 255, 0.7) !important;
-  font-size: 13px;
-  font-weight: 400;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-  user-select: none;
-  margin-left: 4px;
-}
-
-.categories-button:hover {
-  color: #ffffff !important;
-  background: transparent !important;
-}
-
-.categories-icon {
-  font-size: 14px;
-}
-
-.arrow {
-  font-size: 9px;
-  transition: transform 0.2s ease;
-  margin-left: 2px;
-  opacity: 0.5;
-}
-
-.arrow.open {
-  transform: rotate(180deg);
-}
-
-/* ВЫПАДАЮЩЕЕ МЕНЮ - ПОД КНОПКОЙ ПОИСКА */
-.categories-dropdown {
-  position: absolute !important;
-  top: calc(100% + 8px) !important;
-  left: 0 !important;
-  right: 0 !important;
-  width: 100% !important;
-  min-width: unset !important;
-  background: #2c2c2e !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 12px !important;
-  padding: 8px 12px !important;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6) !important;
-  z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-8px);
-  transition: all 0.2s ease;
-  display: flex !important;
-  flex-direction: row !important; /* Элементы слева направо */
-  flex-wrap: wrap !important;
-  align-items: center !important;
-  gap: 4px !important;
-  box-sizing: border-box !important;
-}
-
-.categories-dropdown.open {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-/* Пункты меню - горизонтально, слева направо */
-.category-item {
-  display: flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  padding: 8px 14px !important;
-  color: rgba(255, 255, 255, 0.85) !important;
-  text-decoration: none !important;
-  border-radius: 8px !important;
-  transition: all 0.15s ease !important;
-  font-size: 13px !important;
-  white-space: nowrap !important;
-  flex: 0 0 auto !important;
-}
-
-.category-item:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #ffffff !important;
-}
-
-.category-icon {
-  font-size: 16px;
-  width: 20px;
-  text-align: center;
-}
-
-.dropdown-divider {
-  width: 1px !important;
-  height: 28px !important;
-  background: rgba(255, 255, 255, 0.1) !important;
-  margin: 4px 4px !important;
-  flex-shrink: 0 !important;
-}
-
-.add-content {
-  color: rgba(255, 255, 255, 0.6) !important;
-}
-
-.add-content:hover {
-  color: #ffffff !important;
-  background: rgba(100, 200, 255, 0.15) !important;
-}
-
-/* ================================================================
-   МОБИЛЬНАЯ АДАПТАЦИЯ
-   ================================================================ */
-
-@media (max-width: 768px) {
-  .categories-button {
-    padding: 0 6px;
-    font-size: 12px;
-    height: 26px;
-  }
-  
-  .categories-button .categories-text {
-    display: none;
-  }
-  
-  .categories-dropdown {
-    position: fixed !important;
-    top: 60px !important;
-    left: 10px !important;
-    right: 10px !important;
-    width: auto !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    padding: 8px !important;
-  }
-  
-  .category-item {
-    font-size: 12px !important;
-    padding: 6px 10px !important;
-    flex: 0 0 auto !important;
-  }
-  
-  .dropdown-divider {
-    display: none !important;
-  }
-}
-
-/* ==========================================================================
    12. ПРИНУДИТЕЛЬНОЕ ВЫРАВНИВАНИЕ МЕНЮ
    ========================================================================== */
 #categoriesDropdown {
@@ -554,23 +429,18 @@ body,
 /* ==========================================================================
    ИСПРАВЛЕНИЕ НАЛОЖЕНИЯ КОНТЕНТА
    ========================================================================== */
-
-/* Контейнер статьи должен обтекать оглавление */
 .vp-doc {
   overflow: hidden !important;
 }
 
-/* Все блоки внутри статьи обтекают */
 .vp-doc > div {
   overflow: visible !important;
 }
 
-/* Добавляем обертку для контента, чтобы он не наезжал */
 .VPDoc .content-container {
   overflow: hidden !important;
 }
 
-/* Все заголовки и абзацы обтекают */
 .vp-doc h1,
 .vp-doc h2,
 .vp-doc h3,
@@ -578,13 +448,11 @@ body,
 .vp-doc p,
 .vp-doc ul,
 .vp-doc ol,
-.vp-doc ,
 .vp-doc blockquote {
   overflow: hidden !important;
   clear: none !important;
 }
 
-/* Особенно важно для flex-контейнеров с карточками */
 .vp-doc div[style*="display:flex"] {
   clear: none !important;
   overflow: hidden !important;
@@ -594,118 +462,26 @@ body,
   overflow: visible !important;
 }
 
-/* Ссылки */
-.table-of-contents a {
-  text-decoration: none !important;
-  transition: color 0.2s ease !important;
-  display: block !important;
-}
-
-/* Контент обтекает оглавление */
-.vp-doc {
-  overflow: hidden !important;
-}
-
-.vp-doc h1,
-.vp-doc h2,
-.vp-doc h3,
-.vp-doc p,
-.vp-doc ul,
-.vp-doc ol,
-.vp-doc div:not(.table-of-contents) {
-  clear: none !important;
-}
-
-
 /* ==========================================================================
    ОТКЛЮЧЕНИЕ АВТОМАТИЧЕСКОГО ОГЛАВЛЕНИЯ
    ========================================================================== */
-
-/* Скрываем автоматическое оглавление VitePress */
 .VPDocAsideOutline {
     display: none !important;
 }
 
-/* Скрываем кнопку-якорь для оглавления */
 .VPDocAside .aside-container .outline {
     display: none !important;
 }
 
-/* Дополнительная проверка для других селекторов */
 .outline-wrapper,
 .outline-title,
 .VPOutline {
     display: none !important;
 }
 
-
-
-/* ================================================================
-   ПРИНУДИТЕЛЬНОЕ ОБТЕКАНИЕ СНИЗУ
-   ================================================================ */
-
-/* Убираем float после оглавления */
-.table-of-contents + * {
-  clear: none !important;
-}
-
-/* Добавляем псевдоэлемент, который очищает обтекание после оглавления */
-.vp-doc .table-of-contents::after {
-  content: "" !important;
-  display: table !important;
-  clear: both !important;
-}
-
-/* Принудительно заставляем контент идти ПОСЛЕ оглавления */
-.vp-doc h1,
-.vp-doc h2,
-.vp-doc h3,
-.vp-doc p,
-.vp-doc ul:not(.table-of-contents ul),
-.vp-doc ol,
-.vp-doc div:not(.table-of-contents) {
-  clear: both !important;
-}
-
-/* Все блоки, кроме самого оглавления, должны быть с clear: both */
-.vp-doc > *:not(.table-of-contents) {
-  clear: both !important;
-}
-
-.vp-doc .table-of-contents ~ * {
-  clear: both !important;
-}
-
-/* Мобильные */
-@media (max-width: 768px) {
-  .vp-doc .table-of-contents ~ * {
-    clear: none !important;
-  }
-}
-
-/* ================================================================
-   ТОЛЬКО АБЗАЦЫ - ПОД ОГЛАВЛЕНИЕМ
-   ================================================================ */
-/* Абзацы очищают обтекание от ОГЛАВЛЕНИЯ, но НЕ от таблицы */
-.vp-doc p {
-  clear: left !important; /* Очищает только float:left (оглавление) */
-  /* НЕ используем clear:both, чтобы таблица могла быть рядом */
-}
-
-/* ================================================================
-   ТАБЛИЦЫ И ВСЁ ОСТАЛЬНОЕ - НЕ ОЧИЩАЮТ
-   ================================================================ */
-.vp-doc table,
-.vp-doc ul,
-.vp-doc ol,
-.vp-doc div:not(.table-of-contents) {
-  clear: none !important;
-}
-
 /* ==========================================================================
-   КАСТОМНОЕ ОГЛАВЛЕНИЕ
+   КАСТОМНОЕ ОГЛАВЛЕНИЕ И ОБТЕКАНИЕ
    ========================================================================== */
-
 .table-of-contents {
   float: left !important;
   width: auto !important;
@@ -721,20 +497,18 @@ body,
   border-left: 2px solid rgba(255, 255, 255, 0.08) !important;
 }
 
-/* Заголовок "Содержание" - ТАКОЙ ЖЕ ЦВЕТ КАК ТЕКСТ СТАТЬИ */
 .table-of-contents::before {
   content: "📑 Содержание";
   display: block;
   font-weight: 600 !important;
   font-size: inherit !important;
-  color: rgba(255, 255, 255, 0.85) !important; /* ТАКОЙ ЖЕ КАК ТЕКСТ */
+  color: rgba(255, 255, 255, 0.85) !important;
   padding-bottom: 6px !important;
   border-bottom: none !important;
   margin-bottom: 8px !important;
   letter-spacing: 0.3px;
 }
 
-/* Список */
 .table-of-contents ul {
   list-style-type: none !important;
   padding-left: 0 !important;
@@ -753,30 +527,46 @@ body,
   line-height: 1.5 !important;
 }
 
+.table-of-contents a {
+  color: rgba(255, 255, 255, 0.5) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+  display: block !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+}
+
 .table-of-contents a:hover {
   color: rgba(255, 255, 255, 0.8) !important;
 }
 
-/* Все абзацы очищают только левое обтекание (оглавление) */
 .vp-doc p {
   clear: left !important;
 }
 
-/* Таблицы НЕ очищают ничего */
 .vp-doc table {
   clear: none !important;
 }
 
-/* Все остальные элементы тоже не очищают */
 .vp-doc ul:not(.table-of-contents ul),
 .vp-doc ol,
 .vp-doc div:not(.table-of-contents) {
   clear: none !important;
 }
 
-/* ================================================================
-   МОБИЛЬНАЯ ВЕРСИЯ
-   ================================================================ */
+.vp-doc table {
+  table-layout: fixed !important;
+  min-width: 200px !important;
+  max-width: 100% !important;
+}
+
+.vp-doc table td,
+.vp-doc table th {
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+  word-break: keep-all !important;
+}
 
 @media (max-width: 768px) {
   .table-of-contents {
@@ -787,7 +577,6 @@ body,
     border-left: 2px solid rgba(255, 255, 255, 0.06) !important;
   }
   
-  /* На мобилке все элементы идут друг за другом */
   .vp-doc p,
   .vp-doc table,
   .vp-doc ul,
@@ -795,21 +584,4 @@ body,
   .vp-doc div {
     clear: none !important;
   }
-}
-
-.vp-doc table {
-  min-width: 200px !important;
-  max-width: 100% !important;
-}
-
-.vp-doc table {
-  table-layout: fixed !important;
-}
-
-.vp-doc table td,
-.vp-doc table th {
-  word-wrap: break-word !important;
-  overflow-wrap: break-word !important;
-  white-space: normal !important;
-  word-break: keep-all !important;
 }
