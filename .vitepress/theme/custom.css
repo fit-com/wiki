@@ -703,3 +703,81 @@ body,
 .VPOutline {
     display: none !important;
 }
+
+/* ==========================================================================
+   КАСТОМНОЕ ОГЛАВЛЕНИЕ (ПРИГЛУШЕННОЕ)
+   ========================================================================== */
+
+.table-of-contents {
+  float: left !important;
+  width: 300px !important;
+  margin: 0 24px 20px 0 !important;
+  background: transparent !important; /* Убираем фон */
+  backdrop-filter: none !important; /* Убираем блюр */
+  -webkit-backdrop-filter: none !important;
+  border: none !important; /* Убираем рамку */
+  border-radius: 0 !important;
+  padding: 0 0 0 16px !important; /* Только левый отступ */
+  box-shadow: none !important; /* Убираем тень */
+  overflow: hidden !important;
+  border-left: 2px solid rgba(255, 255, 255, 0.08) !important; /* Тонкая линия слева */
+}
+
+/* Заголовок "Содержание" */
+.table-of-contents::before {
+  content: "📑 Содержание";
+  display: block;
+  font-weight: 500;
+  font-size: 13px !important;
+  color: rgba(255, 255, 255, 0.5) !important; /* Приглушенный цвет */
+  padding-bottom: 6px !important;
+  border-bottom: none !important;
+  margin-bottom: 8px !important;
+  letter-spacing: 0.3px;
+}
+
+/* Список */
+.table-of-contents ul {
+  list-style-type: none !important;
+  padding-left: 0 !important;
+  margin: 0 !important;
+}
+
+/* Вложенные списки */
+.table-of-contents ul ul {
+  padding-left: 12px !important;
+  margin-top: 0 !important;
+}
+
+/* Элементы списка */
+.table-of-contents li {
+  padding: 2px 0 !important;
+  margin-bottom: 0 !important;
+  font-size: 12.5px !important;
+  line-height: 1.4 !important;
+}
+
+/* Ссылки */
+.table-of-contents a {
+  color: rgba(255, 255, 255, 0.4) !important; /* Очень приглушенный */
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+  display: block !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+}
+
+.table-of-contents a:hover {
+  color: rgba(255, 255, 255, 0.7) !important; /* Слегка подсвечивается при наведении */
+}
+
+/* Мобильные */
+@media (max-width: 768px) {
+  .table-of-contents {
+    float: none !important;
+    width: 100% !important;
+    margin: 0 0 16px 0 !important;
+    padding: 0 0 0 12px !important;
+    border-left: 2px solid rgba(255, 255, 255, 0.06) !important;
+  }
+}
