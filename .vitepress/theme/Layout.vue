@@ -104,7 +104,6 @@ export default {
         // ============================================
         // 2. ДОБАВЛЯЕМ КНОПКУ "+" СПРАВА В ШАПКЕ
         // ============================================
-        // Находим навбар
         const navBar = document.querySelector('.VPNavBar')
         if (!navBar) return
 
@@ -119,11 +118,12 @@ export default {
         addButtonWrapper.style.cssText = `
           position: absolute;
           top: 50%;
-          right: 20px;
+          right: 8px;
           transform: translateY(-50%);
           display: flex;
           align-items: center;
           z-index: 100;
+          pointer-events: auto !important;
         `
 
         const addButton = document.createElement('a')
@@ -136,7 +136,7 @@ export default {
           justify-content: center;
           width: 36px;
           height: 36px;
-          border-radius: 8px;
+          border-radius: 50%;
           background: #2c2c2e;
           border: 1px solid rgba(255, 255, 255, 0.1);
           color: #ffffff;
@@ -145,15 +145,23 @@ export default {
           transition: all 0.2s ease;
           cursor: pointer;
           user-select: none;
+          pointer-events: auto !important;
         `
+
+        // Добавляем обработчики для кликабельности
+        addButton.addEventListener('click', (e) => {
+          // Просто позволяем событию пройти
+        })
 
         addButton.addEventListener('mouseenter', () => {
           addButton.style.background = '#3c3c3e'
           addButton.style.borderColor = 'rgba(255, 255, 255, 0.2)'
+          addButton.style.transform = 'scale(1.05)'
         })
         addButton.addEventListener('mouseleave', () => {
           addButton.style.background = '#2c2c2e'
           addButton.style.borderColor = 'rgba(255, 255, 255, 0.1)'
+          addButton.style.transform = 'scale(1)'
         })
 
         addButtonWrapper.appendChild(addButton)
