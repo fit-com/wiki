@@ -116,7 +116,7 @@ export default {
         addButtonWrapper.style.cssText = `
           position: absolute;
           top: 50%;
-          right: 10px;
+          right: 16px;
           transform: translateY(-50%);
           display: flex;
           align-items: center;
@@ -160,7 +160,67 @@ export default {
         navBar.appendChild(addButtonWrapper)
 
         // ============================================
-        // 3. ПЕРЕМЕЩЕНИЕ ОГЛАВЛЕНИЯ
+        // 3. АДАПТАЦИЯ ПОИСКА ДЛЯ МОБИЛЬНЫХ
+        // ============================================
+        function adaptSearchForMobile() {
+          const searchBtn = document.querySelector('.DocSearch-Button')
+          const isMobile = window.innerWidth <= 768
+          
+          if (searchBtn) {
+            if (isMobile) {
+              searchBtn.style.width = '36px'
+              searchBtn.style.height = '36px'
+              searchBtn.style.padding = '0'
+              searchBtn.style.borderRadius = '50%'
+              searchBtn.style.justifyContent = 'center'
+              searchBtn.style.margin = '0'
+              searchBtn.style.marginLeft = '12px'
+              
+              // Скрываем текст и клавиши
+              const placeholder = searchBtn.querySelector('.DocSearch-Button-Placeholder')
+              const keys = searchBtn.querySelector('.DocSearch-Button-Keys')
+              if (placeholder) placeholder.style.display = 'none'
+              if (keys) keys.style.display = 'none'
+              
+              // Центрируем иконку
+              const icon = searchBtn.querySelector('.DocSearch-Search-Icon')
+              if (icon) {
+                icon.style.margin = '0'
+              }
+            } else {
+              searchBtn.style.width = ''
+              searchBtn.style.height = ''
+              searchBtn.style.padding = '0 4px 0 12px'
+              searchBtn.style.borderRadius = '8px'
+              searchBtn.style.justifyContent = ''
+              searchBtn.style.margin = ''
+              searchBtn.style.marginLeft = ''
+              
+              const placeholder = searchBtn.querySelector('.DocSearch-Button-Placeholder')
+              const keys = searchBtn.querySelector('.DocSearch-Button-Keys')
+              if (placeholder) placeholder.style.display = ''
+              if (keys) keys.style.display = ''
+              
+              const icon = searchBtn.querySelector('.DocSearch-Search-Icon')
+              if (icon) {
+                icon.style.margin = ''
+              }
+            }
+          }
+        }
+
+        // Вызываем при загрузке
+        adaptSearchForMobile()
+
+        // Вызываем при изменении размера окна
+        let resizeTimer
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimer)
+          resizeTimer = setTimeout(adaptSearchForMobile, 100)
+        })
+
+        // ============================================
+        // 4. ПЕРЕМЕЩЕНИЕ ОГЛАВЛЕНИЯ
         // ============================================
         const outline = document.querySelector('.VPDocAsideOutline')
         if (!outline) return
