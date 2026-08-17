@@ -710,7 +710,7 @@ body,
 
 .table-of-contents {
   float: left !important;
-  width: 300px !important;
+  width: auto !important;
   margin: 0 24px 20px 0 !important;
   background: transparent !important; /* Убираем фон */
   backdrop-filter: none !important; /* Убираем блюр */
@@ -788,7 +788,7 @@ body,
 
 .table-of-contents {
   float: left !important;
-  width: 300px !important;
+  width: auto !important;
   margin: 0 24px 20px 0 !important;
   background: transparent !important;
   backdrop-filter: none !important;
@@ -940,7 +940,7 @@ body,
 
 .table-of-contents {
   float: left !important;
-  width: 300px !important;
+  width: auto !important;
   margin: 0 24px 20px 0 !important;
   background: transparent !important;
   backdrop-filter: none !important;
