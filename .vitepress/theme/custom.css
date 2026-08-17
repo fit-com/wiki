@@ -781,3 +781,126 @@ body,
     border-left: 2px solid rgba(255, 255, 255, 0.06) !important;
   }
 }
+
+/* ==========================================================================
+   КАСТОМНОЕ ОГЛАВЛЕНИЕ
+   ========================================================================== */
+
+.table-of-contents {
+  float: left !important;
+  width: 300px !important;
+  margin: 0 24px 20px 0 !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 0 0 16px !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+  border-left: 2px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Заголовок "Содержание" - БЕЛЫЙ */
+.table-of-contents::before {
+  content: "📑 Содержание";
+  display: block;
+  font-weight: 600 !important;
+  font-size: inherit !important; /* Наследует размер шрифта статьи */
+  color: #ffffff !important; /* БЕЛЫЙ */
+  padding-bottom: 6px !important;
+  border-bottom: none !important;
+  margin-bottom: 8px !important;
+  letter-spacing: 0.3px;
+}
+
+/* Список */
+.table-of-contents ul {
+  list-style-type: none !important;
+  padding-left: 0 !important;
+  margin: 0 !important;
+}
+
+/* Вложенные списки */
+.table-of-contents ul ul {
+  padding-left: 12px !important;
+  margin-top: 0 !important;
+}
+
+/* Элементы списка - ОБЫЧНЫЙ РАЗМЕР ШРИФТА */
+.table-of-contents li {
+  padding: 2px 0 !important;
+  margin-bottom: 0 !important;
+  font-size: inherit !important; /* Наследует размер шрифта статьи */
+  line-height: 1.5 !important;
+}
+
+/* Ссылки */
+.table-of-contents a {
+  color: rgba(255, 255, 255, 0.5) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+  display: block !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+}
+
+.table-of-contents a:hover {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* ================================================================
+   ПРИНУДИТЕЛЬНОЕ ОБТЕКАНИЕ СНИЗУ
+   ================================================================ */
+
+/* Убираем float после оглавления */
+.table-of-contents + * {
+  clear: none !important;
+}
+
+/* Добавляем псевдоэлемент, который очищает обтекание после оглавления */
+.vp-doc .table-of-contents::after {
+  content: "" !important;
+  display: table !important;
+  clear: both !important;
+}
+
+/* Принудительно заставляем контент идти ПОСЛЕ оглавления */
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc p,
+.vp-doc ul:not(.table-of-contents ul),
+.vp-doc ol,
+.vp-doc div:not(.table-of-contents) {
+  clear: both !important;
+}
+
+/* Все блоки, кроме самого оглавления, должны быть с clear: both */
+.vp-doc > *:not(.table-of-contents) {
+  clear: both !important;
+}
+
+/* Контент всегда после оглавления */
+.vp-doc .table-of-contents {
+  float: left !important;
+}
+
+.vp-doc .table-of-contents ~ * {
+  clear: both !important;
+}
+
+/* Мобильные */
+@media (max-width: 768px) {
+  .table-of-contents {
+    float: none !important;
+    width: 100% !important;
+    margin: 0 0 16px 0 !important;
+    padding: 0 0 0 12px !important;
+    border-left: 2px solid rgba(255, 255, 255, 0.06) !important;
+  }
+  
+  .vp-doc .table-of-contents ~ * {
+    clear: none !important;
+  }
+}
