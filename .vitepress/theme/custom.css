@@ -933,3 +933,111 @@ body,
 .vp-doc div:not(.table-of-contents) {
   clear: none !important;
 }
+
+/* ==========================================================================
+   КАСТОМНОЕ ОГЛАВЛЕНИЕ
+   ========================================================================== */
+
+.table-of-contents {
+  float: left !important;
+  width: 300px !important;
+  margin: 0 24px 20px 0 !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 0 0 16px !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+  border-left: 2px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Заголовок "Содержание" - ТАКОЙ ЖЕ ЦВЕТ КАК ТЕКСТ СТАТЬИ */
+.table-of-contents::before {
+  content: "📑 Содержание";
+  display: block;
+  font-weight: 600 !important;
+  font-size: inherit !important;
+  color: rgba(255, 255, 255, 0.85) !important; /* ТАКОЙ ЖЕ КАК ТЕКСТ */
+  padding-bottom: 6px !important;
+  border-bottom: none !important;
+  margin-bottom: 8px !important;
+  letter-spacing: 0.3px;
+}
+
+/* Список */
+.table-of-contents ul {
+  list-style-type: none !important;
+  padding-left: 0 !important;
+  margin: 0 !important;
+}
+
+.table-of-contents ul ul {
+  padding-left: 12px !important;
+  margin-top: 0 !important;
+}
+
+.table-of-contents li {
+  padding: 2px 0 !important;
+  margin-bottom: 0 !important;
+  font-size: inherit !important;
+  line-height: 1.5 !important;
+}
+
+.table-of-contents a {
+  color: rgba(255, 255, 255, 0.5) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+  display: block !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+}
+
+.table-of-contents a:hover {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* ================================================================
+   ПРАВИЛЬНОЕ ОБТЕКАНИЕ
+   ================================================================ */
+
+/* Все абзацы очищают только левое обтекание (оглавление) */
+.vp-doc p {
+  clear: left !important;
+}
+
+/* Таблицы НЕ очищают ничего */
+.vp-doc table {
+  clear: none !important;
+}
+
+/* Все остальные элементы тоже не очищают */
+.vp-doc ul:not(.table-of-contents ul),
+.vp-doc ol,
+.vp-doc div:not(.table-of-contents) {
+  clear: none !important;
+}
+
+/* ================================================================
+   МОБИЛЬНАЯ ВЕРСИЯ
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .table-of-contents {
+    float: none !important;
+    width: 100% !important;
+    margin: 0 0 16px 0 !important;
+    padding: 0 0 0 12px !important;
+    border-left: 2px solid rgba(255, 255, 255, 0.06) !important;
+  }
+  
+  /* На мобилке все элементы идут друг за другом */
+  .vp-doc p,
+  .vp-doc table,
+  .vp-doc ul,
+  .vp-doc ol,
+  .vp-doc div {
+    clear: none !important;
+  }
+}
