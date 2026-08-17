@@ -20,16 +20,7 @@ export default {
 
     // Настраиваем левое меню (Sidebar)
     sidebar: [
-      {
-        text: 'Категории',
-        items: [
-          { text: '👨‍🏫 Преподаватели', link: '/teachers/'  },
-          { text: '🎭 События' },
-          { text: '🛠️ Предметы' },
-          { text: '🏢 Корпуса и аудитории' },
-          { text: '➕ Добавить контент', link: 'https://github.com/fit-com/wiki/new/main' }
-        ]
-      }
+      {}
     ],
 
     editLink: {
