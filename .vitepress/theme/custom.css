@@ -2,6 +2,7 @@
    1. ПЕРЕМЕННЫЕ ЦВЕТОВ (ТОЛЬКО ТЕМНАЯ ТЕМА)
    ========================================================================== */
 :root {
+
   --bg-image-url: url('@theme/bg.png');
   --vp-c-bg: rgba(30, 30, 32, 0.85) !important;
   --glass-bg: rgba(30, 30, 32, 0.6);
@@ -13,6 +14,7 @@
    2. ГЛОБАЛЬНЫЙ ФОН И ПРОЗРАЧНОСТЬ
    ========================================================================== */
 html {
+
   background-image: var(--bg-image-url) !important;
   background-size: cover !important;
   background-position: center center !important;
@@ -31,6 +33,7 @@ body,
 .VPContent .container,
 .VPDoc,
 .VPDoc .container {
+
   background: transparent !important;
   background-color: transparent !important;
 }
@@ -44,6 +47,7 @@ body,
 .VPNavBar .container,
 .VPNavBar .content,
 .VPNavBar .content-body {
+
   background: #1e1e20 !important;
   background-color: #1e1e20 !important;
   background-image: none !important;
@@ -57,6 +61,7 @@ body,
 
 .VPNavBar .divider,
 .VPNavBar .divider-line {
+
   display: none !important;
   opacity: 0 !important;
   height: 0 !important;
@@ -65,6 +70,7 @@ body,
 }
 
 .VPNavBarTitle .title {
+
   border-bottom: none !important;
 }
 
@@ -75,17 +81,20 @@ body,
 .VPNavBarMenuLink,
 .VPNavBar .text,
 .VPNavBar .icon {
+
   color: #ffffff !important;
   fill: #ffffff !important;
 }
 
 .VPNavBar .container {
+
   max-width: 100% !important;
   width: 100% !important;
   padding: 0 !important;
 }
 
 .VPNavBar .title {
+
   padding-left: 12px !important;
 }
 
@@ -96,10 +105,22 @@ body,
 .VPNavBarSearch .search-box,
 .VPNavBarSearch .VPSearchButton,
 .DocSearch-Button-Container {
+
   background: transparent !important;
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
+}
+
+.DocSearch-Button {
+
+  background-color: #2c2c2e !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 8px !important;
+  height: 36px !important;
+  box-shadow: none !important;
+  position: relative !important;
+  margin: 0px 0px 0px 20px !important;
 }
 
 .DocSearch-Button .DocSearch-Button-Placeholder,
@@ -107,16 +128,18 @@ body,
 .DocSearch-Button .DocSearch-Button-Key,
 .DocSearch-Button-Container .DocSearch-Search-Icon,
 .DocSearch-Button-Container svg {
-  color: rgba(255, 255, 255, 0.8) !important;
+
   fill: rgba(255, 255, 255, 0.8) !important;
 }
 
 .DocSearch-Button .DocSearch-Button-Placeholder {
+
   font-size: 14px;
   color: #ffffff !important;
 }
 
 .DocSearch-Button .DocSearch-Button-Keys {
+
   display: none !important;
 }
 
@@ -124,6 +147,7 @@ body,
    5. РАСКЛАДКА ШАПКИ
    ========================================================================== */
 .VPNavBar .content-body {
+
   display: flex !important;
   align-items: center !important;
   width: 100% !important;
@@ -131,12 +155,20 @@ body,
 }
 
 .VPNavBarTitle {
+
   padding-left: 35px !important;
 }
 
 .VPNavBarSearch {
+
   width: calc(100vw - (20vw * 2)) !important;
   padding-left: 0 !important;
+}
+
+.DocSearch-Button {
+
+  width: calc(100vw - (20vw * 2) - 80px) !important;
+  max-width: 100% !important;
 }
 
 /* ==========================================================================
@@ -145,16 +177,19 @@ body,
 /* Скрываем переключатель сайдбара и мобильное меню в шапке */
 .VPNavBarSidebarToggle,
 .VPNavScreen {
+
     display: none !important;
 }
 
 /* Скрываем сам сайдбар, если он вылезает на десктопе */
 .VPSidebar {
+
     display: none !important;
 }
 
 /* Возвращаем основному контенту нормальное отображение без отступов под сайдбар */
 .VPContent {
+
     padding-left: 0 !important;
 }
 
@@ -162,6 +197,7 @@ body,
    8. ОСНОВНАЯ КАРТОЧКА СТАТЬИ (СТЕКЛЯННАЯ)
    ========================================================================== */
 .VPDoc .content {
+
   width: calc(100vw - (20vw * 2) - 80px) !important;
   max-width: 95% !important;
   position: absolute !important;
@@ -177,6 +213,7 @@ body,
 }
 
 .VPDoc .container > div:last-child {
+
   padding-bottom: 0 !important;
   margin-bottom: 0 !important;
 }
@@ -185,6 +222,7 @@ body,
    9. КНОПКА КАТЕГОРИЙ ВНУТРИ ПОИСКА
    ========================================================================== */
 .categories-wrapper {
+
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -193,10 +231,47 @@ body,
   height: 100%;
 }
 
+.categories-button {
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent !important;
+  border: none !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 0 !important;
+  color: #ffffff !important;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  user-select: none;
+  margin-left: 4px;
+}
+
+.categories-button:hover {
+
+}
+
+.categories-icon {
+
+  color: #ffffff !important;
+}
+
+.arrow {
+
+  color: #ffffff !important;
+}
+
+.arrow.open {
+
+}
+
 /* ==========================================================================
    10. ВЫПАДАЮЩЕЕ МЕНЮ КАТЕГОРИЙ (ГОРИЗОНТАЛЬНОЕ, ПОД КНОПКОЙ ПОИСКА)
    ========================================================================== */
 .categories-dropdown {
+
   position: absolute !important;
   top: calc(100% + 8px) !important;
   left: 0 !important;
@@ -229,35 +304,70 @@ body,
    ========================================================================== */
 @media (max-width: 960px) {
   .VPDoc .content {
+
     width: 90vw !important;
     position: relative !important;
     left: 0 !important;
     transform: none !important;
     margin: 20px auto !important;
     padding: 20px !important;
-  }
+  
+}
 
   .VPSidebar {
+
     width: 100% !important;
     max-width: 100% !important;
     top: 0 !important;
-  }
+  
+}
 
   .VPSidebar .group {
+
     margin: 10px !important;
     width: calc(100% - 20px) !important;
-  }
+  
+}
 
   .VPDocAside {
+
     display: none !important;
-  }
+  
+}
 }
 
 @media (max-width: 768px) {
+  .categories-button {
+
+  
+}
+
+  .categories-button .categories-text {
+
+  
+}
+
+  .categories-dropdown {
+
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+  
+}
+
+  .category-item {
+
+  
+}
+
+  .dropdown-divider {
+
+  
+}
 
   .DocSearch-Button {
+
     padding: 0 4px 0 8px !important;
-  }
+  
+}
 }
 
 /* ==========================================================================
@@ -266,10 +376,12 @@ body,
 
 /* Родительский контейнер - вся кнопка поиска */
 .DocSearch-Button {
+
   position: relative !important; /* Важно для позиционирования меню */
 }
 
 .categories-wrapper {
+
   position: static !important; /* Не позиционируем относительно wrapper */
   display: inline-flex;
   align-items: center;
@@ -280,6 +392,7 @@ body,
 
 /* Кнопка категорий */
 .categories-button {
+
   display: flex;
   align-items: center;
   gap: 6px;
@@ -300,15 +413,18 @@ body,
 }
 
 .categories-button:hover {
+
   color: #ffffff !important;
   background: transparent !important;
 }
 
 .categories-icon {
+
   font-size: 14px;
 }
 
 .arrow {
+
   font-size: 9px;
   transition: transform 0.2s ease;
   margin-left: 2px;
@@ -316,11 +432,13 @@ body,
 }
 
 .arrow.open {
+
   transform: rotate(180deg);
 }
 
 /* ВЫПАДАЮЩЕЕ МЕНЮ - ПОД КНОПКОЙ ПОИСКА */
 .categories-dropdown {
+
   position: absolute !important;
   top: calc(100% + 8px) !important;
   left: 0 !important;
@@ -346,6 +464,7 @@ body,
 }
 
 .categories-dropdown.open {
+
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -353,6 +472,7 @@ body,
 
 /* Пункты меню - горизонтально, слева направо */
 .category-item {
+
   display: flex !important;
   align-items: center !important;
   gap: 8px !important;
@@ -367,21 +487,34 @@ body,
 }
 
 .category-item:hover {
+
   background: rgba(255, 255, 255, 0.1) !important;
   color: #ffffff !important;
 }
 
 .category-icon {
+
   font-size: 16px;
   width: 20px;
   text-align: center;
 }
 
+.dropdown-divider {
+
+  width: 1px !important;
+  height: 28px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  margin: 4px 4px !important;
+  flex-shrink: 0 !important;
+}
+
 .add-content {
+
   color: rgba(255, 255, 255, 0.6) !important;
 }
 
 .add-content:hover {
+
   color: #ffffff !important;
   background: rgba(100, 200, 255, 0.15) !important;
 }
@@ -392,16 +525,21 @@ body,
 
 @media (max-width: 768px) {
   .categories-button {
+
     padding: 0 6px;
     font-size: 12px;
     height: 26px;
-  }
+  
+}
   
   .categories-button .categories-text {
+
     display: none;
-  }
+  
+}
   
   .categories-dropdown {
+
     position: fixed !important;
     top: 60px !important;
     left: 10px !important;
@@ -410,23 +548,29 @@ body,
     flex-direction: row !important;
     flex-wrap: wrap !important;
     padding: 8px !important;
-  }
+  
+}
   
   .category-item {
+
     font-size: 12px !important;
     padding: 6px 10px !important;
     flex: 0 0 auto !important;
-  }
+  
+}
   
   .dropdown-divider {
+
     display: none !important;
-  }
+  
+}
 }
 
 /* ==========================================================================
    12. ПРИНУДИТЕЛЬНОЕ ВЫРАВНИВАНИЕ МЕНЮ
    ========================================================================== */
 #categoriesDropdown {
+
   left: 0 !important;
   right: 0 !important;
   width: 100% !important;
@@ -436,6 +580,10 @@ body,
   box-sizing: border-box !important;
 }
 
+.vp-doc {
+
+}
+
 .vp-doc h1,
 .vp-doc h2,
 .vp-doc h3,
@@ -443,10 +591,11 @@ body,
 .vp-doc ul,
 .vp-doc ol,
 .vp-doc div:not(.inline-outline) {
-  clear: none !important;
+
 }
 
 .VPDoc .aside {
+
   display: none !important;
 }
 
@@ -456,16 +605,19 @@ body,
 
 /* Контейнер статьи должен обтекать оглавление */
 .vp-doc {
+
   overflow: hidden !important;
 }
 
 /* Все блоки внутри статьи обтекают */
 .vp-doc > div {
+
   overflow: visible !important;
 }
 
 /* Добавляем обертку для контента, чтобы он не наезжал */
 .VPDoc .content-container {
+
   overflow: hidden !important;
 }
 
@@ -479,22 +631,24 @@ body,
 .vp-doc ol,
 .vp-doc ,
 .vp-doc blockquote {
-  overflow: hidden !important;
-  clear: none !important;
+
 }
 
 /* Особенно важно для flex-контейнеров с карточками */
 .vp-doc div[style*="display:flex"] {
+
   clear: none !important;
   overflow: hidden !important;
 }
   
 .vp-doc {
+
   overflow: visible !important;
 }
 
 /* Ссылки */
 .table-of-contents a {
+
   text-decoration: none !important;
   transition: color 0.2s ease !important;
   display: block !important;
@@ -502,6 +656,7 @@ body,
 
 /* Контент обтекает оглавление */
 .vp-doc {
+
   overflow: hidden !important;
 }
 
@@ -512,7 +667,7 @@ body,
 .vp-doc ul,
 .vp-doc ol,
 .vp-doc div:not(.table-of-contents) {
-  clear: none !important;
+
 }
 
 
@@ -522,11 +677,13 @@ body,
 
 /* Скрываем автоматическое оглавление VitePress */
 .VPDocAsideOutline {
+
     display: none !important;
 }
 
 /* Скрываем кнопку-якорь для оглавления */
 .VPDocAside .aside-container .outline {
+
     display: none !important;
 }
 
@@ -534,6 +691,7 @@ body,
 .outline-wrapper,
 .outline-title,
 .VPOutline {
+
     display: none !important;
 }
 
@@ -545,11 +703,13 @@ body,
 
 /* Убираем float после оглавления */
 .table-of-contents + * {
+
   clear: none !important;
 }
 
 /* Добавляем псевдоэлемент, который очищает обтекание после оглавления */
 .vp-doc .table-of-contents::after {
+
   content: "" !important;
   display: table !important;
   clear: both !important;
@@ -563,19 +723,26 @@ body,
 .vp-doc ul:not(.table-of-contents ul),
 .vp-doc ol,
 .vp-doc div:not(.table-of-contents) {
-  clear: both !important;
+
 }
 
 /* Все блоки, кроме самого оглавления, должны быть с clear: both */
 .vp-doc > *:not(.table-of-contents) {
+
   clear: both !important;
+}
+
+.vp-doc .table-of-contents ~ * {
+
 }
 
 /* Мобильные */
 @media (max-width: 768px) {
   .vp-doc .table-of-contents ~ * {
+
     clear: none !important;
-  }
+  
+}
 }
 
 /* ================================================================
@@ -583,6 +750,7 @@ body,
    ================================================================ */
 /* Абзацы очищают обтекание от ОГЛАВЛЕНИЯ, но НЕ от таблицы */
 .vp-doc p {
+
   clear: left !important; /* Очищает только float:left (оглавление) */
   /* НЕ используем clear:both, чтобы таблица могла быть рядом */
 }
@@ -594,7 +762,7 @@ body,
 .vp-doc ul,
 .vp-doc ol,
 .vp-doc div:not(.table-of-contents) {
-  clear: none !important;
+
 }
 
 /* ==========================================================================
@@ -602,6 +770,7 @@ body,
    ========================================================================== */
 
 .table-of-contents {
+
   float: left !important;
   width: auto !important;
   margin: 0 24px 20px 0 !important;
@@ -618,6 +787,7 @@ body,
 
 /* Заголовок "Содержание" - ТАКОЙ ЖЕ ЦВЕТ КАК ТЕКСТ СТАТЬИ */
 .table-of-contents::before {
+
   content: "📑 Содержание";
   display: block;
   font-weight: 600 !important;
@@ -631,17 +801,20 @@ body,
 
 /* Список */
 .table-of-contents ul {
+
   list-style-type: none !important;
   padding-left: 0 !important;
   margin: 0 !important;
 }
 
 .table-of-contents ul ul {
+
   padding-left: 12px !important;
   margin-top: 0 !important;
 }
 
 .table-of-contents li {
+
   padding: 2px 0 !important;
   margin-bottom: 0 !important;
   font-size: inherit !important;
@@ -649,16 +822,19 @@ body,
 }
 
 .table-of-contents a:hover {
+
   color: rgba(255, 255, 255, 0.8) !important;
 }
 
 /* Все абзацы очищают только левое обтекание (оглавление) */
 .vp-doc p {
+
   clear: left !important;
 }
 
 /* Таблицы НЕ очищают ничего */
 .vp-doc table {
+
   clear: none !important;
 }
 
@@ -666,7 +842,7 @@ body,
 .vp-doc ul:not(.table-of-contents ul),
 .vp-doc ol,
 .vp-doc div:not(.table-of-contents) {
-  clear: none !important;
+
 }
 
 /* ================================================================
@@ -675,12 +851,14 @@ body,
 
 @media (max-width: 768px) {
   .table-of-contents {
+
     float: none !important;
     width: 100% !important;
     margin: 0 0 16px 0 !important;
     padding: 0 0 0 12px !important;
     border-left: 2px solid rgba(255, 255, 255, 0.06) !important;
-  }
+  
+}
   
   /* На мобилке все элементы идут друг за другом */
   .vp-doc p,
@@ -688,21 +866,26 @@ body,
   .vp-doc ul,
   .vp-doc ol,
   .vp-doc div {
+
     clear: none !important;
-  }
+  
+}
 }
 
 .vp-doc table {
+
   min-width: 200px !important;
   max-width: 100% !important;
 }
 
 .vp-doc table {
+
   table-layout: fixed !important;
 }
 
 .vp-doc table td,
 .vp-doc table th {
+
   word-wrap: break-word !important;
   overflow-wrap: break-word !important;
   white-space: normal !important;
