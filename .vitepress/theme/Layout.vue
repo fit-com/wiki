@@ -57,10 +57,6 @@ export default {
             <a href="/wiki/communities/" class="category-item">
               <span class="category-icon">🧑‍🤝‍🧑</span> Сообщества
             </a>
-            <div class="dropdown-divider"></div>
-            <a href="https://github.com/fit-com/wiki/new/main" class="category-item add-content">
-              <span class="category-icon">➕</span> Добавить контент
-            </a>
           </div>
         `
 
