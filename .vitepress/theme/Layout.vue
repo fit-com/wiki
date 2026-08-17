@@ -118,7 +118,7 @@ export default {
         addButtonWrapper.style.cssText = `
           position: absolute;
           top: 50%;
-          right: 8px;
+          right: 10px;
           transform: translateY(-50%);
           display: flex;
           align-items: center;
