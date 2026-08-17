@@ -552,389 +552,6 @@ body,
 }
 
 /* ==========================================================================
-   ИСПРАВЛЕНИЕ НАЛОЖЕНИЯ КОНТЕНТА
-   ========================================================================== */
-
-/* Контейнер статьи должен обтекать оглавление */
-.vp-doc {
-  overflow: hidden !important;
-}
-
-/* Все блоки внутри статьи обтекают */
-.vp-doc > div {
-  overflow: visible !important;
-}
-
-/* Добавляем обертку для контента, чтобы он не наезжал */
-.VPDoc .content-container {
-  overflow: hidden !important;
-}
-
-/* Все заголовки и абзацы обтекают */
-.vp-doc h1,
-.vp-doc h2,
-.vp-doc h3,
-.vp-doc h4,
-.vp-doc p,
-.vp-doc ul,
-.vp-doc ol,
-.vp-doc table,
-.vp-doc blockquote {
-  overflow: hidden !important;
-  clear: none !important;
-}
-
-/* Особенно важно для flex-контейнеров с карточками */
-.vp-doc div[style*="display:flex"] {
-  clear: none !important;
-  overflow: hidden !important;
-}
-  
-.vp-doc {
-  overflow: visible !important;
-}
-
-/* ==========================================================================
-   КАСТОМНОЕ ОГЛАВЛЕНИЕ В СТИЛЕ СТЕКЛЯННОЙ КАРТОЧКИ
-   ========================================================================== */
-
-.table-of-contents {
-  float: left !important;
-  width: 300px !important;
-  margin: 0 24px 20px 0 !important;
-  background: rgba(30, 30, 32, 0.7) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 12px !important;
-  padding: 16px 20px !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
-  overflow: hidden !important;
-}
-
-/* Заголовок "Содержание статьи" */
-.table-of-contents::before {
-  content: "📑 Содержание";
-  display: block;
-  font-weight: 600;
-  font-size: 14px !important;
-  color: #ffffff !important;
-  padding-bottom: 8px !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-  margin-bottom: 10px !important;
-}
-
-/* Список */
-.table-of-contents ul {
-  list-style-type: none !important;
-  padding-left: 0 !important;
-  margin: 0 !important;
-}
-
-/* Вложенные списки (подзаголовки) */
-.table-of-contents ul ul {
-  padding-left: 12px !important;
-  margin-top: 0 !important;
-}
-
-/* Элементы списка */
-.table-of-contents li {
-  padding: 3px 0 !important;
-  margin-bottom: 0 !important;
-  font-size: 13px !important;
-  line-height: 1.4 !important;
-}
-
-/* Ссылки */
-.table-of-contents a {
-  color: rgba(255, 255, 255, 0.75) !important;
-  text-decoration: none !important;
-  transition: color 0.2s ease !important;
-  display: block !important;
-  white-space: normal !important;
-  word-break: break-word !important;
-}
-
-.table-of-contents a:hover {
-  color: #ffffff !important;
-}
-
-/* Контент обтекает оглавление */
-.vp-doc {
-  overflow: hidden !important;
-}
-
-.vp-doc h1,
-.vp-doc h2,
-.vp-doc h3,
-.vp-doc p,
-.vp-doc ul,
-.vp-doc ol,
-.vp-doc div:not(.table-of-contents) {
-  clear: none !important;
-}
-
-/* Мобильные */
-@media (max-width: 768px) {
-  .table-of-contents {
-    float: none !important;
-    width: 100% !important;
-    margin: 0 0 20px 0 !important;
-  }
-}
-
-/* ==========================================================================
-   ОТКЛЮЧЕНИЕ АВТОМАТИЧЕСКОГО ОГЛАВЛЕНИЯ
-   ========================================================================== */
-
-/* Скрываем автоматическое оглавление VitePress */
-.VPDocAsideOutline {
-    display: none !important;
-}
-
-/* Скрываем кнопку-якорь для оглавления */
-.VPDocAside .aside-container .outline {
-    display: none !important;
-}
-
-/* Дополнительная проверка для других селекторов */
-.outline-wrapper,
-.outline-title,
-.VPOutline {
-    display: none !important;
-}
-
-/* ==========================================================================
-   КАСТОМНОЕ ОГЛАВЛЕНИЕ (ПРИГЛУШЕННОЕ)
-   ========================================================================== */
-
-.table-of-contents {
-  float: left !important;
-  width: 300px !important;
-  margin: 0 24px 20px 0 !important;
-  background: transparent !important; /* Убираем фон */
-  backdrop-filter: none !important; /* Убираем блюр */
-  -webkit-backdrop-filter: none !important;
-  border: none !important; /* Убираем рамку */
-  border-radius: 0 !important;
-  padding: 0 0 0 16px !important; /* Только левый отступ */
-  box-shadow: none !important; /* Убираем тень */
-  overflow: hidden !important;
-  border-left: 2px solid rgba(255, 255, 255, 0.08) !important; /* Тонкая линия слева */
-}
-
-/* Заголовок "Содержание" */
-.table-of-contents::before {
-  content: "📑 Содержание";
-  display: block;
-  font-weight: 500;
-  font-size: 13px !important;
-  color: rgba(255, 255, 255, 0.5) !important; /* Приглушенный цвет */
-  padding-bottom: 6px !important;
-  border-bottom: none !important;
-  margin-bottom: 8px !important;
-  letter-spacing: 0.3px;
-}
-
-/* Список */
-.table-of-contents ul {
-  list-style-type: none !important;
-  padding-left: 0 !important;
-  margin: 0 !important;
-}
-
-/* Вложенные списки */
-.table-of-contents ul ul {
-  padding-left: 12px !important;
-  margin-top: 0 !important;
-}
-
-/* Элементы списка */
-.table-of-contents li {
-  padding: 2px 0 !important;
-  margin-bottom: 0 !important;
-  font-size: 12.5px !important;
-  line-height: 1.4 !important;
-}
-
-/* Ссылки */
-.table-of-contents a {
-  color: rgba(255, 255, 255, 0.4) !important; /* Очень приглушенный */
-  text-decoration: none !important;
-  transition: color 0.2s ease !important;
-  display: block !important;
-  white-space: normal !important;
-  word-break: break-word !important;
-}
-
-.table-of-contents a:hover {
-  color: rgba(255, 255, 255, 0.7) !important; /* Слегка подсвечивается при наведении */
-}
-
-/* Мобильные */
-@media (max-width: 768px) {
-  .table-of-contents {
-    float: none !important;
-    width: 100% !important;
-    margin: 0 0 16px 0 !important;
-    padding: 0 0 0 12px !important;
-    border-left: 2px solid rgba(255, 255, 255, 0.06) !important;
-  }
-}
-
-/* ==========================================================================
-   КАСТОМНОЕ ОГЛАВЛЕНИЕ
-   ========================================================================== */
-
-.table-of-contents {
-  float: left !important;
-  width: 300px !important;
-  margin: 0 24px 20px 0 !important;
-  background: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border: none !important;
-  border-radius: 0 !important;
-  padding: 0 0 0 16px !important;
-  box-shadow: none !important;
-  overflow: hidden !important;
-  border-left: 2px solid rgba(255, 255, 255, 0.08) !important;
-}
-
-/* Заголовок "Содержание" - БЕЛЫЙ */
-.table-of-contents::before {
-  content: "📑 Содержание";
-  display: block;
-  font-weight: 600 !important;
-  font-size: inherit !important; /* Наследует размер шрифта статьи */
-  color: #ffffff !important; /* БЕЛЫЙ */
-  padding-bottom: 6px !important;
-  border-bottom: none !important;
-  margin-bottom: 8px !important;
-  letter-spacing: 0.3px;
-}
-
-/* Список */
-.table-of-contents ul {
-  list-style-type: none !important;
-  padding-left: 0 !important;
-  margin: 0 !important;
-}
-
-/* Вложенные списки */
-.table-of-contents ul ul {
-  padding-left: 12px !important;
-  margin-top: 0 !important;
-}
-
-/* Элементы списка - ОБЫЧНЫЙ РАЗМЕР ШРИФТА */
-.table-of-contents li {
-  padding: 2px 0 !important;
-  margin-bottom: 0 !important;
-  font-size: inherit !important; /* Наследует размер шрифта статьи */
-  line-height: 1.5 !important;
-}
-
-/* Ссылки */
-.table-of-contents a {
-  color: rgba(255, 255, 255, 0.5) !important;
-  text-decoration: none !important;
-  transition: color 0.2s ease !important;
-  display: block !important;
-  white-space: normal !important;
-  word-break: break-word !important;
-}
-
-.table-of-contents a:hover {
-  color: rgba(255, 255, 255, 0.8) !important;
-}
-
-/* ================================================================
-   ПРИНУДИТЕЛЬНОЕ ОБТЕКАНИЕ СНИЗУ
-   ================================================================ */
-
-/* Убираем float после оглавления */
-.table-of-contents + * {
-  clear: none !important;
-}
-
-/* Добавляем псевдоэлемент, который очищает обтекание после оглавления */
-.vp-doc .table-of-contents::after {
-  content: "" !important;
-  display: table !important;
-  clear: both !important;
-}
-
-/* Принудительно заставляем контент идти ПОСЛЕ оглавления */
-.vp-doc h1,
-.vp-doc h2,
-.vp-doc h3,
-.vp-doc p,
-.vp-doc ul:not(.table-of-contents ul),
-.vp-doc ol,
-.vp-doc div:not(.table-of-contents) {
-  clear: both !important;
-}
-
-/* Все блоки, кроме самого оглавления, должны быть с clear: both */
-.vp-doc > *:not(.table-of-contents) {
-  clear: both !important;
-}
-
-/* Контент всегда после оглавления */
-.vp-doc .table-of-contents {
-  float: left !important;
-}
-
-.vp-doc .table-of-contents ~ * {
-  clear: both !important;
-}
-
-/* Мобильные */
-@media (max-width: 768px) {
-  .table-of-contents {
-    float: none !important;
-    width: 100% !important;
-    margin: 0 0 16px 0 !important;
-    padding: 0 0 0 12px !important;
-    border-left: 2px solid rgba(255, 255, 255, 0.06) !important;
-  }
-  
-  .vp-doc .table-of-contents ~ * {
-    clear: none !important;
-  }
-}
-
-/* ================================================================
-   ОГЛАВЛЕНИЕ - float:left
-   ================================================================ */
-.table-of-contents {
-  float: left !important;
-  width: 300px !important;
-  margin: 0 24px 20px 0 !important;
-  /* остальные стили без изменений */
-}
-
-/* ================================================================
-   ТОЛЬКО АБЗАЦЫ - ПОД ОГЛАВЛЕНИЕМ
-   ================================================================ */
-/* Абзацы очищают обтекание от ОГЛАВЛЕНИЯ, но НЕ от таблицы */
-.vp-doc p {
-  clear: left !important; /* Очищает только float:left (оглавление) */
-  /* НЕ используем clear:both, чтобы таблица могла быть рядом */
-}
-
-/* ================================================================
-   ТАБЛИЦЫ И ВСЁ ОСТАЛЬНОЕ - НЕ ОЧИЩАЮТ
-   ================================================================ */
-.vp-doc table,
-.vp-doc ul,
-.vp-doc ol,
-.vp-doc div:not(.table-of-contents) {
-  clear: none !important;
-}
-
-/* ==========================================================================
    КАСТОМНОЕ ОГЛАВЛЕНИЕ
    ========================================================================== */
 
@@ -959,7 +576,7 @@ body,
   display: block;
   font-weight: 600 !important;
   font-size: inherit !important;
-  color: rgba(255, 255, 255, 0.85) !important; /* ТАКОЙ ЖЕ КАК ТЕКСТ */
+  color: rgba(255, 255, 255, 0.85) !important;
   padding-bottom: 6px !important;
   border-bottom: none !important;
   margin-bottom: 8px !important;
@@ -1020,6 +637,34 @@ body,
 }
 
 /* ================================================================
+   ТАБЛИЦЫ ВСЕГДА ПОЛНОСТЬЮ ПОМЕЩАЮТСЯ
+   ================================================================ */
+
+.vp-doc table {
+  display: table !important;
+  width: auto !important;
+  max-width: 100% !important;
+  table-layout: auto !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+.vp-doc table td,
+.vp-doc table th {
+  white-space: normal !important;
+  word-break: break-word !important;
+  max-width: 400px !important;
+}
+
+/* Если таблица все равно не помещается - включаем горизонтальный скролл */
+.vp-doc .table-wrapper {
+  overflow-x: auto !important;
+  display: block !important;
+  max-width: 100% !important;
+  clear: none !important;
+}
+
+/* ================================================================
    МОБИЛЬНАЯ ВЕРСИЯ
    ================================================================ */
 
@@ -1039,5 +684,19 @@ body,
   .vp-doc ol,
   .vp-doc div {
     clear: none !important;
+  }
+  
+  /* Таблицы на мобилке с прокруткой */
+  .vp-doc table {
+    display: block !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  
+  .vp-doc table td,
+  .vp-doc table th {
+    white-space: nowrap !important;
+    max-width: none !important;
   }
 }
