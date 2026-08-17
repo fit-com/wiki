@@ -682,3 +682,24 @@ body,
     margin: 0 0 20px 0 !important;
   }
 }
+
+/* ==========================================================================
+   ОТКЛЮЧЕНИЕ АВТОМАТИЧЕСКОГО ОГЛАВЛЕНИЯ
+   ========================================================================== */
+
+/* Скрываем автоматическое оглавление VitePress */
+.VPDocAsideOutline {
+    display: none !important;
+}
+
+/* Скрываем кнопку-якорь для оглавления */
+.VPDocAside .aside-container .outline {
+    display: none !important;
+}
+
+/* Дополнительная проверка для других селекторов */
+.outline-wrapper,
+.outline-title,
+.VPOutline {
+    display: none !important;
+}
