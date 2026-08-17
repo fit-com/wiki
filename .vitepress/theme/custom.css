@@ -851,3 +851,58 @@ button.VPSwitchAppearance {
   position: absolute !important;
   pointer-events: none !important;
 }
+
+/* ==========================================================================
+   ПОЛНОЕ ОТКЛЮЧЕНИЕ МОБИЛЬНОГО МЕНЮ
+   ========================================================================== */
+
+/* Скрываем кнопку гамбургера */
+.VPNavBarSidebarToggle {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Скрываем само мобильное меню */
+.VPNavScreen {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  position: fixed !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+/* Дополнительно на мобилках */
+@media (max-width: 960px) {
+  .VPNavBarSidebarToggle {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+  }
+  
+  .VPNavScreen {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    position: fixed !important;
+    top: -9999px !important;
+    left: -9999px !important;
+  }
+}
