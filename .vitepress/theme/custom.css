@@ -813,3 +813,41 @@ body,
   white-space: normal !important;
   word-break: keep-all !important;
 }
+
+/* ==========================================================================
+   СКРЫТИЕ КНОПКИ ПЕРЕКЛЮЧЕНИЯ ТЕМЫ
+   ========================================================================== */
+
+/* Скрываем кнопку переключения темы в навбаре */
+.VPNavBar .VPSwitch,
+.VPNavBar .VPSwitchAppearance,
+.VPNavBarAppearance,
+.VPSwitch,
+.VPSwitchAppearance,
+button.VPSwitchAppearance {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  pointer-events: none !important;
+}
+
+/* Дополнительная страховка на случай других классов */
+[class*="Switch"],
+[class*="ThemeToggle"],
+[class*="ColorMode"],
+[class*="Appearance"],
+.theme-toggle,
+.color-mode-toggle {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  pointer-events: none !important;
+}
