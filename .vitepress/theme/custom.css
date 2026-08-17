@@ -940,7 +940,7 @@ body,
 
 .table-of-contents {
   float: left !important;
-  width: 30vw !important;
+  width: 300px !important;
   margin: 0 24px 20px 0 !important;
   background: transparent !important;
   backdrop-filter: none !important;
@@ -1045,4 +1045,16 @@ body,
 .vp-doc table {
   min-width: 200px !important;
   max-width: 100% !important;
+}
+
+.vp-doc table {
+  table-layout: fixed !important;
+}
+
+.vp-doc table td,
+.vp-doc table th {
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+  white-space: normal !important;
 }
