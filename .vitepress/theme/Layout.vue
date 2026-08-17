@@ -104,20 +104,26 @@ export default {
         // ============================================
         // 2. ДОБАВЛЯЕМ КНОПКУ "+" СПРАВА В ШАПКЕ
         // ============================================
-        const navBar = document.querySelector('.VPNavBar .content-body')
+        // Находим навбар
+        const navBar = document.querySelector('.VPNavBar')
         if (!navBar) return
 
         if (document.querySelector('.add-button-wrapper')) return
 
-        // Создаем контейнер для кнопки
+        // Делаем навбар позиционированным
+        navBar.style.position = 'relative'
+
+        // Создаем кнопку с абсолютным позиционированием
         const addButtonWrapper = document.createElement('div')
         addButtonWrapper.className = 'add-button-wrapper'
         addButtonWrapper.style.cssText = `
+          position: absolute;
+          top: 50%;
+          right: 20px;
+          transform: translateY(-50%);
           display: flex;
           align-items: center;
-          margin-left: 8px;
-          margin-right: 20px;
-          flex-shrink: 0;
+          z-index: 100;
         `
 
         const addButton = document.createElement('a')
@@ -152,12 +158,6 @@ export default {
 
         addButtonWrapper.appendChild(addButton)
         navBar.appendChild(addButtonWrapper)
-
-        // Дополнительно: убираем отступы у навбара, если они есть
-        const navBarContainer = document.querySelector('.VPNavBar .container')
-        if (navBarContainer) {
-          navBarContainer.style.paddingRight = '0'
-        }
 
         // ============================================
         // 3. ПЕРЕМЕЩЕНИЕ ОГЛАВЛЕНИЯ
