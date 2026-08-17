@@ -109,16 +109,14 @@ export default {
 
         if (document.querySelector('.add-button-wrapper')) return
 
-        // Делаем навбар позиционированным
         navBar.style.position = 'relative'
 
-        // Создаем кнопку с абсолютным позиционированием
         const addButtonWrapper = document.createElement('div')
         addButtonWrapper.className = 'add-button-wrapper'
         addButtonWrapper.style.cssText = `
           position: absolute;
           top: 50%;
-          right: 16px;
+          right: 10px;
           transform: translateY(-50%);
           display: flex;
           align-items: center;
@@ -130,6 +128,7 @@ export default {
         addButton.href = '/wiki/#Добавить-контент'
         addButton.className = 'add-button'
         addButton.innerHTML = '➕'
+        addButton.title = 'Добавить контент'
         addButton.style.cssText = `
           display: flex;
           align-items: center;
@@ -146,63 +145,15 @@ export default {
           cursor: pointer;
           user-select: none;
           pointer-events: auto !important;
-          position: relative;
         `
 
-        // Создаем тултип
-        const tooltip = document.createElement('div')
-        tooltip.className = 'add-button-tooltip'
-        tooltip.textContent = 'Добавить контент'
-        tooltip.style.cssText = `
-          position: absolute;
-          bottom: calc(100% + 10px);
-          left: 50%;
-          transform: translateX(-50%);
-          background: #1e1e20;
-          color: #ffffff;
-          padding: 6px 12px;
-          border-radius: 6px;
-          font-size: 12px;
-          white-space: nowrap;
-          opacity: 0;
-          visibility: hidden;
-          transition: all 0.2s ease;
-          pointer-events: none;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          font-family: system-ui, -apple-system, sans-serif;
-        `
-
-        // Стрелка для тултипа
-        const tooltipArrow = document.createElement('div')
-        tooltipArrow.style.cssText = `
-          position: absolute;
-          bottom: -6px;
-          left: 50%;
-          transform: translateX(-50%) rotate(45deg);
-          width: 10px;
-          height: 10px;
-          background: #1e1e20;
-          border-right: 1px solid rgba(255, 255, 255, 0.1);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        `
-        tooltip.appendChild(tooltipArrow)
-
-        addButton.appendChild(tooltip)
-
-        // Показываем тултип при наведении
         addButton.addEventListener('mouseenter', () => {
           addButton.style.background = '#3c3c3e'
           addButton.style.borderColor = 'rgba(255, 255, 255, 0.2)'
-          addButton.style.transform = 'scale(1.05)'
-          tooltip.style.opacity = '1'
-          tooltip.style.visibility = 'visible'
         })
         addButton.addEventListener('mouseleave', () => {
           addButton.style.background = '#2c2c2e'
           addButton.style.borderColor = 'rgba(255, 255, 255, 0.1)'
-          addButton.style.transform = 'scale(1)'
-          tooltip.style.opacity = '0'
-          tooltip.style.visibility = 'hidden'
         })
 
         addButtonWrapper.appendChild(addButton)
