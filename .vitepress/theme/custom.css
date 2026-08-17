@@ -910,7 +910,7 @@ body,
    ================================================================ */
 .table-of-contents {
   float: left !important;
-  width: 300px !important;
+  width: auto !important;
   margin: 0 24px 20px 0 !important;
   /* остальные стили без изменений */
 }
