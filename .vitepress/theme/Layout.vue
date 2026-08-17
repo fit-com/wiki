@@ -5,6 +5,10 @@ import { onMounted, nextTick } from 'vue'
 const { Layout } = DefaultTheme
 
 export default {
+  name: 'CustomLayout',
+  components: {
+    Layout
+  },
   setup() {
     onMounted(() => {
       nextTick(() => {
@@ -48,7 +52,7 @@ export default {
               <span class="category-icon">🏢</span> Корпуса
             </a>
             <a href="/wiki/structure/" class="category-item">
-              <span class="category-icon">💼</span>Структура
+              <span class="category-icon">💼</span> Структура
             </a>
             <a href="/wiki/communities/" class="category-item">
               <span class="category-icon">🧑‍🤝‍🧑</span> Сообщества
@@ -103,10 +107,8 @@ export default {
         const navBar = document.querySelector('.VPNavBar .content-body')
         if (!navBar) return
 
-        // Проверяем, не добавлена ли уже кнопка
         if (document.querySelector('.add-button-wrapper')) return
 
-        // Создаем контейнер для кнопки
         const addButtonWrapper = document.createElement('div')
         addButtonWrapper.className = 'add-button-wrapper'
         addButtonWrapper.style.cssText = `
@@ -116,9 +118,8 @@ export default {
           flex-shrink: 0;
         `
 
-        // Создаем саму кнопку
         const addButton = document.createElement('a')
-        addButton.href = '/wiki/#Добавить контент'
+        addButton.href = '/wiki/#Добавить-контент'
         addButton.className = 'add-button'
         addButton.innerHTML = '➕'
         addButton.style.cssText = `
@@ -135,9 +136,9 @@ export default {
           text-decoration: none;
           transition: all 0.2s ease;
           cursor: pointer;
+          user-select: none;
         `
 
-        // Добавляем hover эффект
         addButton.addEventListener('mouseenter', () => {
           addButton.style.background = '#3c3c3e'
           addButton.style.borderColor = 'rgba(255, 255, 255, 0.2)'
@@ -151,7 +152,7 @@ export default {
         navBar.appendChild(addButtonWrapper)
 
         // ============================================
-        // 3. НОВЫЙ КОД ДЛЯ ПЕРЕМЕЩЕНИЯ ОГЛАВЛЕНИЯ
+        // 3. ПЕРЕМЕЩЕНИЕ ОГЛАВЛЕНИЯ
         // ============================================
         const outline = document.querySelector('.VPDocAsideOutline')
         if (!outline) return
