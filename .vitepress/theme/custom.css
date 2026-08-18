@@ -907,3 +907,63 @@ button.VPSwitchAppearance {
     left: -9999px !important;
   }
 }
+
+/* ==========================================================================
+   КАСТОМНОЕ ОФОРМЛЕНИЕ ЦИТАТ
+   ========================================================================== */
+
+.vp-doc blockquote {
+  position: relative !important;
+  margin: 24px 0 !important;
+  padding: 20px 30px !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-style: italic !important;
+  text-align: center !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Большие кавычки */
+.vp-doc blockquote::before {
+  content: "\201C" !important;
+  font-size: 4em !important;
+  font-style: normal !important;
+  color: rgba(255, 255, 255, 0.1) !important;
+  display: block !important;
+  line-height: 0.8 !important;
+  margin-bottom: -10px !important;
+}
+
+.vp-doc blockquote::after {
+  content: "\201D" !important;
+  font-size: 4em !important;
+  font-style: normal !important;
+  color: rgba(255, 255, 255, 0.1) !important;
+  display: block !important;
+  line-height: 0.8 !important;
+  margin-top: -10px !important;
+  text-align: right !important;
+}
+
+.vp-doc blockquote:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.vp-doc blockquote p {
+  margin: 0 !important;
+}
+
+/* Для мобильных */
+@media (max-width: 768px) {
+  .vp-doc blockquote {
+    padding: 16px 20px !important;
+    font-size: 0.95em !important;
+  }
+  
+  .vp-doc blockquote::before,
+  .vp-doc blockquote::after {
+    font-size: 3em !important;
+  }
+}
