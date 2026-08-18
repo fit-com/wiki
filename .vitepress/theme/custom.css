@@ -184,7 +184,6 @@ body,
   left: 50% !important;
   transform: translateX(-50%) !important;
   margin: 0 !important;
-  margin-bottom: 40px !important;
   background-color: var(--vp-c-bg) !important;
   backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
@@ -196,6 +195,11 @@ body,
 .VPDoc .container > div:last-child {
   padding-bottom: 0 !important;
   margin-bottom: 0 !important;
+}
+
+.VPDoc {
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
 }
 
 /* ==========================================================================
