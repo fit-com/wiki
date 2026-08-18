@@ -929,7 +929,7 @@ button.VPSwitchAppearance {
 
 /* Верхняя кавычка слева */
 .vp-doc blockquote::before {
-  content: "\201C" !important;
+  content: "\201E" !important;
   font-size: 2.8em !important;
   font-style: normal !important;
   color: rgba(255, 255, 255, 0.12) !important;
@@ -941,7 +941,7 @@ button.VPSwitchAppearance {
 
 /* Нижняя кавычка справа („) */
 .vp-doc blockquote::after {
-  content: "\201E" !important;
+  content: "\201C" !important;
   font-size: 2.8em !important;
   font-style: normal !important;
   color: rgba(255, 255, 255, 0.12) !important;
