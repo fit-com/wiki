@@ -800,7 +800,7 @@ body,
 .vp-doc table {
   min-width: 200px !important;
   max-width: 100% !important;
-  width: auto !important;
+  width: 30% !important;
 }
 
 .vp-doc table {
