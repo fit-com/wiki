@@ -17,15 +17,15 @@
 6. Админы проверят текст на адекватность и добавят его на сайт!
 
 ### Шаблоны
-#### 👨‍🏫 [Преподаватели](https://github.com/fit-com/wiki/teachers/template.md)
+#### 👨‍🏫 [Преподаватели](https://github.com/fit-com/wiki/blob/main/teachers/template.md)
 Название файла: `surname-name-patronymic.md`.
-#### 🎭 [События](https://github.com/fit-com/wiki/events/template.md)
+#### 🎭 [События](https://github.com/fit-com/wiki/blob/main/events/template.md)
 Название файла: `event.md`, если оно единоразовое. Иначе с датой: `event-2026.md` или `event-01-09-2026.md`.
-#### 🛠️ [Предметы](https://github.com/fit-com/wiki/courses/template.md)
+#### 🛠️ [Предметы](https://github.com/fit-com/wiki/blob/main/courses/template.md)
 Название файла: `course.md`.
-#### 🏢 [Корпуса и аудитории](https://github.com/fit-com/wiki/buildings/template.md)
+#### 🏢 [Корпуса и аудитории](https://github.com/fit-com/wiki/blob/main/buildings/template.md)
 Название файла: `name-builging.md` для корпусов и `dom-№` для общежитий.
-#### 💼 [Структура](https://github.com/fit-com/wiki/structure/template.md)
+#### 💼 [Структура](https://github.com/fit-com/wiki/blob/main/structure/template.md)
 Название файла: как-нибудь сокращенно, например, `koi-fit.md` - кафедра общей информатики. Для всяких важных личностей название файла, как для преподов.
-#### 🧑‍🤝‍🧑 [Сообщества](https://github.com/fit-com/wiki/community/template.md)
+#### 🧑‍🤝‍🧑 [Сообщества](https://github.com/fit-com/wiki/blob/main/community/template.md)
 Название файла: `community.md`
