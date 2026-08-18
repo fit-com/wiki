@@ -45,7 +45,7 @@ export default {
             <a href="/wiki/events/" class="category-item">
               <span class="category-icon">🎭</span> События
             </a>
-            <a href="/wiki/subjects/" class="category-item">
+            <a href="/wiki/courses/" class="category-item">
               <span class="category-icon">🛠️</span> Предметы
             </a>
             <a href="/wiki/buildings/" class="category-item">
@@ -121,7 +121,7 @@ export default {
         `
 
         const addButton = document.createElement('a')
-        addButton.href = '/wiki/#Добавить-контент'
+        addButton.href = '/wiki/#добавить-контент'
         addButton.className = 'add-button'
         addButton.innerHTML = '➕'
         addButton.title = 'Добавить контент'
