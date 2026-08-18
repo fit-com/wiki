@@ -184,10 +184,11 @@ body,
   left: 50% !important;
   transform: translateX(-50%) !important;
   margin: 0 !important;
+  margin-bottom: 40px !important;
   background-color: var(--vp-c-bg) !important;
   backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
-  padding: 40px 29px 400px !important;
+  padding: 40px 29px !important;
   border-radius: 12px !important;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2) !important;
 }
