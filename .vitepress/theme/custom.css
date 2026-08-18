@@ -197,9 +197,10 @@ body,
   margin-bottom: 0 !important;
 }
 
-.VPDoc {
-  padding-top: 40px !important;
-  padding-bottom: 40px !important;
+.VPDoc .content::after {
+  content: "";
+  display: block;
+  height: 40px;
 }
 
 /* ==========================================================================
