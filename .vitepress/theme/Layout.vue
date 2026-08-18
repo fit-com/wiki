@@ -175,17 +175,14 @@ export default {
           }
         }
 
-        // Вызываем при загрузке
         hideMobileMenu()
 
-        // Вызываем при изменении размера окна
         let resizeTimer
         window.addEventListener('resize', () => {
           clearTimeout(resizeTimer)
           resizeTimer = setTimeout(hideMobileMenu, 100)
         })
 
-        // Дополнительно скрываем кнопку гамбургера на мобильных
         const style = document.createElement('style')
         style.textContent = `
           @media (max-width: 768px) {
@@ -229,6 +226,34 @@ export default {
         if (aside) {
           aside.style.display = 'none'
         }
+
+        // ============================================
+        // 5. ДОБАВЛЯЕМ ОТСТУП СНИЗУ
+        // ============================================
+        function addBottomSpacing() {
+          const content = document.querySelector('.VPDoc .content')
+          if (!content) return
+          
+          // Проверяем, не добавлен ли уже спейсер
+          if (content.nextElementSibling?.classList.contains('bottom-spacer')) return
+          
+          // Создаем спейсер
+          const spacer = document.createElement('div')
+          spacer.className = 'bottom-spacer'
+          spacer.style.cssText = `
+            height: 40px;
+            width: 100%;
+            clear: both;
+          `
+          content.parentNode.insertBefore(spacer, content.nextSibling)
+        }
+
+        addBottomSpacing()
+        
+        // Добавляем при изменении размера (на случай ререндера)
+        window.addEventListener('resize', () => {
+          setTimeout(addBottomSpacing, 200)
+        })
       })
     })
   }
