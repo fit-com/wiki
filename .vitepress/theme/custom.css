@@ -914,8 +914,9 @@ button.VPSwitchAppearance {
 
 .vp-doc blockquote {
   position: relative !important;
-  margin: 24px 0 !important;
-  padding: 20px 30px !important;
+  margin: 16px auto !important;
+  padding: 12px 20px !important;
+  max-width: 80% !important;
   background: rgba(255, 255, 255, 0.03) !important;
   border: none !important;
   border-radius: 8px !important;
@@ -923,28 +924,31 @@ button.VPSwitchAppearance {
   font-style: italic !important;
   text-align: center !important;
   transition: all 0.3s ease !important;
+  font-size: 0.95em !important;
 }
 
-/* Большие кавычки */
+/* Верхняя кавычка слева */
 .vp-doc blockquote::before {
   content: "\201C" !important;
-  font-size: 4em !important;
+  font-size: 2.8em !important;
   font-style: normal !important;
-  color: rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.12) !important;
   display: block !important;
-  line-height: 0.8 !important;
-  margin-bottom: -10px !important;
+  line-height: 0.6 !important;
+  text-align: left !important;
+  margin-bottom: -8px !important;
 }
 
+/* Нижняя кавычка справа („) */
 .vp-doc blockquote::after {
-  content: "\201D" !important;
-  font-size: 4em !important;
+  content: "\201E" !important;
+  font-size: 2.8em !important;
   font-style: normal !important;
-  color: rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.12) !important;
   display: block !important;
-  line-height: 0.8 !important;
-  margin-top: -10px !important;
+  line-height: 0.6 !important;
   text-align: right !important;
+  margin-top: -8px !important;
 }
 
 .vp-doc blockquote:hover {
@@ -952,18 +956,19 @@ button.VPSwitchAppearance {
 }
 
 .vp-doc blockquote p {
-  margin: 0 !important;
+  margin: 4px 0 !important;
 }
 
 /* Для мобильных */
 @media (max-width: 768px) {
   .vp-doc blockquote {
-    padding: 16px 20px !important;
-    font-size: 0.95em !important;
+    max-width: 95% !important;
+    padding: 10px 16px !important;
+    font-size: 0.9em !important;
   }
   
   .vp-doc blockquote::before,
   .vp-doc blockquote::after {
-    font-size: 3em !important;
+    font-size: 2.2em !important;
   }
 }
