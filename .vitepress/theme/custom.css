@@ -1037,3 +1037,39 @@ button.VPSwitchAppearance {
 .VPEditLink a:hover {
   color: #e67e22 !important;
 }
+
+.vp-doc code:not(.hljs) {
+  color: #f39c12 !important;
+  background: rgba(243, 156, 18, 0.1) !important;
+  border-radius: 4px !important;
+  padding: 2px 6px !important;
+  font-size: 0.9em !important;
+}
+
+/* Код внутри ссылок */
+.vp-doc a code {
+  color: #f39c12 !important;
+}
+
+.vp-doc a:hover code {
+  color: #e67e22 !important;
+}
+
+.edit-link-button {
+  color: #f39c12 !important;
+  border-color: #f39c12 !important;
+}
+
+.edit-link-button:hover {
+  color: #e67e22 !important;
+  border-color: #e67e22 !important;
+}
+
+/* Если внутри есть иконка */
+.edit-link-button .edit-link-icon {
+  color: #f39c12 !important;
+}
+
+.edit-link-button:hover .edit-link-icon {
+  color: #e67e22 !important;
+}
