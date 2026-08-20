@@ -972,3 +972,68 @@ button.VPSwitchAppearance {
     font-size: 2.2em !important;
   }
 }
+
+/* ==========================================================================
+   ОРАНЖЕВЫЕ ССЫЛКИ
+   ========================================================================== */
+
+/* Все ссылки в тексте */
+.vp-doc a {
+  color: #f39c12 !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.vp-doc a:hover {
+  color: #e67e22 !important;
+  text-decoration: underline !important;
+}
+
+/* Ссылки в навигации */
+.VPNavBar .link,
+.VPNavBarItem,
+.VPNavBarMenuLink,
+.VPNavBar .text {
+  color: #ffffff !important;
+}
+
+.VPNavBar .link:hover,
+.VPNavBarItem:hover,
+.VPNavBarMenuLink:hover {
+  color: #f39c12 !important;
+}
+
+/* Ссылки в оглавлении */
+.table-of-contents a {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.table-of-contents a:hover {
+  color: #f39c12 !important;
+}
+
+.VPSidebar .link {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.VPSidebar .link:hover {
+  color: #f39c12 !important;
+}
+
+/* Ссылки в футере */
+.VPFooter a {
+  color: #f39c12 !important;
+}
+
+.VPFooter a:hover {
+  color: #e67e22 !important;
+}
+
+/* Кнопка редактирования */
+.VPEditLink a {
+  color: #f39c12 !important;
+}
+
+.VPEditLink a:hover {
+  color: #e67e22 !important;
+}
