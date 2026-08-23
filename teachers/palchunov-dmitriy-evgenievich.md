@@ -3,7 +3,6 @@
 <table style="float: right; margin-left: 20px; width: 40%;">
   <tr>
     <td colspan="2" align="center">
-      <img src="/Aris01.jpg" alt="Image">
       ![Хуй](https://www.nsu.ru/n/information-technologies-department/departments/kafoi/pde.jpg)
       <br>
       <b>Пальчунов Д.Е.</b>
@@ -15,7 +14,7 @@
   </tr>
   <tr>
     <td>Кафедра</td>
-    <td><a href="structure/km-fit">КОИ</a> (Заведующий кафедрой, д.ф.-м.н., доцент)</td>
+    <td><a href="structure/koi-fit.md">КОИ</a> (Заведующий кафедрой, д.ф.-м.н., доцент)</td>
   </tr>
   <tr>
     <td>Предметы</td>
