@@ -3,7 +3,7 @@
 <table style="float: right; margin-left: 20px; width: 40%;">
   <tr>
     <td colspan="2" align="center">
-      ![Хуй](https://www.nsu.ru/n/information-technologies-department/departments/kafoi/pde.jpg)
+      <img src="https://www.nsu.ru/n/information-technologies-department/departments/kafoi/pde.jpg" alt="Image">
       <br>
       <b>Пальчунов Д.Е.</b>
     </td>
