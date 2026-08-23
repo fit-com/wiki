@@ -18,7 +18,7 @@
   </tr>
   <tr>
     <td>Предметы</td>
-    <td><a href="/guides/mathanalys">Алгебра и геометрия</a> (лекции + семинары)</td>
+    <td><a href="/guides/algem">Алгебра и геометрия</a> (лекции + семинары)</td>
   </tr>
 </table>
 
