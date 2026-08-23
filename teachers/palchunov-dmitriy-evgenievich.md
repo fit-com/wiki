@@ -14,11 +14,11 @@
   </tr>
   <tr>
     <td>Кафедра</td>
-    <td><a href="structure/koi-fit.md">КОИ</a> (Заведующий кафедрой, д.ф.-м.н., доцент)</td>
+    <td><a href="/structure/koi-fit.md">КОИ</a> (Заведующий кафедрой, д.ф.-м.н., доцент)</td>
   </tr>
   <tr>
     <td>Предметы</td>
-    <td><a href="https://example.com">МЛиТА</a> (лекции + семинары)</td>
+    <td><a href="/https://example.com">МЛиТА</a> (лекции + семинары)</td>
   </tr>
 </table>
 
