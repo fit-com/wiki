@@ -3,13 +3,14 @@
 <table style="float: right; margin-left: 20px; width: 40%;">
   <tr>
     <td colspan="2" align="center">
+      <img src="/empty-teacher.png" alt="Image">
       <br>
       <b>Пивоваров А.А.</b>
     </td>
   </tr>
   <tr>
     <td>Дата рождения</td>
-    <td>????</td>
+    <td>Неизвестно</td>
   </tr>
   <tr>
     <td>Кафедра</td>
